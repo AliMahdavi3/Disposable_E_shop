@@ -17,6 +17,7 @@ import {
     FaHome
 } from "react-icons/fa";
 import Footer from '../../components/Footer';
+import ProductQuestions from './ProductQuestions';
 
 const SingleProduct = () => {
 
@@ -59,9 +60,9 @@ const SingleProduct = () => {
             <div className='h-16 footer_bg w-full navbar'></div>
 
             <div className="container pt-5 md:px-10">
-                <div className="flex items-center py-5 overflow-x-auto whitespace-nowrap">
+                <div className="flex items-center py-5 text-xs md:text-base">
                     <a href="/singleProduct" className="text-gray-600 dark:text-gray-200">
-                        <FaHome/>
+                        <FaHome />
                     </a>
 
                     <span className="mx-5 text-gray-500 dark:text-gray-300">
@@ -92,6 +93,7 @@ const SingleProduct = () => {
 
             <div className="pt-5 container single_product">
                 <div className='py-10 grid grid-cols-5 gap-4'>
+
                     <div className="col-span-5 md:col-span-3 h-fit py-5">
                         <div className='flex justify-between md:flex-row flex-col items-start md:items-center md:px-10 pb-10'>
                             <div className='mb-3'>
@@ -140,6 +142,21 @@ const SingleProduct = () => {
                                 <span className='text-xs'>تومان</span>
                             </p>
                         </div>
+
+
+                        <div className="block md:hidden col-span-5 md:col-span-2 my-5 rounded-xl">
+                            <img src="/assets/images/slide (1).png" className='box_shadow hover:shadow-2xl cursor-pointer rounded-xl mb-5' alt="" />
+                            <div className='grid grid-cols-3 gap-4'>
+                                <img className='col-span-1 box_shadow hover:shadow-2xl cursor-pointer rounded-xl' src="/assets/images/slide (2).png" alt="" />
+                                <img className='col-span-1 box_shadow hover:shadow-2xl cursor-pointer rounded-xl' src="/assets/images/slide (3).png" alt="" />
+                                <img className='col-span-1 box_shadow hover:shadow-2xl cursor-pointer rounded-xl' src="/assets/images/slide (4).png" alt="" />
+                            </div>
+                        </div>
+
+
+
+
+
                         <div className='px-10'>
                             <button className='bg-mgreen flex justify-center items-center w-full py-2 text-white font-bold
                              rounded-lg hover:bg-violet-800'><span>افزودن به سبد خرید</span><FaCartPlus className='text-lg ms-3' /> </button>
@@ -157,77 +174,20 @@ const SingleProduct = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-5 md:col-span-2 rounded-xl">
+                    <div className="hidden md:block col-span-5 md:col-span-2 rounded-xl">
                         <img src="/assets/images/slide (1).png" className='box_shadow hover:shadow-2xl cursor-pointer rounded-xl mb-5' alt="" />
                         <div className='grid grid-cols-3 gap-4'>
-                            <img className='col-span-1 box_shadow hover:shadow-2xl cursor-pointer rounded-xl' src="/assets/images/slide (1).png" alt="" />
-                            <img className='col-span-1 box_shadow hover:shadow-2xl cursor-pointer rounded-xl' src="/assets/images/slide (1).png" alt="" />
-                            <img className='col-span-1 box_shadow hover:shadow-2xl cursor-pointer rounded-xl' src="/assets/images/slide (1).png" alt="" />
+                            <img className='col-span-1 box_shadow hover:shadow-2xl cursor-pointer rounded-xl' src="/assets/images/slide (2).png" alt="" />
+                            <img className='col-span-1 box_shadow hover:shadow-2xl cursor-pointer rounded-xl' src="/assets/images/slide (3).png" alt="" />
+                            <img className='col-span-1 box_shadow hover:shadow-2xl cursor-pointer rounded-xl' src="/assets/images/slide (4).png" alt="" />
                         </div>
                     </div>
+
+
+
                 </div>
 
-                <div className='my-10'>
-                    <div className='bg-mgreen text-white font-semibold w-[60%] text-sm md:text-base lg:w-[20%]
-                     text-center py-2 rounded-t-lg'>نظرات درباره این محصول</div>
-                    <hr className="border-2 border-mgreen" />
-                </div>
-                <div className='pb-5'>
-                    <div className='bg-gray-300 mb-5 rounded-lg w-full h-fit container px-5 py-5 bg-opacity-50'>
-                        <div className='flex justify-between items-center pt-3'>
-                            <div className='flex font-semibold text-mblack justify-center items-center text-xs md:text-sm'>
-                                <p className='ml-5'>علی مهدوی</p>
-                                <p className='ml-5'>عالی</p>
-                            </div>
-                            <div className='flex font-semibold text-mblack justify-center items-center text-xs md:text-sm'>
-                                <FaThumbsDown className='ms-5' />
-                                <FaThumbsUp className='ms-5' />
-                            </div>
-                        </div>
-                        <p className='py-5 text-xs md:text-base'>
-                            ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
-                            شرایط فعلی تکنولوژی مورد نید و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی،
-                            و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                        </p>
-                    </div>
-                    <div className='bg-gray-300 mb-5 rounded-lg w-full h-fit container px-5 py-5 bg-opacity-50'>
-                        <div className='flex justify-between items-center pt-3'>
-                            <div className='flex font-semibold text-mblack justify-center items-center text-xs md:text-sm'>
-                                <p className='ml-5'>علی مهدوی</p>
-                                <p className='ml-5'>عالی</p>
-                            </div>
-                            <div className='flex font-semibold text-mblack justify-center items-center text-xs md:text-sm'>
-                                <FaThumbsDown className='ms-5' />
-                                <FaThumbsUp className='ms-5' />
-                            </div>
-                        </div>
-                        <p className='py-5 text-xs md:text-base'>
-                            ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
-                            شرایط فعلی تکنولوژی مورد نید و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی،
-                            و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                        </p>
-                    </div>
-                    <div className='bg-gray-300 mb-5 rounded-lg w-full h-fit container px-5 py-5 bg-opacity-50'>
-                        <div className='flex justify-between items-center pt-3'>
-                            <div className='flex font-semibold text-mblack justify-center items-center text-xs md:text-sm'>
-                                <p className='ml-5'>علی مهدوی</p>
-                                <p className='ml-5'>عالی</p>
-                            </div>
-                            <div className='flex font-semibold text-mblack justify-center items-center text-xs md:text-sm'>
-                                <FaThumbsDown className='ms-5' />
-                                <FaThumbsUp className='ms-5' />
-                            </div>
-                        </div>
-                        <p className='py-5 text-xs md:text-base'>
-                            ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
-                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
-                            شرایط فعلی تکنولوژی مورد نید و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی،
-                            و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                        </p>
-                    </div>
-                </div>
+                <ProductQuestions />
 
 
 
