@@ -47,7 +47,7 @@ const Products = () => {
 
     return (
         <>
-            <div className='h-16 footer_bg w-full navbar'></div>
+            <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
             <div className='pt-8'>
                 {/* FirstCarousel */}
                 <div className='container pb-10'>

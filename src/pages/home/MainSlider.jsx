@@ -27,7 +27,6 @@ const MainSlider = () => {
             <div style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
                 className='w-full h-full bg-center bg-cover duration-500 object-cover'>
             </div>
-
             <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%]
                      right-5 text-2xl rounded-full p-2 bg-slate-600 text-white cursor-pointer'>
                 <FaAngleRight onClick={prevSlide} size={30} />
@@ -36,7 +35,6 @@ const MainSlider = () => {
                      left-5 text-2xl rounded-full p-2 bg-slate-600 text-white cursor-pointer'>
                 <FaAngleLeft onClick={nextSlide} size={30} />
             </div>
-
         </div>
     )
 }

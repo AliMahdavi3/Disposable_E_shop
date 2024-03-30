@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');
+@font-face {
+  font-family: "myfont";
+  src: url(../public/assets/fonts/IRANSansXFaNum-Regular.ttf);
+}
 
 body {
   margin: 0;
@@ -11,8 +14,7 @@ body {
 }
 
 * {
-  font-family: "Vazirmatn", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "myfont", sans-serif;
   font-style: normal;
 }
 
@@ -26,6 +28,10 @@ body {
 
 .box_shadow {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.text_shadow {
+  text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 /* =============================================== Scroll ======================================= */
@@ -52,10 +58,6 @@ body {
 }
 
 /* ============================================= HOME ======================================== */
-.home {
-  background-image: url();
-}
-
 .slick-slide>div {
   margin: 0 10px;
 }
@@ -85,10 +87,25 @@ body {
   height: 100%;
 }
 
+/* ============================================= CONTACT-US ======================================== */
+
+.contact {
+  background-image: url(../public/assets/images/contact.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.contact h1 {
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
 
 /* =============================================== Footer========================================= */
 
 .footer_bg {
-  background: rgb(23, 144, 127);
+  background: #17907f;
   background: linear-gradient(90deg, rgba(23, 144, 127, 1) 0%, rgba(0, 114, 116, 1) 100%);
 }

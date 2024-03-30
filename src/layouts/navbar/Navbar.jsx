@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaCartArrowDown, FaWindowClose, FaUserCircle, FaBars } from "react-icons/fa";
+import { FaCartArrowDown, FaWindowClose, FaUserCircle, FaBars, FaHome } from "react-icons/fa";
 import { BiSolidCategory } from "react-icons/bi";
 import { NavLink } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ const Navbar = () => {
     };
   }, []);
 
-    const closeMenu = () => {
+  const closeMenu = () => {
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
@@ -35,51 +35,82 @@ const Navbar = () => {
 
 
   return (
-    <header className={`h-16 navbar fixed top-0 z-50 w-full ${isNavbarScrolled ? "footer_bg" : "bg-transparent"}`}>
-      <nav className='container flex justify-between items-center pt-3'>
-        <div>
-          <a href="/" className='navbar_shadow text-white text-2xl font-bold'>LOGO</a>
-        </div>
+    <header >
 
-        <ul className='hidden md:flex md:flex-grow md:justify-center text-white'>
-          <li><NavLink to="/" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">خانه</NavLink></li>
-          <li><NavLink to="/products" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">محصولات</NavLink></li>
-          <li><NavLink to="/about" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">درباره ما</NavLink></li>
-          <li><NavLink to="/blog" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">بلاگ</NavLink></li>
-          <li><NavLink to="/contact" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">تماس با ما</NavLink></li>
-        </ul>
+      <nav className={`h-fit py-5 rounded-b-2xl fixed top-0 z-50 w-full
+       ${isNavbarScrolled ? "bg-gradient-to-r from-mgreen to-[#1F917C]" : "bg-transparent"}`}>
+        <div className='container flex justify-between items-center'>
 
-        <div className='flex'>
-          <a href="/" className="text-white text-2xl ml-4"><FaUserCircle /></a>
-          <a href="/" className="md:hidden text-white ml-4 text-2xl"><BiSolidCategory /></a>
-          <a href="/" className="text-white text-2xl ml-4"><FaCartArrowDown /></a>
-        </div>
+          <div>
+            <a href="/" className='navbar_shadow text-white text-2xl font-bold'>LOGO</a>
+          </div>
 
-        <div className='md:hidden flex'>
-          {
-            isMenuOpen ? (
-              <button onClick={toggleMenu} className=' transition duration-1000
+          <ul className='hidden md:flex md:flex-grow md:justify-center text-white'>
+            <li><NavLink to="/" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">خانه</NavLink></li>
+            <li><NavLink to="/products" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">محصولات</NavLink></li>
+            <li><NavLink to="/about" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">درباره ما</NavLink></li>
+            <li><NavLink to="/blog" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">بلاگ</NavLink></li>
+            <li><NavLink to="/contact" className="navbar_shadow ml-6 font-semibold text-xl transition duration-1000 hover:text-gray-300">تماس با ما</NavLink></li>
+          </ul>
+
+          <div className='flex'>
+            <NavLink to="/login" className="hidden md:block text-white text-2xl ml-4"><FaUserCircle /></NavLink>
+            <NavLink to="/cart" className="hidden md:block text-white text-2xl ml-4"><FaCartArrowDown /></NavLink>
+          </div>
+
+          <div className='md:hidden flex'>
+            {
+              isMenuOpen ? (
+                <button onClick={toggleMenu} className=' transition duration-1000
                text-white text-2xl ml-4'>
-                <FaWindowClose className='text-red-600' />
-              </button>
-            ) : (
-              <button onClick={toggleMenu} className=' transition duration-1000
+                  <FaWindowClose className='text-red-600' />
+                </button>
+              ) : (
+                <button onClick={toggleMenu} className=' transition duration-1000
                text-white text-2xl ml-4'>
-                <FaBars />
-              </button>
-            )
-          }
-        </div>
+                  <FaBars />
+                </button>
+              )
+            }
+          </div>
 
-        <ul className={`md:hidden rounded-3xl absolute top-16 mt-1 left-0 right-0 bg-mgreen text-white text-center transition-all duration-2000 ${isMenuOpen ? 'max-h-screen' : 'max-h-0'} ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
-          <li><NavLink to="/"  onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-100 hover:text-gray-300" : "hidden"} `}>خانه</NavLink></li>
-          <li><NavLink to="/products"  onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-150 hover:text-gray-300" : "hidden"} `}>محصولات</NavLink></li>
-          <li><NavLink to="/about"  onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-200 hover:text-gray-300" : "hidden"} `}>درباره ما</NavLink></li>
-          <li><NavLink to="/blog"  onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-300 hover:text-gray-300" : "hidden"} `}>بلاگ</NavLink></li>
-          <li><NavLink to="/contact"  onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-700 hover:text-gray-300" : "hidden"} `}>تماس با ما</NavLink></li>
-        </ul>
+          <ul className={`md:hidden rounded-3xl absolute top-20 mt-1 left-0 right-0 bg-mgreen text-white text-center transition-all duration-2000 ${isMenuOpen ? 'max-h-screen' : 'max-h-0'} ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
+            <li><NavLink to="/" onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-100 hover:text-gray-300" : "hidden"} `}>خانه</NavLink></li>
+            <li><NavLink to="/products" onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-150 hover:text-gray-300" : "hidden"} `}>محصولات</NavLink></li>
+            <li><NavLink to="/about" onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-200 hover:text-gray-300" : "hidden"} `}>درباره ما</NavLink></li>
+            <li><NavLink to="/blog" onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-300 hover:text-gray-300" : "hidden"} `}>بلاگ</NavLink></li>
+            <li><NavLink to="/contact" onClick={closeMenu} className={`${isMenuOpen ? "navbar_shadow block font-semibold py-6 transition duration-700 hover:text-gray-300" : "hidden"} `}>تماس با ما</NavLink></li>
+          </ul>
+        </div>
 
       </nav>
+
+
+      <nav className="md:hidden h-fit py-2 rounded-t-xl bg-mgreen fixed bottom-0 z-50 w-full">
+        <div className='container flex justify-between items-center'>
+            <NavLink to="/profile" className="text-white flex justify-center items-center
+             flex-col text-2xl ml-4">
+              <FaUserCircle />
+              <span className='text-xs mt-1'>حساب کاربری</span>
+            </NavLink>
+            <a href="/" className="text-white flex justify-center items-center
+             flex-col ml-4 text-2xl">
+              <BiSolidCategory />
+              <span className='text-xs mt-1'>دسته بندی</span>
+            </a>
+            <NavLink to="/cart" className="text-white flex justify-center items-center
+             flex-col text-2xl ml-4">
+              <FaCartArrowDown />
+              <span className='text-xs mt-1'>سبد خرید</span>
+            </NavLink>
+            <NavLink to="/" className="text-white flex justify-center items-center
+             flex-col text-2xl ml-4">
+              <FaHome />
+              <span className='text-xs mt-1'>خانه</span>
+            </NavLink>
+          </div>
+      </nav>
+
     </header>
   )
 }

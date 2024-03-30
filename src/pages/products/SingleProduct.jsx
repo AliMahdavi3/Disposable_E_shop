@@ -57,7 +57,7 @@ const SingleProduct = () => {
 
     return (
         <>
-            <div className='h-16 footer_bg w-full navbar'></div>
+            <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
 
             <div className="container pt-5 md:px-10">
                 <div className="flex items-center py-5 text-xs md:text-base">
