@@ -13,7 +13,7 @@ const SearchBox = () => {
                     </div>
 
                     <input
-                        className="h-full w-full outline-none bg-gray-200 text-gray-700 pr-2"
+                        className="h-full w-full outline-none bg-white text-gray-700 pr-2"
                         type="text"
                         id="search"
                         placeholder="جستجو در فروشگاه تک شاپ ...!" />

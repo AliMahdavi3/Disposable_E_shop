@@ -16,7 +16,7 @@ const Home = () => {
     return (
         <div>
             {/* Slider */}
-           <MainSlider/>
+            <MainSlider />
 
             {/* Search-Box */}
             <SearchBox />
@@ -35,6 +35,9 @@ const Home = () => {
 
             {/* BestSelling-Carousel */}
             <CenterModeCarousel />
+
+            {/* Promote */}
+            <Promote />
 
             {/* About-Us */}
             <AboutUs />
