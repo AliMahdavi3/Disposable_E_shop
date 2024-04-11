@@ -95,11 +95,21 @@ const SingleProduct = () => {
                 <div className='py-10 grid grid-cols-5 gap-4'>
 
                     <div className="col-span-5 md:col-span-3 h-fit py-5">
-                        <div className='flex justify-between md:flex-row flex-col items-start md:items-center md:px-10 pb-10'>
+                        <div className='md:flex-row flex-col
+                         items-start md:items-center md:px-10 pb-10'>
+
                             <div className='mb-3'>
-                                <h1 className='mb-3 text-xl text-gray-700 font-bold'>محصول شماره 1</h1>
+                                <div className='flex justify-between'>
+                                    <h1 className='text-base md:text-xl text-gray-700 font-bold'>محصول شماره 1</h1>
+                                    <div className='flex justify-center items-center'>
+                                        <FaRegHeart className='text-gray-700 ml-3 md:ml-5 text-base md:text-xl' />
+                                        <FaShareAlt className='text-gray-700 ml-3 md:ml-5 text-base md:text-xl' />
+                                        {/* <FaShare className='text-gray-700 ml-3 md:ml-5 text-base md:text-xl' /> */}
+                                        <FaReply className='text-gray-700 text-base md:text-xl' />
+                                    </div>
+                                </div>
                                 <div className='flex justify-start flex-col lg:flex-row text-xs'>
-                                    <div className='flex justify-start py-2'>
+                                    <div className='flex justify-start items-center py-2'>
                                         <FaRegEye />
                                         <span className='mx-3'>23,000</span>
                                     </div>
@@ -115,12 +125,8 @@ const SingleProduct = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='mt-5 flex justify-center items-center'>
-                                <FaRegHeart className='text-gray-700 ml-5 text-xl' />
-                                <FaShareAlt className='text-gray-700 ml-5 text-xl' />
-                                <FaShare className='text-gray-700 ml-5 text-xl' />
-                                <FaReply className='text-gray-700 text-xl' />
-                            </div>
+
+
                         </div>
                         <div className='md:px-10'>
                             <span className='text-lg md:text-2xl text-mblack'>توضیحات محصول :</span>
