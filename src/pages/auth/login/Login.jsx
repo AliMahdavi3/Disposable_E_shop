@@ -1,23 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Formik } from "formik";
+import { useNavigate } from 'react-router-dom';
 import { authModeValue, initialValues, onSubmit, validationSchema } from './Core';
 import FormikControl from '../../../components/FormikComponents/FormikControl';
 import Google from '../Google';
 
 
 const Login = () => {
+
+    const [login, setLogin] = useState(false);
+    const navigate = useNavigate();
+
+
     return (
         <>
             <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
             <div className='mt-5 rounded-2xl pb-10 w-full h-fit flex justify-center'>
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={onSubmit}
+                    onSubmit={(values, actions) => onSubmit(values, actions, setLogin, navigate)}
                     validationSchema={validationSchema}
                 >
                     {
                         formik => {
-                            console.log(formik);
+                            // console.log(formik);
                             return (
                                 <div className='grid grid-cols-2 rounded-2xl shadow-md shadow-mgreen w-[85%]'>
                                     <div className="col-span-2 md:col-span-1 bg-white bg-opacity-50 pb-10 rounded-r-2xl">

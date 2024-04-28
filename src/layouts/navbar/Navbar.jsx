@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { FaCartArrowDown, FaWindowClose, FaUserCircle, FaBars, FaHome } from "react-icons/fa";
+import { TbLogin } from "react-icons/tb";
 import { BiSolidCategory } from "react-icons/bi";
 import { NavLink } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 const Navbar = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavbarScrolled, setIsNavbarScrolled] = useState(false);
+
+  const isLoggedIn = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+      return decodedToken.exp > currentTime;
+    }
+    return false;
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -34,6 +46,7 @@ const Navbar = () => {
   };
 
 
+
   return (
     <header >
 
@@ -54,9 +67,26 @@ const Navbar = () => {
           </ul>
 
           <div className='flex'>
-            <NavLink to="/login" className="hidden md:block text-white text-2xl ml-4"><FaUserCircle /></NavLink>
-            <NavLink to="/cart" className="hidden md:block text-white text-2xl ml-4"><FaCartArrowDown /></NavLink>
+
+            {
+              !isLoggedIn() ? (
+                <NavLink to="/login" className="hidden md:block text-white text-2xl ml-4">
+                  <TbLogin />
+                </NavLink>
+              ) : (
+                <NavLink to="/profile" className="hidden md:block text-white text-2xl ml-4">
+                  <FaUserCircle />
+                </NavLink>
+              )
+            }
+
+
+
+            <NavLink to="/cart" className="hidden md:block text-white text-2xl ml-4">
+              <FaCartArrowDown />
+            </NavLink>
           </div>
+
 
           <div className='md:hidden flex'>
             {
@@ -88,27 +118,42 @@ const Navbar = () => {
 
       <nav className="md:hidden h-fit py-2 rounded-t-xl bg-mgreen fixed bottom-0 z-50 w-full">
         <div className='container flex justify-between items-center'>
-            <NavLink to="/profile" className="text-white flex justify-center items-center
+
+          <NavLink to="/" className="text-white flex justify-center items-center
              flex-col text-2xl ml-4">
-              <FaUserCircle />
-              <span className='text-xs mt-1'>حساب کاربری</span>
-            </NavLink>
-            <a href="/" className="text-white flex justify-center items-center
+            <FaHome />
+            <span className='text-xs mt-1'>خانه</span>
+          </NavLink>
+
+          <a href="/" className="text-white flex justify-center items-center
              flex-col ml-4 text-2xl">
-              <BiSolidCategory />
-              <span className='text-xs mt-1'>دسته بندی</span>
-            </a>
-            <NavLink to="/cart" className="text-white flex justify-center items-center
+            <BiSolidCategory />
+            <span className='text-xs mt-1'>دسته بندی</span>
+          </a>
+
+          <NavLink to="/cart" className="text-white flex justify-center items-center
              flex-col text-2xl ml-4">
-              <FaCartArrowDown />
-              <span className='text-xs mt-1'>سبد خرید</span>
-            </NavLink>
-            <NavLink to="/" className="text-white flex justify-center items-center
-             flex-col text-2xl ml-4">
-              <FaHome />
-              <span className='text-xs mt-1'>خانه</span>
-            </NavLink>
-          </div>
+            <FaCartArrowDown />
+            <span className='text-xs mt-1'>سبد خرید</span>
+          </NavLink>
+
+          {
+            !isLoggedIn() ? (
+              <NavLink to="/profile" className="text-white flex justify-center items-center
+                flex-col text-2xl ml-4 ms-1">
+                <TbLogin />
+                <span className='text-xs mt-1'>ورود</span>
+              </NavLink>
+            ) : (
+              <NavLink to="/profile" className="text-white flex justify-center items-center
+                flex-col text-2xl ml-4">
+                <FaUserCircle />
+                <span className='text-xs mt-1'>حساب کاربری</span>
+              </NavLink>
+            )
+          }
+
+        </div>
       </nav>
 
     </header>

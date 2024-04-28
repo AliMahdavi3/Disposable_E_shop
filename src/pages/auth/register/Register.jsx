@@ -1,17 +1,22 @@
 import { Form, Formik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import Google from '../Google'
+import { useNavigate } from 'react-router-dom';
 import FormikControl from '../../../components/FormikComponents/FormikControl'
 import { initialValues, onSubmit, validationSchema } from './Core'
 
 const Register = () => {
+
+  const [registered, setRegistered] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <>
-            <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
+      <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
       <div className='mt-5 rounded-2xl pb-10 w-full h-fit flex justify-center'>
         <Formik
           initialValues={initialValues}
-          onSubmit={(values) => onSubmit(values)}
+          onSubmit={(values, actions) => onSubmit(values, actions, navigate, setRegistered)}
           validationSchema={validationSchema}
         >
           {
@@ -31,6 +36,15 @@ const Register = () => {
                     <Form className='px-5 md:px-10'>
 
                       <Google />
+
+                      <FormikControl
+                        control="input"
+                        formik={formik}
+                        type="text"
+                        name="name"
+                        label="نام و نام خانوادگی"
+                        placeholder="نام نام خانوائگی"
+                      />
 
                       <FormikControl
                         control="input"

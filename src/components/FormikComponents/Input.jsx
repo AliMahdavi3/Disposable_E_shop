@@ -7,7 +7,7 @@ const Input = ({formik, type, name, placeholder, label}) => {
             <label htmlFor={name} className='text-xs md:text-sm font-medium text-gray-500'>{label}</label>
             <FastField type={type}
                 className={`${formik.touched[name] && formik.errors[name] ? "border-2 border-rose-600" : null} 
-        py-2 placeholder:italic placeholder:text-sm md:placeholder:text-base placeholder:ps-1 rounded-xl mt-3 outline-none px-3 border-2`}
+                py-2 placeholder:italic placeholder:text-sm md:placeholder:text-base placeholder:ps-1 rounded-xl mt-3 outline-none px-3 border-2`}
                 placeholder={placeholder}
                 name={name}
             />

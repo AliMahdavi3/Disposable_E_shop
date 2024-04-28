@@ -1,11 +1,13 @@
-import React from 'react'
+import React  from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Footer from '../../components/Footer';
+import ProductsSection from './ProductsSection';
 
 const Products = () => {
+
 
     const settings = {
         dots: true,
@@ -43,7 +45,6 @@ const Products = () => {
             }
         ]
     };
-
 
     return (
         <>
@@ -193,284 +194,17 @@ const Products = () => {
 
                     <div className="grid grid-cols-4 gap-4">
                         <div className="col-span-4 md:col-span-3">
+
+                            {/* Search_box */}
                             <div className='w-full mb-4'>
                                 <input
                                     type="text"
                                     placeholder='جستجو در محصولات'
                                     className='w-full box_shadow px-5 rounded-lg py-2' />
                             </div>
-                            <div className='grid grid-cols-3 gap-4'>
-                                <div className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
-                                    <a href="/singleProduct">
-                                        <img className='h-2/3 w-full' src="/assets/images/slide (1).png" alt="" />
-                                    </a>
-                                    <div className='px-5 text-mblack'>
-                                        <a href="/singleProduct">
-                                            <h3 className='font-semibold lg:text-xl'>محصول شماره 1</h3>
-                                            <p className='py-5 text-xs lg:text-base text-gray-600 font-semibold'>
-                                                متن ساختگی برایساختگی برای محصول تن ساختگی شمار
-                                                محصول تن ساختگی شماره 1
-                                            </p>
-                                            <p className='flex justify-end text-xs lg:text-base'>
-                                                <span>3.7</span><FaStar className='ms-2 text-amber-500' />
-                                            </p>
-                                        </a>
 
-                                        <a href="/singleProduct">
-                                            <div className='flex justify-between items-center py-5'>
-                                                <button className='hover:bg-violet-700 cursor-pointer 
-                                                bg-[#007274] text-xs lg:text-base text-white px-3 lg:px-5 rounded-md py-1'>خرید</button>
-                                                <p className='flex items-center'>
-                                                    <span className='mx-2 font-medium text-xs lg:text-base'>23,000</span>
-                                                    <span className='text-xs'>تومان</span>
-                                                </p>
-                                            </div>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                                <div className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
-                                    <a href="/singleProduct">
-                                        <img className='h-2/3 w-full' src="/assets/images/slide (2).png" alt="" />
-                                    </a>
-                                    <div className='px-5 text-mblack'>
-                                        <a href="/singleProduct">
-                                            <h3 className='font-semibold lg:text-xl'>محصول شماره 1</h3>
-                                            <p className='py-5 text-xs lg:text-base text-gray-600 font-semibold'>
-                                                متن ساختگی برایساختگی برای محصول تن ساختگی شمار
-                                                محصول تن ساختگی شماره 1
-                                            </p>
-                                            <p className='flex justify-end text-xs lg:text-base'>
-                                                <span>3.7</span><FaStar className='ms-2 text-amber-500' />
-                                            </p>
-                                        </a>
-
-                                        <a href="/singleProduct">
-                                            <div className='flex justify-between items-center py-5'>
-                                                <button className='hover:bg-violet-700 cursor-pointer 
-                                                bg-[#007274] text-xs lg:text-base text-white px-3 lg:px-5 rounded-md py-1'>خرید</button>
-                                                <p className='flex items-center'>
-                                                    <span className='mx-2 font-medium text-xs lg:text-base'>23,000</span>
-                                                    <span className='text-xs'>تومان</span>
-                                                </p>
-                                            </div>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                                <div className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
-                                    <a href="/singleProduct">
-                                        <img className='h-2/3 w-full' src="/assets/images/slide (3).png" alt="" />
-                                    </a>
-                                    <div className='px-5 text-mblack'>
-                                        <a href="/singleProduct">
-                                            <h3 className='font-semibold lg:text-xl'>محصول شماره 1</h3>
-                                            <p className='py-5 text-xs lg:text-base text-gray-600 font-semibold'>
-                                                متن ساختگی برایساختگی برای محصول تن ساختگی شمار
-                                                محصول تن ساختگی شماره 1
-                                            </p>
-                                            <p className='flex justify-end text-xs lg:text-base'>
-                                                <span>3.7</span><FaStar className='ms-2 text-amber-500' />
-                                            </p>
-                                        </a>
-
-                                        <a href="/singleProduct">
-                                            <div className='flex justify-between items-center py-5'>
-                                                <button className='hover:bg-violet-700 cursor-pointer 
-                                                bg-[#007274] text-xs lg:text-base text-white px-3 lg:px-5 rounded-md py-1'>خرید</button>
-                                                <p className='flex items-center'>
-                                                    <span className='mx-2 font-medium text-xs lg:text-base'>23,000</span>
-                                                    <span className='text-xs'>تومان</span>
-                                                </p>
-                                            </div>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                                <div className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
-                                    <a href="/singleProduct">
-                                        <img className='h-2/3 w-full' src="/assets/images/slide (4).png" alt="" />
-                                    </a>
-                                    <div className='px-5 text-mblack'>
-                                        <a href="/singleProduct">
-                                            <h3 className='font-semibold lg:text-xl'>محصول شماره 1</h3>
-                                            <p className='py-5 text-xs lg:text-base text-gray-600 font-semibold'>
-                                                متن ساختگی برایساختگی برای محصول تن ساختگی شمار
-                                                محصول تن ساختگی شماره 1
-                                            </p>
-                                            <p className='flex justify-end text-xs lg:text-base'>
-                                                <span>3.7</span><FaStar className='ms-2 text-amber-500' />
-                                            </p>
-                                        </a>
-
-                                        <a href="/singleProduct">
-                                            <div className='flex justify-between items-center py-5'>
-                                                <button className='hover:bg-violet-700 cursor-pointer 
-                                                bg-[#007274] text-xs lg:text-base text-white px-3 lg:px-5 rounded-md py-1'>خرید</button>
-                                                <p className='flex items-center'>
-                                                    <span className='mx-2 font-medium text-xs lg:text-base'>23,000</span>
-                                                    <span className='text-xs'>تومان</span>
-                                                </p>
-                                            </div>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                                <div className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
-                                    <a href="/singleProduct">
-                                        <img className='h-2/3 w-full' src="/assets/images/slide (5).png" alt="" />
-                                    </a>
-                                    <div className='px-5 text-mblack'>
-                                        <a href="/singleProduct">
-                                            <h3 className='font-semibold lg:text-xl'>محصول شماره 1</h3>
-                                            <p className='py-5 text-xs lg:text-base text-gray-600 font-semibold'>
-                                                متن ساختگی برایساختگی برای محصول تن ساختگی شمار
-                                                محصول تن ساختگی شماره 1
-                                            </p>
-                                            <p className='flex justify-end text-xs lg:text-base'>
-                                                <span>3.7</span><FaStar className='ms-2 text-amber-500' />
-                                            </p>
-                                        </a>
-
-                                        <a href="/singleProduct">
-                                            <div className='flex justify-between items-center py-5'>
-                                                <button className='hover:bg-violet-700 cursor-pointer 
-                                                bg-[#007274] text-xs lg:text-base text-white px-3 lg:px-5 rounded-md py-1'>خرید</button>
-                                                <p className='flex items-center'>
-                                                    <span className='mx-2 font-medium text-xs lg:text-base'>23,000</span>
-                                                    <span className='text-xs'>تومان</span>
-                                                </p>
-                                            </div>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                                <div className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
-                                    <a href="/singleProduct">
-                                        <img className='h-2/3 w-full' src="/assets/images/slide (6).png" alt="" />
-                                    </a>
-                                    <div className='px-5 text-mblack'>
-                                        <a href="/singleProduct">
-                                            <h3 className='font-semibold lg:text-xl'>محصول شماره 1</h3>
-                                            <p className='py-5 text-xs lg:text-base text-gray-600 font-semibold'>
-                                                متن ساختگی برایساختگی برای محصول تن ساختگی شمار
-                                                محصول تن ساختگی شماره 1
-                                            </p>
-                                            <p className='flex justify-end text-xs lg:text-base'>
-                                                <span>3.7</span><FaStar className='ms-2 text-amber-500' />
-                                            </p>
-                                        </a>
-
-                                        <a href="/singleProduct">
-                                            <div className='flex justify-between items-center py-5'>
-                                                <button className='hover:bg-violet-700 cursor-pointer 
-                                                bg-[#007274] text-xs lg:text-base text-white px-3 lg:px-5 rounded-md py-1'>خرید</button>
-                                                <p className='flex items-center'>
-                                                    <span className='mx-2 font-medium text-xs lg:text-base'>23,000</span>
-                                                    <span className='text-xs'>تومان</span>
-                                                </p>
-                                            </div>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                                <div className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
-                                    <a href="/singleProduct">
-                                        <img className='h-2/3 w-full' src="/assets/images/slide (1).png" alt="" />
-                                    </a>
-                                    <div className='px-5 text-mblack'>
-                                        <a href="/singleProduct">
-                                            <h3 className='font-semibold lg:text-xl'>محصول شماره 1</h3>
-                                            <p className='py-5 text-xs lg:text-base text-gray-600 font-semibold'>
-                                                متن ساختگی برایساختگی برای محصول تن ساختگی شمار
-                                                محصول تن ساختگی شماره 1
-                                            </p>
-                                            <p className='flex justify-end text-xs lg:text-base'>
-                                                <span>3.7</span><FaStar className='ms-2 text-amber-500' />
-                                            </p>
-                                        </a>
-
-                                        <a href="/singleProduct">
-                                            <div className='flex justify-between items-center py-5'>
-                                                <button className='hover:bg-violet-700 cursor-pointer 
-                                                bg-[#007274] text-xs lg:text-base text-white px-3 lg:px-5 rounded-md py-1'>خرید</button>
-                                                <p className='flex items-center'>
-                                                    <span className='mx-2 font-medium text-xs lg:text-base'>23,000</span>
-                                                    <span className='text-xs'>تومان</span>
-                                                </p>
-                                            </div>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                                <div className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
-                                    <a href="/singleProduct">
-                                        <img className='h-2/3 w-full' src="/assets/images/slide (2).png" alt="" />
-                                    </a>
-                                    <div className='px-5 text-mblack'>
-                                        <a href="/singleProduct">
-                                            <h3 className='font-semibold lg:text-xl'>محصول شماره 1</h3>
-                                            <p className='py-5 text-xs lg:text-base text-gray-600 font-semibold'>
-                                                متن ساختگی برایساختگی برای محصول تن ساختگی شمار
-                                                محصول تن ساختگی شماره 1
-                                            </p>
-                                            <p className='flex justify-end text-xs lg:text-base'>
-                                                <span>3.7</span><FaStar className='ms-2 text-amber-500' />
-                                            </p>
-                                        </a>
-
-                                        <a href="/singleProduct">
-                                            <div className='flex justify-between items-center py-5'>
-                                                <button className='hover:bg-violet-700 cursor-pointer 
-                                                bg-[#007274] text-xs lg:text-base text-white px-3 lg:px-5 rounded-md py-1'>خرید</button>
-                                                <p className='flex items-center'>
-                                                    <span className='mx-2 font-medium text-xs lg:text-base'>23,000</span>
-                                                    <span className='text-xs'>تومان</span>
-                                                </p>
-                                            </div>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                                <div className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
-                                    <a href="/singleProduct">
-                                        <img className='h-2/3 w-full' src="/assets/images/slide (3).png" alt="" />
-                                    </a>
-                                    <div className='px-5 text-mblack'>
-                                        <a href="/singleProduct">
-                                            <h3 className='font-semibold lg:text-xl'>محصول شماره 1</h3>
-                                            <p className='py-5 text-xs lg:text-base text-gray-600 font-semibold'>
-                                                متن ساختگی برایساختگی برای محصول تن ساختگی شمار
-                                                محصول تن ساختگی شماره 1
-                                            </p>
-                                            <p className='flex justify-end text-xs lg:text-base'>
-                                                <span>3.7</span><FaStar className='ms-2 text-amber-500' />
-                                            </p>
-                                        </a>
-
-                                        <a href="/singleProduct">
-                                            <div className='flex justify-between items-center py-5'>
-                                                <button className='hover:bg-violet-700 cursor-pointer 
-                                                bg-[#007274] text-xs lg:text-base text-white px-3 lg:px-5 rounded-md py-1'>خرید</button>
-                                                <p className='flex items-center'>
-                                                    <span className='mx-2 font-medium text-xs lg:text-base'>23,000</span>
-                                                    <span className='text-xs'>تومان</span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                            {/* ProductsSection */}
+                            <ProductsSection/>
 
                         </div>
 

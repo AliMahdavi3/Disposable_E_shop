@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaEdit, FaExclamationTriangle } from "react-icons/fa";
 import Footer from '../../components/Footer';
 import Favorites from './Favorites';
@@ -7,13 +7,30 @@ import PaymentDetaile from './PaymentDetaile';
 import UserInfo from './UserInfo';
 import SupportOrHelp from './SupportOrHelp';
 import Comments from './Comments';
+import Logout from './Logout';
+import { useNavigate } from 'react-router-dom';
 const Profile = () => {
     const [activeSection, setActiveSection] = useState('orderHistory');
+    const navigate = useNavigate();
+
+    // Check if the user is authenticated
+    const isAuthenticated = () => {
+        const token = localStorage.getItem('token');
+        // Add logic to check if the token is valid
+        return token != null;
+    };
+
+    useEffect(() => {
+        if (!isAuthenticated()) {
+            navigate('/login');
+        }
+    }, [navigate]);
+
 
     const handleSectionChange = (section) => {
         setActiveSection(section);
     }
- 
+
     const renderSection = () => {
         switch (activeSection) {
             case 'orderHistory':
@@ -28,6 +45,8 @@ const Profile = () => {
                 return <SupportOrHelp />;
             case 'comments':
                 return <Comments />;
+            case 'logout':
+                return <Logout />;
             default:
                 return <OrderHistory />
         }
@@ -75,7 +94,7 @@ const Profile = () => {
                             <li onClick={() => handleSectionChange('support')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>پشتیبانی/راهنمایی</li><hr />
                             <li onClick={() => handleSectionChange('comments')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>نظرات و بازخوردها</li><hr />
                             <li onClick={() => handleSectionChange('orderHistory')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>پیغام ها</li><hr />
-                            <li onClick={() => handleSectionChange('orderHistory')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>خروج</li><hr />
+                            <li onClick={() => handleSectionChange('logout')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>خروج</li><hr />
                         </ul>
                     </div>
                 </div>
