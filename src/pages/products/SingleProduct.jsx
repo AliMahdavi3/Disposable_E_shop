@@ -4,15 +4,23 @@ import { FaRegHeart, FaReply, FaShareAlt, FaRegEye, FaStar, FaCartPlus, FaQuesti
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../../components/Footer';
-import ProductQuestions from './ProductQuestions';
 import SimilarProducts from './carousels/SimilarProducts';
 import Breadcrumbs from '../../components/Breadcrumbs';
+import { useNavbarContext } from '../../context/NavbarContext';
+import ProductComments from './ProductComments';
 
 const SingleProduct = () => {
 
     let { productId } = useParams();
     const [data, setData] = useState(null);
     console.log(productId);
+
+    const { setIsSolid } = useNavbarContext();
+
+    useEffect(() => {
+        setIsSolid(true);
+        return () => setIsSolid(false);
+    }, []);
 
     useEffect(() => {
         axios.get(`http://localhost:4000/api/products/${productId}`).then((res) => {
@@ -31,8 +39,6 @@ const SingleProduct = () => {
 
     return (
         <>
-            <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
-
             <Breadcrumbs crumbs={crumbs} />
 
             {
@@ -167,7 +173,7 @@ const SingleProduct = () => {
 
                         </div>
 
-                        <ProductQuestions />
+                       <ProductComments/>
 
 
                         {/* Similar Carousel */}

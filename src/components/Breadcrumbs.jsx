@@ -9,7 +9,7 @@ const Breadcrumbs = ({crumbs}) => {
     }
 
   return (
-    <div className="container pt-5 md:px-10">
+    <div className="container pt-20 md:px-10">
     <div className="flex items-center py-5 text-xs md:text-base">
         {crumbs.map((crumb, index) => {
             const isLast = index === crumbs.length - 1;

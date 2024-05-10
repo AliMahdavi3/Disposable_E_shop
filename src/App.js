@@ -1,11 +1,12 @@
 import './App.css';
+import { NavbarProvider } from './context/NavbarContext';
 import Index from './layouts/Index';
 
 function App() {
   return (
-    <div className="App">
-      <Index/>
-    </div>
+    <NavbarProvider>
+      <Index />
+    </NavbarProvider>
   );
 }
 

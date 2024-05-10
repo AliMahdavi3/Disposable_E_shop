@@ -7,6 +7,10 @@ export const initialValues = {
     name: "",
     email: "",
     phone: "",
+    city: "",
+    address: "",
+    zipCode: "",
+    birthDate: "",
     password: "",
     confirm_password: "",
 }
@@ -58,7 +62,11 @@ export const validationSchema = Yup.object({
     name: Yup.string().required("لطفا این قسمت را پر کنید"),
     email: Yup.string().required("لطفا این قسمت را پر کنید")
         .email("لطفا قالب ایمیل را رعایت کنید : aaa@example.bbb"),
-    phone: Yup.number().required("لطفا این قسمت را پر کنید"),
+    phone: Yup.string().required("لطفا این قسمت را پر کنید"),
+    city: Yup.string().required('لطفا شهر خود را وارد کنید'),
+    address: Yup.string().required('لطفا آدرس خود را وارد کنید'),
+    zipCode: Yup.string().required('لطفا کد پستی خود را وارد کنید'),
+    birthDate: Yup.string().required('لطفا تاریخ تولد خود را وارد کنید!'),
     password: Yup.string()
         .required("لطفا این قسمت را پر کنید")
         .min(8, "حداقل 8 کاراکتر")

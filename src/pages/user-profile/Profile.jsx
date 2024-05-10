@@ -9,19 +9,50 @@ import SupportOrHelp from './SupportOrHelp';
 import Comments from './Comments';
 import Logout from './Logout';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useNavbarContext } from '../../context/NavbarContext';
+
+
 const Profile = () => {
     const [activeSection, setActiveSection] = useState('orderHistory');
+    const [userData, setUserData] = useState({ phone: '', });
     const navigate = useNavigate();
 
-    // Check if the user is authenticated
+    const { setIsSolid } = useNavbarContext();
+
+    useEffect(() => {
+        setIsSolid(true);
+        return () => setIsSolid(false); // Revert back when leaving the page
+    }, []);
+
     const isAuthenticated = () => {
         const token = localStorage.getItem('token');
-        // Add logic to check if the token is valid
         return token != null;
     };
 
     useEffect(() => {
-        if (!isAuthenticated()) {
+        const fetchUserData = async () => {
+            try {
+
+                const token = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:4000/auth/user', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                // data is nested within a user object in the response
+                setUserData(response.data.user);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        fetchUserData();
+    }, []);
+
+    useEffect(() => {
+        if (!isAuthenticated() && window.location.pathname !== '/login') {
             navigate('/login');
         }
     }, [navigate]);
@@ -55,9 +86,7 @@ const Profile = () => {
 
     return (
         <>
-            <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
-
-            <div className='container pt-5'>
+            <div className='container pt-20'>
                 <h1 className='py-5 font-bold text-center text-mgreen text-2xl'>حساب کاربری شما</h1>
 
                 <div className="grid grid-cols-3 gap-4 py-5">
@@ -68,7 +97,7 @@ const Profile = () => {
                             <p className='text-xs md:text-sm flex justify-center text-yellow-500'>
                                 <FaExclamationTriangle className='ml-2' />
                                 <span>
-                                    با تایید هویت می‌توانید‌ امنیت حساب کاربری‌تان را افزایش دهید و از امکان «خرید اعتباری» نیز استفاده کنید
+                                    با تایید هویت می‌توانید‌ امنیت حساب کاربری خود را افزایش دهید!
                                 </span>
                             </p>
                             <a href="/profile" className='text-xs md:text-sm text-blue-500 font-semibold'>تایید هویت</a>
@@ -80,10 +109,11 @@ const Profile = () => {
                     <div className="col-span-3 h-fit w-full lg:col-span-1 rounded-lg border-2">
                         <div className='px-5 py-5'>
                             <h6 className='pb-5 font-semibold text-mblack'>اطلاعات کاربری</h6>
-                            <a href="/profile" className='flex justify-between items-center'>
-                                <span>09012559459</span>
-                                <FaEdit className='text-blue-500' />
-                            </a>
+                            <div className='flex justify-between items-center'>
+                                <span>{userData.phone}</span>
+                                <FaEdit onClick={() => handleSectionChange('userInfo')}
+                                    className='text-amber-500 cursor-pointer text-xl' />
+                            </div>
                         </div>
                         <hr className='pt-5' />
                         <ul className='px-5'>

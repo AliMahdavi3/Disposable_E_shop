@@ -11,7 +11,7 @@ const Input = ({formik, type, name, placeholder, label}) => {
                 placeholder={placeholder}
                 name={name}
             />
-            <div className='text-xs font-med text-rose-600 ps-1 mt-2'>
+            <div className='text-xs font-medium text-rose-600 ps-1 mt-2'>
                 <ErrorMessage name={name} />
             </div>
         </div>

@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
 import Footer from '../../components/Footer'
+import { useNavbarContext } from '../../context/NavbarContext';
 const Cart = () => {
+
+    const { setIsSolid } = useNavbarContext();
+
+    useEffect(() => {
+      setIsSolid(true);
+      return () => setIsSolid(false); // Revert back when leaving the page
+    }, []);
 
     return (
         <>
-            <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
 
-            <div className="container pb-10">
+            <div className="container pb-10 pt-16">
                 <h1 className="md:text-3xl text-center font-bold text-mgreen py-10">سبد خرید شما</h1>
 
                 <div dir='ltr' className="grid grid-cols-3 gap-4">

@@ -4,11 +4,13 @@ import { TbLogin } from "react-icons/tb";
 import { BiSolidCategory } from "react-icons/bi";
 import { NavLink } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { useNavbarContext } from '../../context/NavbarContext';
 
 const Navbar = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavbarScrolled, setIsNavbarScrolled] = useState(false);
+  const { isSolid } = useNavbarContext()
 
   const isLoggedIn = () => {
     const token = localStorage.getItem('token');
@@ -51,7 +53,7 @@ const Navbar = () => {
     <header >
 
       <nav className={`h-fit py-5 rounded-b-2xl fixed top-0 z-50 w-full
-       ${isNavbarScrolled ? "bg-gradient-to-r from-mgreen to-[#1F917C]" : "bg-transparent"}`}>
+       ${ isSolid ? 'bg-mgreen' : isNavbarScrolled ? "bg-gradient-to-r from-mgreen to-[#1F917C]" : "bg-transparent"}`}>
         <div className='container flex justify-between items-center'>
 
           <div>

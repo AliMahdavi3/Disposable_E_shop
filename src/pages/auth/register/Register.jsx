@@ -1,19 +1,26 @@
 import { Form, Formik } from 'formik'
-import React, { useState } from 'react'
-import Google from '../Google'
+import React, { useEffect, useState } from 'react'
+// import Google from '../Google'
 import { useNavigate } from 'react-router-dom';
 import FormikControl from '../../../components/FormikComponents/FormikControl'
 import { initialValues, onSubmit, validationSchema } from './Core'
+import { useNavbarContext } from '../../../context/NavbarContext';
 
 const Register = () => {
 
   const [registered, setRegistered] = useState(false);
   const navigate = useNavigate();
 
+  const { setIsSolid } = useNavbarContext();
+
+  useEffect(() => {
+    setIsSolid(true);
+    return () => setIsSolid(false); // Revert back when leaving the page
+  }, []);
+
   return (
     <>
-      <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
-      <div className='mt-5 rounded-2xl pb-10 w-full h-fit flex justify-center'>
+      <div className='mt-24 rounded-2xl pb-10 w-full h-fit flex justify-center'>
         <Formik
           initialValues={initialValues}
           onSubmit={(values, actions) => onSubmit(values, actions, navigate, setRegistered)}
@@ -34,8 +41,6 @@ const Register = () => {
                      md:text-lg font-medium text-gray-500'>ثبت نام</h3>
 
                     <Form className='px-5 md:px-10'>
-
-                      <Google />
 
                       <FormikControl
                         control="input"
@@ -58,10 +63,44 @@ const Register = () => {
                       <FormikControl
                         control="input"
                         formik={formik}
-                        type="number"
+                        type="text"
                         name="phone"
                         label="شماره همراه"
                         placeholder="09123456789"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        formik={formik}
+                        type="text"
+                        name="city"
+                        label="استان"
+                        placeholder="استان"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        formik={formik}
+                        type="text"
+                        name="address"
+                        label="آدرس"
+                        placeholder="آدرس"
+                      />
+
+                      <FormikControl
+                        control="input"
+                        formik={formik}
+                        type="text"
+                        name="zipCode"
+                        label="کد پستی"
+                        placeholder="کد پستی"
+                      />
+
+                      <FormikControl
+                        control="date"
+                        formik={formik}
+                        name="birthDate"
+                        label="تاریخ تولد"
                       />
 
                       <FormikControl

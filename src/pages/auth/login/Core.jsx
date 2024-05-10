@@ -40,8 +40,6 @@ const loginWithEmail = async (email, password) => {
 }
 
 export const onSubmit = async (values, actions, setLogin, navigate) => {
-    // console.log(values);
-
     try {
         let response;
         if (values.auth_mode === 'phone') {
@@ -52,8 +50,7 @@ export const onSubmit = async (values, actions, setLogin, navigate) => {
 
         console.log('Login successful:', response);
 
-        // Assuming the response includes a token you'd like to store
-        localStorage.setItem('token', response.token); // Store the token in localStorage
+        localStorage.setItem('token', response.token);
 
         await swal({
             title: "عملیات موفقیت آمیز بود",
@@ -85,9 +82,9 @@ export const validationSchema = Yup.object({
             .email("لطفا قالب ایمیل را رعایت کنید"),
     }),
 
-    phone: Yup.number().when('auth_mode', {
+    phone: Yup.string().when('auth_mode', {
         is: 'phone',
-        then: () => Yup.number().required("لطفا این قسمت را پر کنید"),
+        then: () => Yup.string().required("لطفا این قسمت را پر کنید"),
     }),
 
     password: Yup.string()

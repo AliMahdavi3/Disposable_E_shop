@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import Footer from '../../components/Footer'
+import { useNavbarContext } from '../../context/NavbarContext';
 
 const Blog = () => {
+
+    const { setIsSolid } = useNavbarContext();
+
+    useEffect(() => {
+      setIsSolid(true);
+      return () => setIsSolid(false); // Revert back when leaving the page
+    }, []);
+
     return (
         <>
-            <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
-
-            <div className="container pb-10 pt-5">              
+            <div className="container pb-10 pt-20">              
                 <div className='rounded-xl h-screen w-full md:col-span-1 relative'>
                     <a href='/blog'>
                         <img className='rounded-xl h-screen w-full' src="/assets/images/home2.jpg" alt="" />

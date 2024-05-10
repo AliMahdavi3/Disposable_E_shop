@@ -109,3 +109,7 @@ body {
   background: #17907f;
   background: linear-gradient(90deg, rgba(23, 144, 127, 1) 0%, rgba(0, 114, 116, 1) 100%);
 }
+
+.z_index {
+  z-index: 999;
+}

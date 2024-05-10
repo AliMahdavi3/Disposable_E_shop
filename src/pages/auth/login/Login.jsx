@@ -1,21 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Formik } from "formik";
 import { useNavigate } from 'react-router-dom';
 import { authModeValue, initialValues, onSubmit, validationSchema } from './Core';
 import FormikControl from '../../../components/FormikComponents/FormikControl';
 import Google from '../Google';
+import { useNavbarContext } from '../../../context/NavbarContext';
 
 
 const Login = () => {
 
     const [login, setLogin] = useState(false);
     const navigate = useNavigate();
+    const { setIsSolid } = useNavbarContext();
+
+    useEffect(() => {
+      setIsSolid(true);
+      return () => setIsSolid(false); // Revert back when leaving the page
+    }, []);
 
 
     return (
         <>
-            <div className='h-20 rounded-b-2xl bg-gradient-to-r from-mgreen to-[#1F917C] w-full'></div>
-            <div className='mt-5 rounded-2xl pb-10 w-full h-fit flex justify-center'>
+            <div className='mt-24 rounded-2xl pb-10 w-full h-fit flex justify-center'>
                 <Formik
                     initialValues={initialValues}
                     onSubmit={(values, actions) => onSubmit(values, actions, setLogin, navigate)}
@@ -51,7 +57,7 @@ const Login = () => {
                                                         <FormikControl
                                                             control="input"
                                                             formik={formik}
-                                                            type="number"
+                                                            type="text"
                                                             name="phone"
                                                             label="شماره همراه"
                                                             placeholder="09123456789"
