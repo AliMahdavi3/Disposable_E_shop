@@ -8,13 +8,16 @@ import SimilarProducts from './carousels/SimilarProducts';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { useNavbarContext } from '../../context/NavbarContext';
 import ProductComments from './ProductComments';
+import swal from 'sweetalert';
+
+
 
 const SingleProduct = () => {
 
     let { productId } = useParams();
-    const [data, setData] = useState(null);
     console.log(productId);
-
+    const [data, setData] = useState(null);
+    const [quantity, setQuantity] = useState(1);
     const { setIsSolid } = useNavbarContext();
 
     useEffect(() => {
@@ -30,6 +33,44 @@ const SingleProduct = () => {
             console.log(error.message);
         })
     }, [productId]);
+
+    const handleAddToCart = async () => {
+
+        try {
+
+            const token = localStorage.getItem('token');
+            const quantityToSend = Number(quantity);
+
+            const response = await axios.post('http://localhost:4000/api/cart', {
+                productId: productId,
+                quantity: quantityToSend 
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            await swal({
+                title: "عملیات موفقیت آمیز بود",
+                text: "محصول به سبد خرید اضافه شد!",
+                icon: "success",
+                button: "متوجه شدم",
+            });
+
+            console.log(response.data.message);
+
+        } catch (error) {
+
+            swal({
+                title: "خطایی رخ داده است",
+                text: error.response ? error.response.data : error.message,
+                icon: "error",
+                button: "متوجه شدم",
+            });
+            console.error(error.response ? error.response.data : error.message);
+        }
+
+    }
 
     const crumbs = [
         { title: 'Home', href: '/' },
@@ -93,7 +134,12 @@ const SingleProduct = () => {
                                     </p>
                                 </div>
                                 <div className='flex justify-between md:flex-row flex-col items-center py-10 px-10'>
-                                    <input type="number" placeholder='تعداد محصول'
+                                    <input
+                                        type="number"
+                                        value={quantity}
+                                        onChange={(e) => setQuantity(Number(e.target.value))}
+                                        placeholder='تعداد محصول'
+                                        min='1'
                                         className='rounded-lg box_shadow mb-5  bg-opacity-50 text-start px-3 text-xs py-2 md:w-[25%]' />
 
                                     <span className='text-xs mb-5'>در انبار :
@@ -132,6 +178,7 @@ const SingleProduct = () => {
                                             className={`bg-mgreen flex justify-center items-center w-full py-2 text-white font-medium rounded-lg
                                         ${data.product.available ? 'hover:bg-violet-800' : 'opacity-50 cursor-not-allowed'}`}
                                             disabled={!data.product.available}
+                                            onClick={handleAddToCart}
                                         >
                                             <span>افزودن به سبد خرید</span>
                                             <FaCartPlus className='text-lg ms-3' />
@@ -173,7 +220,7 @@ const SingleProduct = () => {
 
                         </div>
 
-                       <ProductComments/>
+                        <ProductComments />
 
 
                         {/* Similar Carousel */}

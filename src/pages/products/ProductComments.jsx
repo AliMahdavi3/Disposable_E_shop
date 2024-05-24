@@ -98,7 +98,7 @@ const ProductComments = () => {
                         <div key={index} className='bg-gray-300 mb-5 rounded-lg w-full h-fit container px-5 py-5 bg-opacity-50'>
                             <div className='flex justify-between items-center pt-3'>
                                 <div className='flex font-semibold text-mblack justify-center items-center text-xs md:text-sm'>
-                                    <p className='ml-5'>{comment.user.name}</p>
+                                    <p className='ml-5'>{comment.user ? comment.user.name : 'Unknown User'}</p>
                                     <div className='flex'>
                                         {[...Array(5)].map((_, i) => (
                                             <FaStar
