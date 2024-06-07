@@ -18,7 +18,7 @@ const SingleProduct = () => {
     console.log(productId);
     const [data, setData] = useState(null);
     const [quantity, setQuantity] = useState(1);
-    const { setIsSolid } = useNavbarContext();
+    const { setIsSolid, updateCartCount } = useNavbarContext();
 
     useEffect(() => {
         setIsSolid(true);
@@ -56,7 +56,8 @@ const SingleProduct = () => {
                 icon: "success",
                 button: "متوجه شدم",
             });
-
+            
+            updateCartCount(response.data.count);
             console.log(response.data.message);
 
         } catch (error) {

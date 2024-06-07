@@ -4,37 +4,27 @@ import { TbLogin } from "react-icons/tb";
 import { BiSolidCategory } from "react-icons/bi";
 import { NavLink } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
-import axios from 'axios';
 import { useNavbarContext } from '../../context/NavbarContext';
 
 const Navbar = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavbarScrolled, setIsNavbarScrolled] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
-  const { isSolid } = useNavbarContext();
+  const { isSolid, cartCount } = useNavbarContext();
+  const [localCartCount, setLocalCartCount] = useState(cartCount);
 
   useEffect(() => {
-    fetchedCartCount();
+    setLocalCartCount(cartCount); 
+  }, [cartCount]); 
+
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const fetchedCartCount = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:4000/api/cart/count', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      setCartCount(response.data.count);
-    } catch (error) {
-      console.error('Error fetching cart count:', error);
-    }
-  }
 
   const isLoggedIn = () => {
     const token = localStorage.getItem('token');
@@ -58,7 +48,6 @@ const Navbar = () => {
     }
   };
 
-
   const closeMenu = () => {
     if (isMenuOpen) {
       setIsMenuOpen(false);
@@ -66,7 +55,7 @@ const Navbar = () => {
   };
 
 
-
+  
   return (
     <header >
 

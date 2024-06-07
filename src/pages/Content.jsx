@@ -10,6 +10,7 @@ import Cart from './cart/Cart';
 import Profile from './user-profile/Profile';
 import Login from './auth/login/Login';
 import Register from './auth/register/Register';
+import CheckOut from './cart/CheckOut';
 
 const Content = () => {
   return (
@@ -22,6 +23,7 @@ const Content = () => {
         <Route path='/blog' element={<Blog />} />
         <Route path='/contact' element={<ContactUs />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout' element={<CheckOut />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
