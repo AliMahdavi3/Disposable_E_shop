@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
+import axios from 'axios';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const FirstCarousel = () => {
+
+    const [topSellingProducts, setTopSellingProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchedTopSellingProducts = async () => {
+            try {
+                const response = await axios.get('http://localhost:4000/api/top-selling-products');
+                setTopSellingProducts(response.data.products);
+            } catch (error) {
+                console.error('Error fetching top-selling products:', error);
+            }
+        }
+        fetchedTopSellingProducts();
+    }, [])
 
     const settings = {
         dots: true,
@@ -46,138 +61,31 @@ const FirstCarousel = () => {
             <h1 className='text-center pt-5 text-xl text-gray-500'>پرفروش ترین محصولات</h1>
             <div className="slider-container px-5 mt-6">
                 <Slider {...settings}>
-                    <div className='flex mb-5 justify-center bg-stone-100 bg-opacity-50
+                    {
+                        topSellingProducts.map((t) => (
+                            <div key={t._id} className='flex mb-5 justify-center bg-stone-100 bg-opacity-50
                             items-center shadow-md shadow-mgreen rounded-lg'>
-                        <a href="/" className='flex border-b-2 justify-center'>
-                            <img className='w-1/2' src="/assets/images/slide (1).png" alt="" />
-                        </a>
-                        <div className='px-4 flex justify-end flex-col'>
-                            <a href="/" >
-                                <h5 className='py-4 text-end text-2xl'>
-                                    ظروف یکبار مصرف
-                                </h5>
-                            </a>
-                            <a href="/">
-                                <p className='text-end text-sm'>
-                                    ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روز
-                                    نامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                </p>
-                            </a>
-                            <button className='hover:bg-violet-800 cursor-pointer py-2 w-full text-white font-bold 
-                            rounded-lg bg-mgreen shadow-xl my-4'>...جزئیات بیشتر</button>
-                        </div>
-                    </div>
-                    <div className='flex mb-5 justify-center bg-stone-100 bg-opacity-50
-                            items-center shadow-md shadow-mgreen rounded-lg'>
-                        <a href="/" className='flex border-b-2 justify-center'>
-                            <img className='w-1/2' src="/assets/images/slide (2).png" alt="" />
-                        </a>
-                        <div className='px-4 flex justify-end flex-col'>
-                            <a href="/" >
-                                <h5 className='py-4 text-end text-2xl'>
-                                    ظروف یکبار مصرف
-                                </h5>
-                            </a>
-                            <a href="/">
-                                <p className='text-end text-sm'>
-                                    ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روز
-                                    نامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                </p>
-                            </a>
-                            <button className='hover:bg-violet-800 cursor-pointer py-2 w-full text-white font-bold 
-                            rounded-lg bg-mgreen shadow-xl my-4'>...جزئیات بیشتر</button>
-                        </div>
-                    </div>
-                    <div className='flex mb-5 justify-center bg-stone-100 bg-opacity-50
-                            items-center shadow-md shadow-mgreen rounded-lg'>
-                        <a href="/" className='flex border-b-2 justify-center'>
-                            <img className='w-1/2' src="/assets/images/slide (3).png" alt="" />
-                        </a>
-                        <div className='px-4 flex justify-end flex-col'>
-                            <a href="/" >
-                                <h5 className='py-4 text-end text-2xl'>
-                                    ظروف یکبار مصرف
-                                </h5>
-                            </a>
-                            <a href="/">
-                                <p className='text-end text-sm'>
-                                    ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روز
-                                    نامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                </p>
-                            </a>
-                            <button className='hover:bg-violet-800 cursor-pointer py-2 w-full text-white font-bold 
-                            rounded-lg bg-mgreen shadow-xl my-4'>...جزئیات بیشتر</button>
-                        </div>
-                    </div>
-                    <div className='flex mb-5 justify-center bg-stone-100 bg-opacity-50
-                            items-center shadow-md shadow-mgreen rounded-lg'>
-                        <a href="/" className='flex border-b-2 justify-center'>
-                            <img className='w-1/2' src="/assets/images/slide (4).png" alt="" />
-                        </a>
-                        <div className='px-4 flex justify-end flex-col'>
-                            <a href="/" >
-                                <h5 className='py-4 text-end text-2xl'>
-                                    ظروف یکبار مصرف
-                                </h5>
-                            </a>
-                            <a href="/">
-                                <p className='text-end text-sm'>
-                                    ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روز
-                                    نامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                </p>
-                            </a>
-                            <button className='hover:bg-violet-800 cursor-pointer py-2 w-full text-white font-bold 
-                            rounded-lg bg-mgreen shadow-xl my-4'>...جزئیات بیشتر</button>
-                        </div>
-                    </div>
-                    <div className='flex mb-5 justify-center bg-stone-100 bg-opacity-50
-                            items-center shadow-md shadow-mgreen rounded-lg'>
-                        <a href="/" className='flex border-b-2 justify-center'>
-                            <img className='w-1/2' src="/assets/images/slide (5).png" alt="" />
-                        </a>
-                        <div className='px-4 flex justify-end flex-col'>
-                            <a href="/" >
-                                <h5 className='py-4 text-end text-2xl'>
-                                    ظروف یکبار مصرف
-                                </h5>
-                            </a>
-                            <a href="/">
-                                <p className='text-end text-sm'>
-                                    ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روز
-                                    نامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                </p>
-                            </a>
-                            <button className='hover:bg-violet-800 cursor-pointer py-2 w-full text-white font-bold 
-                            rounded-lg bg-mgreen shadow-xl my-4'>...جزئیات بیشتر</button>
-                        </div>
-                    </div>
-                    <div className='flex mb-5 justify-center bg-stone-100 bg-opacity-50
-                            items-center shadow-md shadow-mgreen rounded-lg'>
-                        <a href="/" className='flex border-b-2 justify-center'>
-                            <img className='w-1/2' src="/assets/images/slide (6).png" alt="" />
-                        </a>
-                        <div className='px-4 flex justify-end flex-col'>
-                            <a href="/" >
-                                <h5 className='py-4 text-end text-2xl'>
-                                    ظروف یکبار مصرف
-                                </h5>
-                            </a>
-                            <a href="/">
-                                <p className='text-end text-sm'>
-                                    ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روز
-                                    نامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-                                </p>
-                            </a>
-                            <button className='hover:bg-violet-800 cursor-pointer py-2 w-full text-white font-bold 
-                            rounded-lg bg-mgreen shadow-xl my-4'>...جزئیات بیشتر</button>
-                        </div>
-                    </div>
+                                <a href="/" className='flex border-b-2 justify-center'>
+                                    <img className='w-1/2' src={'http://localhost:4000/' + t.imageUrl[0]} alt="" />
+                                </a>
+                                <div className='px-4 flex justify-end flex-col'>
+                                    <a href="/" >
+                                        <p className='py-4 text-end text-xl'>
+                                            {t.title}
+                                        </p>
+                                    </a>
+                                    <a href="/">
+                                        <p className='line-clamp-5 text-end text-sm'>
+                                            {t.content}
+                                        </p>
+                                    </a>
+                                    <a  href={`/products/${t._id}`} 
+                                    className='hover:bg-violet-800 cursor-pointer py-2 w-full text-white 
+                                    rounded-lg bg-mgreen text-center shadow-xl my-4'>...جزئیات بیشتر</a>
+                                </div>
+                            </div>
+                        ))
+                    }
                 </Slider>
             </div>
         </div>

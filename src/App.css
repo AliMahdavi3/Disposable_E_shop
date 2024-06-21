@@ -67,7 +67,6 @@ body {
 .about_section {
   height: 400px;
   overflow-y: scroll;
-
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -112,4 +111,9 @@ body {
 
 .z_index {
   z-index: 999;
+}
+
+.checkout {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }

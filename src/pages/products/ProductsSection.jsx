@@ -53,10 +53,14 @@ const ProductsSection = ({ filterCriteria, searchTerm, currentPage, itemsPerPage
             {
                 Array.isArray(currentItems) ?
                     currentItems.map((d, index) => (
-                        <div key={index} className="md:col-span-1 h-fit hover:shadow-lg hover:shadow-[#17907F] cursor-pointer col-span-3 box_shadow rounded-lg bg-white bg-opacity-50">
+                        
+                        <div key={index} className={`md:col-span-1 h-fit col-span-3 
+                        box_shadow rounded-lg hover:shadow-lg bg-white bg-opacity-50 cursor-pointer
+                        ${ d.available ? ' hover:shadow-[#17907F]' : ' hover:shadow-rose-500' }`}>
+                            
                             <a href="/singleProduct">
                                 <img className='h-2/3 w-full'
-                                    src={"http://localhost:4000/" + d.imageUrl[0]} alt="" />
+                                    src={"http://localhost:4000/" + d.imageUrl[1]} alt="" />
                             </a>
                             <div className='px-5 text-mblack'>
                                 <a href="/singleProduct">
@@ -64,8 +68,19 @@ const ProductsSection = ({ filterCriteria, searchTerm, currentPage, itemsPerPage
                                     <p className='py-5 text-xs lg:text-base text-gray-600 font-medium truncate'>
                                         {d.content}
                                     </p>
-                                    <p className='flex justify-end text-xs lg:text-base'>
-                                        <span>3.7</span><FaStar className='ms-2 text-amber-500' />
+                                    <p className='flex justify-between'>
+                                        <div>
+                                            {
+                                                d.available ? (
+                                                    <span className='font-medium text-xs md:text-sm text-green-800'>موجود است</span>
+                                                ) : (
+                                                    <span className='font-medium text-xs md:text-sm text-rose-600'>موجود نیست</span>
+                                                )
+                                            }
+                                        </div>
+                                        <div className='flex justify-end text-xs lg:text-base'>
+                                            <span>3.7</span><FaStar className='ms-2 text-amber-500' />
+                                        </div>
                                     </p>
                                 </a>
 
