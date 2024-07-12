@@ -16,14 +16,14 @@ const ProductsSection = ({ filterCriteria, searchTerm, currentPage, itemsPerPage
         }).catch((error) => {
             console.log(error.message);
         });
-    }, []);
+    }, [filterCriteria]);
 
     useEffect(() => {
         let filtered = [...data];
 
         if (filterCriteria.category) {
             filtered = filtered.filter(d => d.category === filterCriteria.category);
-        }
+        }  
         if (filterCriteria.color) {
             filtered = filtered.filter(d => d.color === filterCriteria.color);
         }
@@ -41,6 +41,8 @@ const ProductsSection = ({ filterCriteria, searchTerm, currentPage, itemsPerPage
         }
 
         setFilteredData(filtered);
+        setTotalProducts(filtered.length);
+
     }, [data, filterCriteria, searchTerm]);
 
     const indexOfLastItem = currentPage * itemsPerPage;

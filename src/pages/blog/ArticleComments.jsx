@@ -1,26 +1,27 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import { useNavigate, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const ProductComments = () => {
+const ArticleComments = () => {
 
-    let { productId } = useParams();
+    let { articleId } = useParams();
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
     const navigate = useNavigate();
 
+
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/products/${productId}/comments`).then((res) => {
-            setComments(res.data.productComments);
-            console.log(res.data.productComments);
+        axios.get(`http://localhost:4000/api/articles/${articleId}/comments`).then((res) => {
+            setComments(res.data.articleComments);
+            console.log(res.data.articleComments);
         }).catch((error) => {
             console.error('Error fetching comments:', error);
         });
-    }, [productId]);
+    }, [articleId]);
 
     const isAuthenticated = () => {
         const token = localStorage.getItem('token');
@@ -56,7 +57,7 @@ const ProductComments = () => {
             event.preventDefault();
             const token = localStorage.getItem('token');
 
-            const response = await axios.post(`http://localhost:4000/api/products/${productId}/comments`,
+            const response = await axios.post(`http://localhost:4000/api/articles/${articleId}/comments`,
                 { content: newComment, rating: rating },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -89,7 +90,7 @@ const ProductComments = () => {
         <>
             <div className='my-10'>
                 <div className='bg-mgreen text-white font-semibold w-[60%] text-sm md:text-base lg:w-[20%]
-                text-center py-2 rounded-t-lg'>نظرات درباره این محصول</div>
+        text-center py-2 rounded-t-lg'>نظرات درباره این مقاله</div>
                 <hr className="border-2 border-mgreen" />
             </div>
             <div className='pb-5'>
@@ -98,7 +99,7 @@ const ProductComments = () => {
                         <div key={index} className='bg-gray-300 mb-5 rounded-lg w-full h-fit container px-5 py-5 bg-opacity-50'>
                             <div className='flex justify-between items-center pt-3'>
                                 <div className='flex font-semibold text-mblack justify-center items-center text-xs md:text-sm'>
-                                    <p className='ml-5'>{comment.user ? comment.user.name : 'کاربر ناشناس'}</p>
+                                    <p className='ml-5'>{comment.user ? comment.user.name : 'Unknown User'}</p>
                                     <div className='flex'>
                                         {[...Array(5)].map((_, i) => (
                                             <FaStar
@@ -125,7 +126,7 @@ const ProductComments = () => {
             {
                 !isAuthenticated() ? (
                     <button className='bg-mgreen rounded-lg text-white px-4 py-2
-                    hover:bg-violet-600' onClick={redirectToLogin}>
+            hover:bg-violet-600' onClick={redirectToLogin}>
                         برای ارسال نظر لطفا وارد حساب کاربری خود شوید
                     </button>
                 ) : (
@@ -162,7 +163,7 @@ const ProductComments = () => {
                             className="w-full p-2 border-2 rounded-lg focus:ring focus:ring-opacity-50"
                         />
                         <button type="submit" className="px-4 py-2 bg-mgreen cursor-pointer rounded-lg
-                    hover:bg-violet-700 text-white">
+            hover:bg-violet-700 text-white">
                             ارسال نظر
                         </button>
                     </form >
@@ -172,4 +173,4 @@ const ProductComments = () => {
     )
 }
 
-export default ProductComments
+export default ArticleComments

@@ -11,6 +11,8 @@ import Profile from './user-profile/Profile';
 import Login from './auth/login/Login';
 import Register from './auth/register/Register';
 import CheckOut from './cart/CheckOut';
+import SearchResultPage from './home/SearchResultPage';
+import SingleArticle from './blog/SingleArticle';
 
 const Content = () => {
   return (
@@ -21,12 +23,14 @@ const Content = () => {
         <Route path='/products/:productId' element={<SingleProduct />} />
         <Route path='/about' element={<About />} />
         <Route path='/blog' element={<Blog />} />
+        <Route path='/blog/:articleId' element={<SingleArticle />} />
         <Route path='/contact' element={<ContactUs />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout/:orderId' element={<CheckOut />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/search' element={<SearchResultPage />} />
 
 
 

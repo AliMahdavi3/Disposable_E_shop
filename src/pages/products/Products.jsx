@@ -5,8 +5,12 @@ import ProductsSection from './ProductsSection';
 import { useNavbarContext } from '../../context/NavbarContext';
 import Category from './category/Category';
 import ProductCarousel from './carousels/ProductCarousel';
+import { useSearchParams } from 'react-router-dom';
 
 const Products = () => {
+
+    const [searchParams] = useSearchParams();
+    const selectedCategory = searchParams.get('category');
 
     const [totalProducts, setTotalProducts] = useState(0);
     const { setIsSolid } = useNavbarContext();
@@ -19,11 +23,20 @@ const Products = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 9;
 
+    useEffect(() => {
+        if (selectedCategory) {
+            handleFilterChange('category', selectedCategory);
+        }
+    }, [selectedCategory]);
 
     useEffect(() => {
         setIsSolid(true);
         return () => setIsSolid(false);
     }, []);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [filterCriteria]);
 
     const handleFilterChange = (type, value) => {
         setFilterCriteria(prevCriteria => ({
@@ -89,7 +102,11 @@ const Products = () => {
                                     <FaChevronRight />
                                 </div>
                                 {[...Array(pageCount)].map((x, i) => (
-                                    <div key={i} onClick={() => handlePageChange(i + 1)} className={`w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full ${currentPage === i + 1 ? 'bg-teal-600 text-white' : 'bg-gray-200'}`}>
+                                    <div key={i} onClick={() => handlePageChange(i + 1)} 
+                                    className={`w-12 md:flex justify-center items-center hidden
+                                     cursor-pointer leading-5 transition duration-150 ease-in 
+                                     rounded-full ${currentPage === i + 1 ?
+                                      'bg-teal-600 text-white' : 'bg-gray-200'}`}>
                                         {i + 1}
                                     </div>
                                 ))}

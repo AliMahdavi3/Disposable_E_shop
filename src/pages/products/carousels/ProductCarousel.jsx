@@ -26,7 +26,7 @@ const ProductCarousel = () => {
         slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
-        speed: 2000,
+        speed: 1000,
         autoplaySpeed: 2000,
         cssEase: "linear",
         responsive: [
@@ -59,7 +59,7 @@ const ProductCarousel = () => {
 
     return (
         <div className='container pb-10'>
-            <h1 className='text-center text-mgreen pt-5 text-xl font-bold'>پرفروش ترین محصولات</h1>
+            <h1 className='text-center text-mgreen pt-5 text-xl font-bold'>جدیدترین محصولات</h1>
             <div className="slider-container px-5 mt-6">
                 <Slider {...settings}>
                     {

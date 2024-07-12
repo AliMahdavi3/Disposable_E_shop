@@ -7,7 +7,6 @@ const Category = ({ onFilterChange }) => {
     const [categories, setCategories] = useState([]);
     const [colors, setColors] = useState([]);
     const [tags, setTags] = useState([]);
-
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
 
@@ -40,6 +39,10 @@ const Category = ({ onFilterChange }) => {
         onFilterChange('category', null);
         onFilterChange('color', null);
         onFilterChange('tag', null);
+        onFilterChange('minPrice', '');
+        onFilterChange('maxPrice', '');
+        setMinPrice('');
+        setMaxPrice('');
     };
 
     const handleCategoryClick = (category) => {
@@ -62,7 +65,7 @@ const Category = ({ onFilterChange }) => {
         'بنفش': '#800080',
         'صورتی': '#FFC0CB',
         'نارنجی': '#FFA500',
-        'سیاه': '#000000',
+        'مشکی': '#000000',
         'سفید': '#FFFFFF',
         'نقره ای': '#808080',
         'قهوه ای': '#A52A2A',
