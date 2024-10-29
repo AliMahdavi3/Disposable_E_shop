@@ -90,7 +90,7 @@ const ArticleComments = () => {
         <>
             <div className='my-10'>
                 <div className='bg-mgreen text-white font-semibold w-[60%] text-sm md:text-base lg:w-[20%]
-        text-center py-2 rounded-t-lg'>نظرات درباره این مقاله</div>
+                    text-center py-2 rounded-t-lg'>نظرات درباره این مقاله</div>
                 <hr className="border-2 border-mgreen" />
             </div>
             <div className='pb-5'>

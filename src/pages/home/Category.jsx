@@ -23,8 +23,16 @@ const Category = () => {
     }, []);
 
     const categoryImages = {
-        'تم تولدی': '/assets/images/category.png',
+        'تم تولدی': '/assets/images/category_s (3).png',
         'ظروف یکبارمصرف': '/assets/images/slide (1).png',
+        'ظروف آلمینیومی': '/assets/images/category_s (5).png',
+        'بادکنک': '/assets/images/slide (2).png',
+        'کلاه تولد': '/assets/images/category_s (3).png',
+        'لیوان کاغذی': '/assets/images/category_s (4).png',
+        'سوت تولدی': '/assets/images/category_s (1).png',
+        'دیس پلاستیکی': '/assets/images/category_s (2).png',
+        'لیوان': '/assets/images/slide (3).png',
+        'کاسه': '/assets/images/category_s (6).png',
     }
 
     const handleClickCategories = (category) => {
