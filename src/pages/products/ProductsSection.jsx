@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaStar } from 'react-icons/fa'
-import axios from 'axios';
+import { getAllProductsService } from '../../services/product';
 
 const ProductsSection = ({ filterCriteria, searchTerm, currentPage, itemsPerPage, setTotalProducts }) => {
 
@@ -8,22 +8,25 @@ const ProductsSection = ({ filterCriteria, searchTerm, currentPage, itemsPerPage
     const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/products').then((res) => {
-            const products = res.data.products;
-            setData(products);
-            setFilteredData(products);
-            setTotalProducts(products.length)
-        }).catch((error) => {
-            console.log(error.message);
-        });
-    }, [filterCriteria]);
+        const handleFetchProducts = async () => {
+            try {
+                const res = await getAllProductsService();
+                setData(res.data.products);
+                setFilteredData(res.data.products);
+                setTotalProducts(res.data.products.length)
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+        handleFetchProducts();
+    }, [filterCriteria, setTotalProducts]);
 
     useEffect(() => {
         let filtered = [...data];
 
         if (filterCriteria.category) {
             filtered = filtered.filter(d => d.category === filterCriteria.category);
-        }  
+        }
         if (filterCriteria.color) {
             filtered = filtered.filter(d => d.color === filterCriteria.color);
         }
@@ -43,7 +46,7 @@ const ProductsSection = ({ filterCriteria, searchTerm, currentPage, itemsPerPage
         setFilteredData(filtered);
         setTotalProducts(filtered.length);
 
-    }, [data, filterCriteria, searchTerm]);
+    }, [data, filterCriteria, searchTerm, setTotalProducts]);
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -55,11 +58,11 @@ const ProductsSection = ({ filterCriteria, searchTerm, currentPage, itemsPerPage
             {
                 Array.isArray(currentItems) ?
                     currentItems.map((d, index) => (
-                        
+
                         <div key={index} className={`md:col-span-1 h-fit col-span-3 
                         box_shadow rounded-lg hover:shadow-lg bg-white bg-opacity-50 cursor-pointer
-                        ${ d.available ? ' hover:shadow-[#17907F]' : ' hover:shadow-rose-500' }`}>
-                            
+                        ${d.available ? ' hover:shadow-[#17907F]' : ' hover:shadow-rose-500'}`}>
+
                             <a href="/singleProduct">
                                 <img className='h-2/3 w-full'
                                     src={"http://localhost:4000/" + d.imageUrl[1]} alt="" />
@@ -103,15 +106,11 @@ const ProductsSection = ({ filterCriteria, searchTerm, currentPage, itemsPerPage
                                         </p>
                                     </div>
                                 </a>
-
-
                             </div>
                         </div>
                     )) : null
             }
-
         </div>
-
     )
 }
 

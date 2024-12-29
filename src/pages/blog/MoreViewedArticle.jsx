@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import moment from "jalali-moment";
-import { FaEye } from 'react-icons/fa'
+import { convertDateToJalali } from '../../utils/convertDate';
+import { getMostViewedArticleService } from '../../services/blog';
 
 const MoreViewedArticle = () => {
 
@@ -10,7 +9,7 @@ const MoreViewedArticle = () => {
     useEffect(() => {
         const fetchMoreViewedArticle = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/articles/more-view');
+                const response = await getMostViewedArticleService();
                 setArticle(response.data.article[0]);
                 console.log(response.data.article[0]);
             } catch (error) {
@@ -41,9 +40,7 @@ const MoreViewedArticle = () => {
                         </p>
                         <div className='text-white navbar_shadow'>
                             <p><span>نوشته شده توسط : </span>{article.author.name}</p>
-                            <p className='mt-3'><span>در تاریخ : {
-                                moment(article.createdAt).locale('fa').format('YYYY/MM/DD')
-                            }</span></p>
+                            <p className='mt-3'><span>در تاریخ : {convertDateToJalali(article.createdAt)}</span></p>
                         </div>
                     </div>
                 </a>

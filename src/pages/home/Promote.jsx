@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import { getBannersService } from '../../services/home';
 
+const Promote = ({ index }) => {
 
-const Promote = () => {
-
-    const [promote, setPromote] = useState([]);
+    const [banners, setBanners] = useState([]);
 
     useEffect(() => {
         const fetchBanner = async () => {
             try {
-
-                const response = await axios.get('http://localhost:4000/api/banners');
-                setPromote(response.data.banners);
+                const response = await getBannersService();
+                setBanners(response.data.banners);
 
             } catch (error) {
                 console.log('error fetching banners', error);
             }
         }
         fetchBanner();
-    }, [])
+    }, []);
+
+    const banner = banners[index];
 
     return (
         <div className='pt-12 container'>
-            {
-                promote.map((b) => (
-                    <img key={b._id} src={'http://localhost:4000/' + b.imageUrl} alt="" />
-                ))
-            }
+            {banner ? (
+                <img src={'http://localhost:4000/' + banner.imageUrl} alt="" />
+            ) : (
+                <img src='/assets/images/banner.png' alt="Default Banner" />
+            )}
         </div>
     )
 }

@@ -13,13 +13,19 @@ const ProductComments = () => {
     const [hover, setHover] = useState(0);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        axios.get(`http://localhost:4000/api/products/${productId}/comments`).then((res) => {
+    // Function to fetch comments
+    const fetchComments = async () => {
+        try {
+            const res = await axios.get(`http://localhost:4000/api/products/${productId}/comments`);
             setComments(res.data.productComments);
             console.log(res.data.productComments);
-        }).catch((error) => {
+        } catch (error) {
             console.error('Error fetching comments:', error);
-        });
+        }
+    };
+
+    useEffect(() => {
+        fetchComments(); // Fetch comments when the component mounts
     }, [productId]);
 
     const isAuthenticated = () => {
@@ -56,8 +62,18 @@ const ProductComments = () => {
             event.preventDefault();
             const token = localStorage.getItem('token');
 
-            const response = await axios.post(`http://localhost:4000/api/products/${productId}/comments`,
-                { content: newComment, rating: rating },
+            // Prepare the comment data
+            const commentData = {
+                content: newComment,
+            };
+
+            // Only include the rating if it is greater than 0
+            if (rating > 0) {
+                commentData.rating = rating;
+            }
+
+            await axios.post(`http://localhost:4000/api/products/${productId}/comments`,
+                commentData,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
@@ -68,8 +84,8 @@ const ProductComments = () => {
                 button: "متوجه شدم",
             });
 
-            window.location.reload();
-            setComments([...comments, response.data.comment]);
+            // Update the comments state with the new comment
+            fetchComments();
             setNewComment('');
             setRating(0);
 

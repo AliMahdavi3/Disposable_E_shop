@@ -6,7 +6,6 @@ import OrderHistory from './OrderHistory';
 import PaymentDetaile from './PaymentDetaile';
 import UserInfo from './UserInfo';
 import SupportOrHelp from './SupportOrHelp';
-import Comments from './Comments';
 import Logout from './Logout';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -74,8 +73,6 @@ const Profile = () => {
                 return <UserInfo />;
             case 'support':
                 return <SupportOrHelp />;
-            case 'comments':
-                return <Comments />;
             case 'logout':
                 return <Logout />;
             default:
@@ -122,8 +119,6 @@ const Profile = () => {
                             <li onClick={() => handleSectionChange('paymentDetails')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>جزیئات پرداخت</li><hr />
                             <li onClick={() => handleSectionChange('userInfo')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>اطلاعات حساب کاربری</li><hr />
                             <li onClick={() => handleSectionChange('support')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>پشتیبانی/راهنمایی</li><hr />
-                            <li onClick={() => handleSectionChange('comments')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>نظرات و بازخوردها</li><hr />
-                            <li onClick={() => handleSectionChange('orderHistory')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>پیغام ها</li><hr />
                             <li onClick={() => handleSectionChange('logout')} className='cursor-pointer hover:text-mgreen py-5 font-semibold text-gray-700'>خروج</li><hr />
                         </ul>
                     </div>

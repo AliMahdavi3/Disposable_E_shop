@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
-import axios from 'axios';
+import { getMainSliderService } from '../../services/home';
 
 
 const MainSlider = () => {
@@ -8,12 +8,16 @@ const MainSlider = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/mainSliders').then((res) => {
-            console.log(res.data.mainSliders);
-            setData(res.data.mainSliders);
-        }).catch((error) => {
-            console.log(error.message);
-        });
+        const handleGetMainSlider = async () => {
+            try {
+                const res = await getMainSliderService();
+                console.log(res.data.mainSliders);
+                setData(res.data.mainSliders);
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+        handleGetMainSlider();
     }, []);
 
     const prevSlide = () => {

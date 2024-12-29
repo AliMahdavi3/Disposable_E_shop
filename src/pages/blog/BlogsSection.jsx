@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import moment from "jalali-moment";
+import { convertDateToJalali } from '../../utils/convertDate';
+import { getArticlesService } from '../../services/blog';
 
 const BlogsSection = () => {
 
@@ -12,7 +12,7 @@ const BlogsSection = () => {
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/articles');
+                const response = await getArticlesService();
                 const sortedArticles = response.data.articles.sort((a, b) => {
                     return new Date(b.createdAt) - new Date(a.createdAt);
                 });
@@ -59,21 +59,19 @@ const BlogsSection = () => {
                             <div className='rounded-xl md:col-span-1 relative'>
                                 <img className='rounded-xl w-full h-60 object-cover' src={'http://localhost:4000/' + a.imageUrl} alt={a.title} />
                                 <div className='absolute px-5 rounded-xl bg-gray-700 bg-opacity-40 hover:bg-mgreen
-                         hover:bg-opacity-35 h-full py-5 top-0 right-0 w-full cursor-pointer duration-300'>
+                                    hover:bg-opacity-35 h-full py-5 top-0 right-0 w-full cursor-pointer duration-300'>
                                     <a href={`/blog/${a._id}`}>
                                         <h5 className='font-semibold text-white navbar_shadow
-                                hover:text-xl mb-3 text-lg duration-300'>
+                                            hover:text-xl mb-3 text-lg duration-300'>
                                             {a.title}
                                         </h5>
                                         <p className='line-clamp-3 text-white navbar_shadow
-                                text-xs md:text-base duration-300'>
+                                            text-xs md:text-base duration-300'>
                                             {a.content}
                                         </p>
                                         <div className='mt-5 text-sm text-white navbar_shadow'>
                                             <p><span>نوشته شده توسط : </span>{a.author.name}</p>
-                                            <p className='mt-2'><span>در تاریخ : </span>{
-                                                moment(a.createdAt).locale('fa').format('YYYY/MM/DD')
-                                            }</p>
+                                            <p className='mt-2'><span>در تاریخ : </span>{convertDateToJalali(a.createdAt)}</p>
                                         </div>
                                     </a>
                                 </div>

@@ -28,7 +28,7 @@ const Home = () => {
             <FirstCarousel />
 
             {/* Promote */}
-            <Promote />
+            <Promote index={0} />
 
             {/* BestSelling-Carousel */}
             <TwoCarousel />
@@ -37,7 +37,7 @@ const Home = () => {
             <CenterModeCarousel />
 
             {/* Promote */}
-            <Promote />
+            <Promote index={1}/>
 
             {/* About-Us */}
             <AboutUs />

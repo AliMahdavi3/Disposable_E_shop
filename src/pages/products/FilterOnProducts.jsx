@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import { getAllProductsService } from '../../services/product';
 
 
-const Category = ({ onFilterChange }) => {
+const FilterOnProducts = ({ onFilterChange }) => {
 
     const [categories, setCategories] = useState([]);
     const [colors, setColors] = useState([]);
@@ -12,9 +12,10 @@ const Category = ({ onFilterChange }) => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/products')
-            .then(response => {
-                const fetchedProducts = response.data.products;
+        const handleFetchProducts = async () => {
+            try {
+                const res = await getAllProductsService();
+                const fetchedProducts = res.data.products;
 
                 const categoryCounts = {};
                 const uniqueColors = new Set();
@@ -29,10 +30,13 @@ const Category = ({ onFilterChange }) => {
                 setCategories(categoryCounts);
                 setColors([...uniqueColors]);
                 setTags([...uniqueTags]);
-            })
-            .catch(error => {
+
+
+            } catch (error) {
                 console.error('There was an error fetching the products:', error);
-            });
+            }
+        }
+        handleFetchProducts();
     }, []);
 
     const handleResetFilters = () => {
@@ -58,7 +62,7 @@ const Category = ({ onFilterChange }) => {
     };
 
     const colorList = {
-        'قزمز': '#FF0000',
+        'قرمز': '#FF0000',
         'آبی': '#0000FF',
         'سبز': '#008000',
         'زرد': '#ffff00',
@@ -156,4 +160,4 @@ const Category = ({ onFilterChange }) => {
     )
 }
 
-export default Category
+export default FilterOnProducts

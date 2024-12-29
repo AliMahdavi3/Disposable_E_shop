@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { getCategoriesService } from '../../services/home';
 
 
 const Category = () => {
@@ -12,7 +13,7 @@ const Category = () => {
         const fetchCategories = async () => {
             try {
 
-                const response = await axios.get('http://localhost:4000/api/products/categories');
+                const response = await getCategoriesService();
                 setCategories(response.data.categories);
 
             } catch (error) {

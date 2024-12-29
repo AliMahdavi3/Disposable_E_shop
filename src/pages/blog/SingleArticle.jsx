@@ -4,8 +4,9 @@ import Footer from '../../components/Footer';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FaEye, FaHeart, FaRegHeart } from 'react-icons/fa';
-import moment from "jalali-moment";
 import ArticleComments from './ArticleComments';
+import { convertDateToJalali } from '../../utils/convertDate';
+import { getSingleArticleService } from '../../services/blog';
 
 const SingleArticle = () => {
 
@@ -22,7 +23,7 @@ const SingleArticle = () => {
     useEffect(() => {
         const fetchSingleArticle = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/api/articles/${articleId}`);
+                const response = await getSingleArticleService(articleId);
                 setArticle(response.data.article);
                 console.log(response.data);
             } catch (error) {
@@ -60,9 +61,7 @@ const SingleArticle = () => {
                                 <div className="p-5">
                                     <h1 className='text-4xl font-bold mb-3'>{article.title}</h1>
                                     <div className='flex justify-between items-center'>
-                                        <span className='text-gray-600'>نوشته شده در تاریخ : {
-                                            moment(article.createdAt).locale('fa').format('YYYY/MM/DD')
-                                        }</span>
+                                        <span className='text-gray-600'>نوشته شده در تاریخ : {convertDateToJalali(article.createdAt)}</span>
                                         <p className='flex flex-col items-center' onClick={handleLikes}>
                                             {
                                                 liked ? (

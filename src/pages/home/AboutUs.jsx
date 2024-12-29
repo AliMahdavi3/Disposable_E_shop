@@ -11,8 +11,8 @@ const AboutUs = () => {
                                 src="/assets/images/home3.jpg" alt="" />
                         </div>
                         <div className='about_section col-span-3 py-5 h-[400px] overflow-y-scroll 
-                md:overflow-auto md:py-8 md:w-[60%] bg-white bg-opacity-60 md:bg-opacity-85 
-                rounded-xl md:left-0 top-0 absolute md:col-span-1 md:mt-5 md:px-10'>
+                            md:overflow-auto md:py-8 md:w-[60%] bg-white bg-opacity-60 md:bg-opacity-85 
+                            rounded-xl md:left-0 top-0 absolute md:col-span-1 md:mt-5 md:px-10'>
                             <h3 className='mb-3 px-3 md:text-3xl font-bold text-mgreen'>درباره فروشگاه ما</h3>
                             <p className='leading-8 px-3 text-xs font-semibold text-mblack'>
                                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم

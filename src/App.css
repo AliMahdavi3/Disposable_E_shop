@@ -104,11 +104,6 @@ body {
 
 /* =============================================== Footer========================================= */
 
-.footer_bg {
-  background: #17907f;
-  background: linear-gradient(90deg, rgba(23, 144, 127, 1) 0%, rgba(0, 114, 116, 1) 100%);
-}
-
 .z_index {
   z-index: 999;
 }
@@ -116,4 +111,9 @@ body {
 .checkout {
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 50%;
 }

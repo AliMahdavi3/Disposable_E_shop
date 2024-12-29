@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import moment from "jalali-moment";
-import { FaRegHeart, FaReply, FaShareAlt, FaRegEye, FaStar, FaCartPlus, FaQuestionCircle } from "react-icons/fa";
+import { FaRegHeart, FaReply, FaShareAlt, FaRegEye, FaStar, FaCartPlus, FaQuestionCircle, FaRegBookmark, FaBookmark, FaHeart } from "react-icons/fa";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../../components/Footer';
@@ -11,13 +11,14 @@ import ProductComments from './ProductComments';
 import swal from 'sweetalert';
 
 
-
 const SingleProduct = () => {
 
     let { productId } = useParams();
     console.log(productId);
     const [data, setData] = useState(null);
+    const [relatedProducts, setRelatedProducts] = useState([]);
     const [quantity, setQuantity] = useState(1);
+    const [isFavorite, setIsFavorite] = useState(false); // State to track if product is in favorites
     const { setIsSolid, updateCartCount } = useNavbarContext();
 
     useEffect(() => {
@@ -34,16 +35,55 @@ const SingleProduct = () => {
         })
     }, [productId]);
 
-    const handleAddToCart = async () => {
+    useEffect(() => {
+        axios.get(`http://localhost:4000/api/products/${productId}/related`).then((res) => {
+            console.log(res.data.products);
+            setRelatedProducts(res.data.products);
+        }).catch((error) => {
+            console.log(error.message);
+        })
+    }, [productId]);
 
+    const handleAddToFavorites = async () => {
+        const token = localStorage.getItem('token');
         try {
+            await axios.post('http://localhost:4000/auth/user/favorites', {
+                productId: productId
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            setIsFavorite(true);
+            swal({
+                title: "عملیات موفقیت آمیز بود",
+                text: "محصول به لیست علاقه مندی ها اضافه شد!",
+                icon: "success",
+                button: "متوجه شدم",
+            });
+        } catch (error) {
+            swal({
+                title: "خطایی رخ داده است",
+                text: error.response ? error.response.data : error.message,
+                icon: "error",
+                button: "متوجه شدم",
+            });
+            console.error(error.response ? error.response.data : error.message);
+        }
+    };
 
+    const handleFavoritesClick = () => {
+        handleAddToFavorites();
+    };
+
+    const handleAddToCart = async () => {
+        try {
             const token = localStorage.getItem('token');
             const quantityToSend = Number(quantity);
 
             const response = await axios.post('http://localhost:4000/api/cart', {
                 productId: productId,
-                quantity: quantityToSend 
+                quantity: quantityToSend
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -56,7 +96,7 @@ const SingleProduct = () => {
                 icon: "success",
                 button: "متوجه شدم",
             });
-            
+
             updateCartCount(response.data.count);
             console.log(response.data.message);
 
@@ -95,15 +135,21 @@ const SingleProduct = () => {
 
                             <div className="col-span-5 md:col-span-3 h-fit py-5">
                                 <div className='md:flex-row flex-col
-                             items-start md:items-center md:px-10 pb-10'>
+                                    items-start md:items-center md:px-10 pb-10'>
 
                                     <div className='mb-3'>
                                         <div className='flex justify-between'>
                                             <h1 className='text-base md:text-xl text-mblack font-bold'>{data.product.title}</h1>
                                             <div className='flex justify-center items-center'>
-                                                <FaRegHeart className='text-gray-700 ml-3 md:ml-5 text-base md:text-xl' />
-                                                <FaShareAlt className='text-gray-700 ml-3 md:ml-5 text-base md:text-xl' />
-                                                <FaReply className='text-gray-700 text-base md:text-xl' />
+                                                {/* <FaShareAlt className='text-gray-700 ml-3 md:ml-5 text-base md:text-xl' /> */}
+                                                <div onClick={handleFavoritesClick}>
+                                                    {isFavorite ? (
+                                                        <FaHeart className='text-rose-500 ml-3 md:ml-5 text-base md:text-xl cursor-pointer' />
+                                                    ) : (
+                                                        <FaRegHeart className='text-gray-700 ml-3 md:ml-5 text-base md:text-xl cursor-pointer' />
+                                                    )}
+                                                </div>
+                                                {/* <FaReply className='text-gray-700 text-base md:text-xl' /> */}
                                             </div>
                                         </div>
                                         <div className='pt-2 md:pt-5 flex justify-start flex-col lg:flex-row text-xs'>
@@ -177,7 +223,7 @@ const SingleProduct = () => {
 
                                         <button
                                             className={`bg-mgreen flex justify-center items-center w-full py-2 text-white font-medium rounded-lg
-                                        ${data.product.available ? 'hover:bg-violet-800' : 'opacity-50 cursor-not-allowed'}`}
+                                            ${data.product.available ? 'hover:bg-violet-800' : 'opacity-50 cursor-not-allowed'}`}
                                             disabled={!data.product.available}
                                             onClick={handleAddToCart}
                                         >
@@ -225,7 +271,7 @@ const SingleProduct = () => {
 
 
                         {/* Similar Carousel */}
-                        <SimilarProducts />
+                        <SimilarProducts products={relatedProducts} />
 
                     </div>
                 )

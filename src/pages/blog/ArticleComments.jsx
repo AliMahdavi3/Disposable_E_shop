@@ -13,14 +13,18 @@ const ArticleComments = () => {
     const [hover, setHover] = useState(0);
     const navigate = useNavigate();
 
-
-    useEffect(() => {
-        axios.get(`http://localhost:4000/api/articles/${articleId}/comments`).then((res) => {
+    const fetchComments = async () => {
+        try {
+            const res = await axios.get(`http://localhost:4000/api/articles/${articleId}/comments`);
             setComments(res.data.articleComments);
             console.log(res.data.articleComments);
-        }).catch((error) => {
+        } catch (error) {
             console.error('Error fetching comments:', error);
-        });
+        }
+    }
+
+    useEffect(() => {
+        fetchComments();
     }, [articleId]);
 
     const isAuthenticated = () => {
@@ -57,8 +61,18 @@ const ArticleComments = () => {
             event.preventDefault();
             const token = localStorage.getItem('token');
 
+            // Prepare the comment data
+            const commentData = {
+                content: newComment,
+            };
+
+            // Only include the rating if it is greater than 0
+            if (rating > 0) {
+                commentData.rating = rating;
+            }
+
             const response = await axios.post(`http://localhost:4000/api/articles/${articleId}/comments`,
-                { content: newComment, rating: rating },
+                commentData,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
@@ -69,8 +83,7 @@ const ArticleComments = () => {
                 button: "متوجه شدم",
             });
 
-            window.location.reload();
-            setComments([...comments, response.data.comment]);
+            fetchComments();
             setNewComment('');
             setRating(0);
 
