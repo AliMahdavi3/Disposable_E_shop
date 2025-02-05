@@ -14,8 +14,8 @@ const Navbar = () => {
   const [localCartCount, setLocalCartCount] = useState(cartCount);
 
   useEffect(() => {
-    setLocalCartCount(cartCount); 
-  }, [cartCount]); 
+    setLocalCartCount(cartCount);
+  }, [cartCount]);
 
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const Navbar = () => {
   };
 
 
-  
+
   return (
     <header >
 
@@ -64,7 +64,12 @@ const Navbar = () => {
         <div className='container flex justify-between items-center'>
 
           <div>
-            <a href="/" className='navbar_shadow text-white text-2xl font-bold'>LOGO</a>
+            <a href="/" className='font-bold text_shadow'>
+              <span className='text-2xl text-white'>TA</span>
+              <span className='text-2xl text-mblack'>K</span>
+              <span className='text-2xl text-mblack'>S</span>
+              <span className='text-2xl text-rose-600'>HOP</span>
+            </a>
           </div>
 
           <ul className='hidden md:flex md:flex-grow md:justify-center text-white'>

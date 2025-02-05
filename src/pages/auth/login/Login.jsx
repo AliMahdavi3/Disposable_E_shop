@@ -1,35 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Form, Formik } from "formik";
 import { useNavigate } from 'react-router-dom';
 import { authModeValue, initialValues, onSubmit, validationSchema } from './Core';
 import FormikControl from '../../../components/FormikComponents/FormikControl';
 import Google from '../Google';
+import useSolidNavbar from '../../../hooks/useSolidNavbar';
 import { useNavbarContext } from '../../../context/NavbarContext';
-
 
 const Login = () => {
 
-    const [login, setLogin] = useState(false);
+    const { setLoading } = useNavbarContext();
     const navigate = useNavigate();
-    const { setIsSolid } = useNavbarContext();
-
-    useEffect(() => {
-      setIsSolid(true);
-      return () => setIsSolid(false); // Revert back when leaving the page
-    }, []);
-
+    useSolidNavbar(true);
 
     return (
         <>
             <div className='mt-24 rounded-2xl pb-10 w-full h-fit flex justify-center'>
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={(values, actions) => onSubmit(values, actions, setLogin, navigate)}
+                    onSubmit={(values, actions) => onSubmit(values, actions, setLoading, navigate)}
                     validationSchema={validationSchema}
                 >
                     {
                         formik => {
-                            // console.log(formik);
                             return (
                                 <div className='grid grid-cols-2 rounded-2xl shadow-md shadow-mgreen w-[85%]'>
                                     <div className="col-span-2 md:col-span-1 bg-white bg-opacity-50 pb-10 rounded-r-2xl">
@@ -54,25 +47,25 @@ const Login = () => {
 
                                             {
                                                 formik.values.auth_mode === 'phone' ? (
-                                                        <FormikControl
-                                                            control="input"
-                                                            formik={formik}
-                                                            type="text"
-                                                            name="phone"
-                                                            label="شماره همراه"
-                                                            placeholder="09123456789"
-                                                        />
-                                                    ) : (
-                                                        <FormikControl
-                                                            control="input"
-                                                            formik={formik}
-                                                            type="email"
-                                                            name="email"
-                                                            label="ایمیل"
-                                                            placeholder="aaa@example.bbb"
-                                                        />
+                                                    <FormikControl
+                                                        control="input"
+                                                        formik={formik}
+                                                        type="text"
+                                                        name="phone"
+                                                        label="شماره همراه"
+                                                        placeholder="09123456789"
+                                                    />
+                                                ) : (
+                                                    <FormikControl
+                                                        control="input"
+                                                        formik={formik}
+                                                        type="email"
+                                                        name="email"
+                                                        label="ایمیل"
+                                                        placeholder="aaa@example.bbb"
+                                                    />
 
-                                                    )
+                                                )
                                             }
 
                                             <FormikControl
@@ -102,8 +95,8 @@ const Login = () => {
                             )
                         }
                     }
-                </Formik>
-            </div>
+                </Formik >
+            </div >
         </>
     )
 }

@@ -34,7 +34,7 @@ const AboutUs = () => {
                             <div className='flex justify-end items-center'>
                                 <a className='px-4' href="/">
                                     <button className='px-2 bg-mgreen text-white 
-                            rounded-md font-semibold py-2'>بیشتر بدانید</button>
+                                    rounded-md font-semibold py-2'>بیشتر بدانید</button>
                                 </a>
                             </div>
                         </div>

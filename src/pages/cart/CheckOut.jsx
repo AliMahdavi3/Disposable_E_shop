@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { useNavbarContext } from '../../context/NavbarContext';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 import UserInfo from './UserInfo';
 import Footer from '../../components/Footer';
+import useSolidNavbar from '../../hooks/useSolidNavbar';
 
 const CheckOut = () => {
 
   const [order, setOrder] = useState(null);
-  const { setIsSolid } = useNavbarContext();
   let { orderId } = useParams();
-
-  useEffect(() => {
-    setIsSolid(true);
-    return () => setIsSolid(false);
-  }, []);
-
+  useSolidNavbar(true);
 
   useEffect(() => {
     const fetchOrder = async () => {

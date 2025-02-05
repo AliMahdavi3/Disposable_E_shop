@@ -43,13 +43,13 @@ body {
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #007274;
-  border-radius: 10px;
+  background: #1F917C;
+  /* border-radius: 10px; */
 }
 
 /* Handle on hover */
@@ -57,12 +57,19 @@ body {
   background: #b30000;
 }
 
+.scrollbar_hidden::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+.scrollbar_hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 /* ============================================= HOME ======================================== */
 .slick-slide>div {
   margin: 0 10px;
 }
-
-
 
 .about_section {
   height: 400px;
@@ -116,4 +123,33 @@ body {
 .disabled {
   pointer-events: none;
   opacity: 50%;
+}
+
+/* ===================================== Loader ===================================== */
+
+/* Spinner.css */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 2s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 1s linear infinite;
 }

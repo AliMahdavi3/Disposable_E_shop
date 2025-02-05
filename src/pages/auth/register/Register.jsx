@@ -1,29 +1,23 @@
 import { Form, Formik } from 'formik'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 // import Google from '../Google'
 import { useNavigate } from 'react-router-dom';
 import FormikControl from '../../../components/FormikComponents/FormikControl'
 import { initialValues, onSubmit, validationSchema } from './Core'
-import { useNavbarContext } from '../../../context/NavbarContext';
+import useSolidNavbar from '../../../hooks/useSolidNavbar';
 
 const Register = () => {
 
-  const [registered, setRegistered] = useState(false);
   const navigate = useNavigate();
 
-  const { setIsSolid } = useNavbarContext();
-
-  useEffect(() => {
-    setIsSolid(true);
-    return () => setIsSolid(false); // Revert back when leaving the page
-  }, []);
+  useSolidNavbar(true);
 
   return (
     <>
       <div className='mt-24 rounded-2xl pb-10 w-full h-fit flex justify-center'>
         <Formik
           initialValues={initialValues}
-          onSubmit={(values, actions) => onSubmit(values, actions, navigate, setRegistered)}
+          onSubmit={(values, actions) => onSubmit(values, actions, navigate)}
           validationSchema={validationSchema}
         >
           {

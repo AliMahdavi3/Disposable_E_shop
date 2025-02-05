@@ -1,7 +1,4 @@
 import React from 'react'
-import TwoCarousel from '../../components/TwoCarousel';
-import CenterModeCarousel from '../../components/CenterModeCarousel';
-import FirstCarousel from '../../components/FirstCarousel';
 import Footer from '../../components/Footer';
 import Delivery from './Delivery';
 import Articles from './Articles';
@@ -10,6 +7,10 @@ import Promote from './Promote';
 import Category from './Category';
 import SearchBox from './SearchBox';
 import MainSlider from './MainSlider';
+import MoreSell from './carousels/MoreSell';
+import Disposable from './carousels/Disposable';
+import BirthDay from './carousels/BirthDay';
+
 
 const Home = () => {
 
@@ -25,16 +26,16 @@ const Home = () => {
             <Category />
 
             {/* BestSelling-Carousel */}
-            <FirstCarousel />
+            <MoreSell />
 
             {/* Promote */}
             <Promote index={0} />
 
             {/* BestSelling-Carousel */}
-            <TwoCarousel />
+            <Disposable />
 
             {/* BestSelling-Carousel */}
-            <CenterModeCarousel />
+            <BirthDay />
 
             {/* Promote */}
             <Promote index={1}/>

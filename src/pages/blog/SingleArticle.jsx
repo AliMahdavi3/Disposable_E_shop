@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useNavbarContext } from '../../context/NavbarContext';
 import Footer from '../../components/Footer';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -7,18 +6,16 @@ import { FaEye, FaHeart, FaRegHeart } from 'react-icons/fa';
 import ArticleComments from './ArticleComments';
 import { convertDateToJalali } from '../../utils/convertDate';
 import { getSingleArticleService } from '../../services/blog';
+import useSolidNavbar from '../../hooks/useSolidNavbar';
+import SpinnerLoad from '../../components/SpinnerLoad';
 
 const SingleArticle = () => {
 
-    const { setIsSolid } = useNavbarContext();
     const { articleId } = useParams();
     const [article, setArticle] = useState(null);
     const [liked, setLiked] = useState(false);
 
-    useEffect(() => {
-        setIsSolid(true);
-        return () => setIsSolid(false);
-    }, []);
+    useSolidNavbar(true);
 
     useEffect(() => {
         const fetchSingleArticle = async () => {
@@ -52,7 +49,11 @@ const SingleArticle = () => {
     return (
         <>
             {
-                article ? (
+                !article ? (
+                    <div className="h-screen">
+                        <SpinnerLoad />
+                    </div>
+                ) : (
                     <div className='pt-24 pb-10 container mx-auto'>
                         <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
                             <div className='md:col-span-3 h-full shadow-lg border-4 border-white rounded-md'>
@@ -105,17 +106,11 @@ const SingleArticle = () => {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <ArticleComments />
-                    </div>
-                ) : (
-                    <div className='flex justify-center items-center h-screen'>
-                        <p className='text-xl text-gray-700'>درحال بارگذاری لطفا صبر کنید...</p>
                     </div>
                 )
             }
-
-
             <Footer />
         </>
     )

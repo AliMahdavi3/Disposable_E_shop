@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import CarouselCard from '../../../components/cardComponents/CarouselCard';
 
-const CenterModeCarousel = () => {
+const BirthDay = () => {
 
     const [products, setProducts] = useState([]);
 
@@ -60,23 +61,8 @@ const CenterModeCarousel = () => {
             <div className="slider-container px-5 mt-6">
                 <Slider {...settings}>
                     {
-                        products.map((d) => (
-                            <div key={d._id} className='flex justify-center bg-white bg-opacity-90
-                                items-center rounded-2xl'>
-                                <div className='flex border-b-2 justify-center'>
-                                    <img className='w-1/2' src={'http://localhost:4000/' + d.imageUrl[0]} alt="" />
-                                </div>
-                                <div className='px-4 flex justify-end flex-col text-mblack'>
-                                    <p className='py-4 text-end text-xl'>
-                                        {d.title}
-                                    </p>
-                                    <p className='line-clamp-5 text-end text-sm'>
-                                        {d.content}
-                                    </p>
-                                    <a href={`/products/${d._id}`} className='hover:bg-violet-00 cursor-pointer py-2 w-full text-white 
-                                        text-center rounded-lg bg-[#006758] shadow-xl my-4'>...جزئیات بیشتر</a>
-                                </div>
-                            </div>
+                        products.map((product) => (
+                            <CarouselCard product={product} key={product._id} />
                         ))
                     }
                 </Slider>
@@ -85,4 +71,4 @@ const CenterModeCarousel = () => {
     )
 }
 
-export default CenterModeCarousel
+export default BirthDay

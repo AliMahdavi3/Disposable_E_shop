@@ -16,7 +16,7 @@ export const initialValues = {
 }
 
 
-export const onSubmit = async (values, actions, navigate, setRegistered) => {
+export const onSubmit = async (values, actions, navigate) => {
     // console.log(values);
     const { confirm_password, ...dataToSend } = values;
 
@@ -33,7 +33,6 @@ export const onSubmit = async (values, actions, navigate, setRegistered) => {
                 icon: "success",
                 button: "متوجه شدم",
             });
-            setRegistered(true);
             navigate('/login');
 
         } else {

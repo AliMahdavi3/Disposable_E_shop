@@ -4,10 +4,13 @@ import Index from './layouts/Index';
 
 function App() {
   return (
-    <NavbarProvider>
-      <Index />
-    </NavbarProvider>
+    <>
+      <NavbarProvider>
+        <Index />
+      </NavbarProvider>
+    </>
   );
 }
 
 export default App;
+

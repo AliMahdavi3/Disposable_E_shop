@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Footer from '../../components/Footer'
-import { useNavbarContext } from '../../context/NavbarContext';
 import BlogsSection from './BlogsSection';
 import MoreViewedArticle from './MoreViewedArticle';
+import useSolidNavbar from '../../hooks/useSolidNavbar';
 
 const Blog = () => {
 
-    const { setIsSolid } = useNavbarContext();
-
-    useEffect(() => {
-        setIsSolid(true);
-        return () => setIsSolid(false);
-    }, []);
+   useSolidNavbar(true);
 
     return (
         <>

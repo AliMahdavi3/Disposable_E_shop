@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
-import Modal from '../../components/Modal';
 import { useNavbarContext } from '../../context/NavbarContext';
+import ModalContainer from '../../components/ModalContainer';
+
 
 const ProductsList = () => {
 
@@ -182,7 +183,7 @@ const ProductsList = () => {
             <div dir='ltr' className="grid grid-cols-3 gap-4">
 
                 {open && currentItem && (
-                    <Modal
+                    <ModalContainer
                         open={open}
                         onClose={() => setOpen(false)}
                     >
@@ -203,7 +204,7 @@ const ProductsList = () => {
                                     onClick={(e) => onSave(e, currentItem.product._id, quantity)}>ذخیره</button>
                             </div>
                         </form>
-                    </Modal>
+                    </ModalContainer>
                 )}
 
                 <div className="col-span-3 md:col-span-2 w-full h-fit">

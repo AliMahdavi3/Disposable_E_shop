@@ -3,11 +3,15 @@ import Navbar from './navbar/Navbar'
 import Content from '../pages/Content'
 
 const Index = () => {
+
+  
   return (
-    <div>
-      <Navbar/>
-      <Content/>
-    </div>
+    <>
+      <div>
+        <Navbar />
+        <Content />
+      </div>
+    </>
   )
 }
 

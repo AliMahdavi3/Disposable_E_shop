@@ -39,7 +39,8 @@ const loginWithEmail = async (email, password) => {
 
 }
 
-export const onSubmit = async (values, actions, setLogin, navigate) => {
+export const onSubmit = async (values, actions, setLoading, navigate) => {
+    setLoading(true);
     try {
         let response;
         if (values.auth_mode === 'phone') {
@@ -47,8 +48,6 @@ export const onSubmit = async (values, actions, setLogin, navigate) => {
         } else {
             response = await loginWithEmail(values.email, values.password);
         }
-
-        console.log('Login successful:', response);
 
         localStorage.setItem('token', response.token);
 
@@ -58,19 +57,18 @@ export const onSubmit = async (values, actions, setLogin, navigate) => {
             icon: "success",
             button: "متوجه شدم",
         });
-        setLogin(true);
         navigate('/');
 
     } catch (error) {
-
         console.log(error.message);
-
         await swal({
             title: "خطایی رخ داده است",
             text: error.message,
             icon: "error",
             button: "متوجه شدم",
         });
+    } finally {
+        setLoading(false);
     }
 }
 
@@ -98,9 +96,3 @@ export const authModeValue = [
     { id: 'phone', value: 'شماره موبایل' },
     { id: 'email', value: 'ایمیل' },
 ]
-
-export const logout = (setLogin, navigate) => {
-    localStorage.removeItem('token');
-    setLogin(false);
-    navigate('/');
-}

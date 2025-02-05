@@ -13,10 +13,14 @@ import Register from './auth/register/Register';
 import CheckOut from './cart/CheckOut';
 import SearchResultPage from './home/SearchResultPage';
 import SingleArticle from './blog/SingleArticle';
+import ScrollToTop from '../components/ScrollToTop';
+
 
 const Content = () => {
+
   return (
     <section>
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/products' element={<Products />} />
@@ -31,8 +35,6 @@ const Content = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/search' element={<SearchResultPage />} />
-
-
 
         <Route path='*' element={<Home />} />
       </Routes>

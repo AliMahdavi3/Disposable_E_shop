@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { getCategoriesService } from '../../services/home';
 
 
@@ -12,10 +11,8 @@ const Category = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-
                 const response = await getCategoriesService();
                 setCategories(response.data.categories);
-
             } catch (error) {
                 console.log('error fetching categories', error);
             }
@@ -47,9 +44,10 @@ const Category = () => {
                 {
                     categories.map((category, index) => (
                         <div key={index} onClick={() => handleClickCategories(category)}
-                         className='w-16 flex flex-col items-center cursor-pointer'>
+                            className='w-16 flex flex-col items-center cursor-pointer'>
                             <img className='mb-1 border-4 border-mgreen rounded-full'
-                                src={categoryImages[category] || '/assets/images/category.png'} alt={category} />
+                                src={categoryImages[category] || '/assets/images/category.png'}
+                                alt={category} />
                             <span className='text-sm truncate'>{category}</span>
                         </div>
                     ))

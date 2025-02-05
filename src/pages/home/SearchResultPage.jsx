@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import { useNavbarContext } from '../../context/NavbarContext';
 import { convertDateToJalali } from '../../utils/convertDate';
+import useSolidNavbar from '../../hooks/useSolidNavbar';
 
 const SearchResultPage = () => {
 
     const [results, setResults] = useState({ products: [], articles: [] });
     const { search } = useLocation();
     const query = new URLSearchParams(search).get('query');
-    const { setIsSolid } = useNavbarContext();
-
-    useEffect(() => {
-        setIsSolid(true);
-        return () => setIsSolid(false);
-    }, []);
+    
+    useSolidNavbar(true);
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -22,12 +18,10 @@ const SearchResultPage = () => {
                 const data = await response.json();
                 setResults(data.data);
                 console.log(data);
-
             } catch (error) {
                 console.log('error fetching search results', error);
             }
         };
-
         if (query) {
             fetchResults();
         }
