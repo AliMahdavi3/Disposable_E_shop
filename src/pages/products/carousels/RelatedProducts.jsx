@@ -68,7 +68,10 @@ const RelatedProducts = ({ productId }) => {
                     <Slider {...settings}>
                         {
                             Array.isArray(relatedProducts) ? relatedProducts.map((product) => (
-                                <CarouselCard key={product._id} product={product} />
+                                <CarouselCard
+                                    key={product._id}
+                                    product={product}
+                                />
                             )) : null
                         }
                     </Slider>

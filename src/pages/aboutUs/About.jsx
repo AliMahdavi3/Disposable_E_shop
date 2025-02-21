@@ -92,7 +92,7 @@ const About = () => {
                         </p>
                     </div>
                     <div className='mt-5 col-span-2 md:col-span-1 flex justify-center items-center'>
-                        <img className='w-[70%]' src="/assets/images/Frame.png" alt="" />
+                        <img className='w-[70%]' src="/assets/images/about/Frame.png" alt="" />
                     </div>
                 </div>
             </div>

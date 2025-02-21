@@ -47,7 +47,7 @@ const Footer = () => {
 
 
     return (
-        <footer className="bg-gradient-to-r from-mgreen to-[#1F917C] rounded-t-3xl">
+        <footer className="bg-gradient-to-r from-mgreen to-[#0dafa7] rounded-t-3xl">
             <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-10 sm:px-6 lg:space-y-16 lg:px-8">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <div className="text-white">

@@ -3,13 +3,14 @@ import Footer from '../../components/Footer';
 import Delivery from './Delivery';
 import Articles from './Articles';
 import AboutUs from './AboutUs';
-import Promote from './Promote';
-import Category from './Category';
-import SearchBox from './SearchBox';
 import MainSlider from './MainSlider';
 import MoreSell from './carousels/MoreSell';
 import Disposable from './carousels/Disposable';
 import BirthDay from './carousels/BirthDay';
+import Category from './category/Category';
+import SearchBox from './search/SearchBox';
+import DisposablePosters from './posters/DisposablePosters';
+import Promote from './posters/Promote';
 
 
 const Home = () => {
@@ -28,17 +29,20 @@ const Home = () => {
             {/* BestSelling-Carousel */}
             <MoreSell />
 
-            {/* Promote */}
-            <Promote index={0} />
+            {/* Poster */}
+            <DisposablePosters index={0} />
+
+            {/* Poster */}
+            <Promote />
 
             {/* BestSelling-Carousel */}
             <Disposable />
 
+            {/* Poster */}
+            <DisposablePosters index={1} />
+
             {/* BestSelling-Carousel */}
             <BirthDay />
-
-            {/* Promote */}
-            <Promote index={1}/>
 
             {/* About-Us */}
             <AboutUs />

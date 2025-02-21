@@ -61,16 +61,17 @@ const Favorites = () => {
     return (
         <section className="border-2 mt-5 px-5 py-5 rounded-lg max-h-[90vh] overflow-y-auto">
             <h3 className='font-medium text-rose-700 pb-5 mb-2 border-b-4 border-b-red-400'>لیست علاقه مندی</h3>
-            <div className='grid grid-cols-3 gap-2'>
+            <div className='grid grid-cols-3 gap-4'>
                 {
                     favList.length > 0 ? favList.map((product) => (
                         <ProductCard
                             product={product}
-                            modify={true}
-                            handleRemoveFavorite={handleRemoveFavorite} />
+                            shift={true}
+                            handleRemoveFavorite={handleRemoveFavorite}
+                        />
                     )) : (
                         <div className='col-span-3 flex flex-col justify-center items-center mt-10'>
-                            <img className='w-[25%]' src="/assets/images/favorites.png" alt="" />
+                            <img className='w-[25%]' src="/assets/images/profile/favorites.png" alt="" />
                             <p className='mt-2 text-xs md:text-lg font-medium text-rose-500'>
                                 هنوز محصولی به لیست اضافه نکرده اید!
                             </p>

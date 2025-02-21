@@ -11,9 +11,10 @@ import Profile from './user-profile/Profile';
 import Login from './auth/login/Login';
 import Register from './auth/register/Register';
 import CheckOut from './cart/CheckOut';
-import SearchResultPage from './home/SearchResultPage';
 import SingleArticle from './blog/SingleArticle';
 import ScrollToTop from '../components/ScrollToTop';
+import CategoryResultPage from './home/category/CategoryResultPage';
+import SearchResultPage from './home/search/SearchResultPage';
 
 
 const Content = () => {
@@ -35,6 +36,7 @@ const Content = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/search' element={<SearchResultPage />} />
+        <Route path='/products/category/:category' element={<CategoryResultPage />} />
 
         <Route path='*' element={<Home />} />
       </Routes>

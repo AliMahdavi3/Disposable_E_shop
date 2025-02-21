@@ -15,7 +15,7 @@ const OrderHistory = () => {
 
             <div className='flex justify-between items-center px-5'>
                 <div className='flex justify-start items-center'>
-                    <img className='ml-3 w-[25%]' src="/assets/images/user2.png" alt="" />
+                    <img className='ml-3 w-[25%]' src="/assets/images/profile/user2.png" alt="" />
                     <div>
                         <p><span className='ml-5'>سفارش</span>
                             <span className='text-xs lg:text-sm'>0</span></p>
@@ -23,7 +23,7 @@ const OrderHistory = () => {
                     </div>
                 </div>
                 <div className='flex justify-start items-center'>
-                    <img className='ml-3 w-[25%]' src="/assets/images/user1.png" alt="" />
+                    <img className='ml-3 w-[25%]' src="/assets/images/profile/user1.png" alt="" />
                     <div>
                         <p><span className='ml-5'>سفارش</span>
                             <span className='text-xs lg:text-sm'>0</span></p>
@@ -31,7 +31,7 @@ const OrderHistory = () => {
                     </div>
                 </div>
                 <div className='flex justify-start items-center'>
-                    <img className='ml-3 w-[25%]' src="/assets/images/user.png" alt="" />
+                    <img className='ml-3 w-[25%]' src="/assets/images/profile/user.png" alt="" />
                     <div>
                         <p><span className='ml-5'>سفارش</span>
                             <span className='text-xs lg:text-sm'>0</span></p>

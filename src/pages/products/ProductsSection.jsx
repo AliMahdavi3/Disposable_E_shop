@@ -71,7 +71,10 @@ const ProductsSection = ({ itemsPerPage, selectedCategory }) => {
                                 {
                                     Array.isArray(currentItems) ?
                                         currentItems.map((product) => (
-                                            <ProductCard product={product} key={product._id} />
+                                            <ProductCard
+                                                product={product}
+                                                key={product._id}
+                                            />
                                         )) : null
                                 }
                             </div>
