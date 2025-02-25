@@ -15,6 +15,7 @@ import SingleArticle from './blog/SingleArticle';
 import ScrollToTop from '../components/ScrollToTop';
 import CategoryResultPage from './home/category/CategoryResultPage';
 import SearchResultPage from './home/search/SearchResultPage';
+import ForgotPassword from './auth/addition/ForgotPassword';
 
 
 const Content = () => {
@@ -33,11 +34,13 @@ const Content = () => {
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout/:orderId' element={<CheckOut />} />
         <Route path='/profile' element={<Profile />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
         <Route path='/search' element={<SearchResultPage />} />
         <Route path='/products/category/:category' element={<CategoryResultPage />} />
 
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/forgot-Password' element={<ForgotPassword/>} />
+        
         <Route path='*' element={<Home />} />
       </Routes>
     </section>

@@ -7,7 +7,8 @@ const SearchBox = ({ setSearchTerm }) => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 type="text"
                 placeholder='دنبال چه محصولی میگردید ؟'
-                className='w-full box_shadow px-5 rounded-lg py-2'
+                className='w-full box_shadow px-5 rounded-lg py-2 
+                placeholder:text-xs placeholder:md:text-base'
             />
         </div>
     )

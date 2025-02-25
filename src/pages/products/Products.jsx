@@ -18,7 +18,7 @@ const Products = () => {
                 <NewestProducts />
                 <div className="container mb-12">
                     <div className='py-5'>
-                        <h1 className='font-bold text-mgreen'>محصولات</h1>
+                        <h1 className='font-medium text-mgreen'>محصولات</h1>
                     </div>
                     <ProductsSection
                         selectedCategory={selectedCategory}

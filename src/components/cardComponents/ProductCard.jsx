@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaStar } from 'react-icons/fa'
+import { apiPath } from '../../services/httpService'
 
 const ProductCard = ({ product, shift, handleRemoveFavorite, colSpan }) => {
     return (
@@ -10,7 +11,7 @@ const ProductCard = ({ product, shift, handleRemoveFavorite, colSpan }) => {
 
             <a href={`/products/${product._id}`} target='_blank' rel='noopener noreferrer'>
                 <img className='h-2/3 w-full'
-                    src={"http://localhost:4000/" + product.imageUrl[1]} alt="" />
+                    src={`${apiPath}/${product.imageUrl[1]}`} alt={product.title} />
             </a>
 
             <div className='px-5 text-mblack'>

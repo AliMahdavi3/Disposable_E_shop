@@ -63,8 +63,15 @@ const NewestProducts = () => {
 
 
     return (
-        <div className={`container text-gray-500 px-5 rounded-3xl pt-5 pb-10 mt-5`}>
-            <h1 className={`text-center text-gray-500 font-medium text-xl`}>جدیدترین محصولات</h1>
+        <div className={`container text-gray-500 px-5 rounded-3xl pt-5 pb-5`}>
+            <div className='flex w-full justify-center items-center my-3'>
+                <hr className='w-10/12' />
+                <p className='text-gray-500 font-medium md:text-base 
+                    text-xs text-center mx-1 w-full'>
+                    جدیدترین محصولات
+                </p>
+                <hr className='w-10/12' />
+            </div>
             <div className="slider-container px-5 mt-6">
                 <Slider {...settings}>
                     {

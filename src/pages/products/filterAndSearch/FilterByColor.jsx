@@ -20,7 +20,7 @@ const FilterByColor = ({ colors, handleColorClick }) => {
     return (
         <div className='px-10 py-10 flex justify-center items-center flex-col mt-2 
             box_shadow rounded-lg bg-white bg-opacity-50 w-full'>
-            <h3 className='pb-5 font-medium text-center text-lg md:text-xl text-gray-600'>
+            <h3 className='pb-5 font-medium text-center md:text-xl text-gray-600'>
                 جستجو بر اساس رنگ
             </h3>
             <div>
@@ -33,7 +33,7 @@ const FilterByColor = ({ colors, handleColorClick }) => {
                                     className='col-span-1 flex justify-center items-center'>
                                     <button onClick={() => handleColorClick(colorName)}
                                         className='flex justify-center items-center 
-                                        border-2 font-semibold w-5 lg:w-10 h-5 lg:h-10
+                                        border-2 font-semibold w-8 h-8 lg:w-10 lg:h-10
                                         rounded-full' style={{ backgroundColor: colorValue }}>
                                     </button>
                                 </li>

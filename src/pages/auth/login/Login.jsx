@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Formik } from "formik";
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { authModeValue, initialValues, onSubmit, validationSchema } from './Core';
 import FormikControl from '../../../components/FormikComponents/FormikControl';
 import Google from '../Google';
@@ -78,14 +78,24 @@ const Login = () => {
                                             />
 
                                             <div className='pb-5'>
-                                                <button type='submit' className='w-full bg-mgreen text-white
-                                                font-medium py-2 rounded-3xl hover:bg-indigo-500 cursor-pointer'>ورود</button>
+                                                <button
+                                                    type='submit'
+                                                    className='w-full bg-mgreen text-white
+                                                    font-medium py-2 hover:bg-indigo-500 
+                                                    rounded-3xl cursor-pointer'>
+                                                    ورود
+                                                </button>
                                             </div>
 
                                         </Form>
 
                                         <div className='text-center pb-5 md:pb-0'>
-                                            <a className='text-blue-600 hover:text-rose-600 text-xs' href="/login">رمزعبور خود را فراموش کرده اید ؟</a>
+                                            <NavLink
+                                                to={"/forgot-Password"}
+                                                className='text-blue-600 hover:text-rose-600
+                                                text-xs md:text-base underline' >
+                                                رمزعبور خود را فراموش کرده اید ؟
+                                            </NavLink>
                                         </div>
                                     </div>
                                     <div className="hidden sm:block sm:col-span-1 px-20 py-20 rounded-l-2xl bg-white">

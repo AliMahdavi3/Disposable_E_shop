@@ -51,7 +51,9 @@ const BlogsSection = () => {
                     </div>
                 ) : (
                     <div className="container pb-10">
-                        <h1 className='pb-4 px-2 text-gray-700'>مقالاتی تازه نوشته شده</h1>
+                        <h1 className='pb-4 px-2 text-gray-700'>
+                            مقالات تازه نوشته شده
+                        </h1>
                         <div className="grid grid-cols-3 gap-4">
                             {
                                 currentArticles?.map((article) => (

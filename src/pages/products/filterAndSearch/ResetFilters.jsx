@@ -6,8 +6,8 @@ const ResetFilters = ({ handleResetFilters }) => {
             rounded-lg bg-white bg-opacity-50 w-full'>
             <button
                 onClick={handleResetFilters}
-                className='w-full py-2 bg-mgreen text-white font-semibold
-                rounded-xl hover:bg-violet-700'
+                className='w-full py-2 bg-mgreen text-white font-medium
+                rounded-xl hover:bg-violet-700 text-xs md:text-base'
             >
                 نمایش همه محصولات
             </button>

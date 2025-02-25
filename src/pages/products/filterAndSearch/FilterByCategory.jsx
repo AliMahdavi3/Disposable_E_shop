@@ -5,7 +5,7 @@ const FilterByCategory = ({ handleCategoryClick, categories }) => {
         <div className='px-10 py-5 box_shadow text-gray-600 rounded-lg
             bg-white bg-opacity-50 w-full'>
             <h3 className='pb-5 font-medium text-center 
-                text-lg md:text-xl text-gray-600'>
+                md:text-xl text-gray-600'>
                 دسته بندی محصولات
             </h3>
             <ul>

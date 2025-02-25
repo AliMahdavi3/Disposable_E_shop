@@ -4,7 +4,7 @@ const FilterByTags = ({ tags, handleTagClick }) => {
     return (
         <div className='px-10 py-10 flex justify-center items-center flex-col mt-2 box_shadow
             rounded-lg bg-white bg-opacity-50 w-full'>
-            <h3 className='pb-5 font-medium text-center text-lg md:text-xl text-gray-600'>
+            <h3 className='pb-5 font-medium text-center md:text-xl text-gray-600'>
                 تگ های مرتبط با محصول
             </h3>
             <div>
