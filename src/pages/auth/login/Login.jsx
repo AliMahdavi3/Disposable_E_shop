@@ -5,11 +5,9 @@ import { authModeValue, initialValues, onSubmit, validationSchema } from './Core
 import FormikControl from '../../../components/FormikComponents/FormikControl';
 import Google from '../Google';
 import useSolidNavbar from '../../../hooks/useSolidNavbar';
-import { useNavbarContext } from '../../../context/NavbarContext';
 
 const Login = () => {
 
-    const { setLoading } = useNavbarContext();
     const navigate = useNavigate();
     useSolidNavbar(true);
 
@@ -18,7 +16,7 @@ const Login = () => {
             <div className='mt-24 rounded-2xl pb-10 w-full h-fit flex justify-center'>
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={(values, actions) => onSubmit(values, actions, setLoading, navigate)}
+                    onSubmit={(values, actions) => onSubmit(values, actions, navigate)}
                     validationSchema={validationSchema}
                 >
                     {
@@ -28,8 +26,8 @@ const Login = () => {
                                     <div className="col-span-2 md:col-span-1 bg-white bg-opacity-50 pb-10 rounded-r-2xl">
                                         <div className='flex justify-between items-center px-5 md:px-10 pt-5'>
                                             <p className='text-xs text-gray-500 font-medium'>هنوز ثبت نام نکردید ؟</p>
-                                            <a href='register' className='text-xs rounded-3xl bg-gray-50 border-2 px-2 md:px-5
-                                            hover:text-indigo-500 cursor-pointer py-1'>ثبت نام</a>
+                                            <a href='register' className='text-xs bg-gray-50 border-2 px-2 md:px-5
+                                            rounded-3xl hover:text-indigo-500 cursor-pointer py-1'>ثبت نام</a>
                                         </div>
 
                                         <h3 className='px-5 md:px-10 pt-5 pb-5 md:text-lg font-medium text-gray-500'>ورود به حساب کاربری</h3>
@@ -69,7 +67,7 @@ const Login = () => {
                                             }
 
                                             <FormikControl
-                                                control="input"
+                                                control="password"
                                                 formik={formik}
                                                 type="password"
                                                 name="password"
@@ -91,7 +89,7 @@ const Login = () => {
 
                                         <div className='text-center pb-5 md:pb-0'>
                                             <NavLink
-                                                to={"/forgot-Password"}
+                                                to={"/forgot-password"}
                                                 className='text-blue-600 hover:text-rose-600
                                                 text-xs md:text-base underline' >
                                                 رمزعبور خود را فراموش کرده اید ؟

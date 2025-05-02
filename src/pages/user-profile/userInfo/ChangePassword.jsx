@@ -26,8 +26,8 @@ const ChangePassword = ({ editId }) => {
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="col-span-2 md:col-span-1">
                                             <FormikControl
+                                                control="password"
                                                 formik={formik}
-                                                control="input"
                                                 type="password"
                                                 label="رمزعبور فعلی"
                                                 placeholder="رمزعبور فعلی"
@@ -36,8 +36,8 @@ const ChangePassword = ({ editId }) => {
                                         </div>
                                         <div className="col-span-2 md:col-span-1">
                                             <FormikControl
+                                                control="password"
                                                 formik={formik}
-                                                control="input"
                                                 type="password"
                                                 label="رمزعبور جدید"
                                                 placeholder="رمزعبور جدید"

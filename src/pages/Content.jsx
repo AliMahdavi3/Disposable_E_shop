@@ -10,12 +10,15 @@ import Cart from './cart/Cart';
 import Profile from './user-profile/Profile';
 import Login from './auth/login/Login';
 import Register from './auth/register/Register';
-import CheckOut from './cart/CheckOut';
 import SingleArticle from './blog/SingleArticle';
 import ScrollToTop from '../components/ScrollToTop';
 import CategoryResultPage from './home/category/CategoryResultPage';
 import SearchResultPage from './home/search/SearchResultPage';
 import ForgotPassword from './auth/addition/ForgotPassword';
+import ResetPassword from './auth/addition/ResetPassword';
+import Redirect from './auth/addition/Redirect';
+import Checkout from './cart/order/Checkout';
+import PaymentConfirmation from './cart/order/PaymentConfirmation';
 
 
 const Content = () => {
@@ -32,14 +35,17 @@ const Content = () => {
         <Route path='/blog/:articleId' element={<SingleArticle />} />
         <Route path='/contact' element={<ContactUs />} />
         <Route path='/cart' element={<Cart />} />
-        <Route path='/checkout/:orderId' element={<CheckOut />} />
+        <Route path='/checkout/:orderId' element={<Checkout />} />
+        <Route path="/payment-confirmation" element={<PaymentConfirmation />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/search' element={<SearchResultPage />} />
         <Route path='/products/category/:category' element={<CategoryResultPage />} />
 
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/forgot-Password' element={<ForgotPassword/>} />
+        <Route path='/forgot-password' element={<ForgotPassword/>} />
+        <Route path='/reset-password/:token' element={<ResetPassword/>} />
+        <Route path='/redirect' element={<Redirect/>} />
         
         <Route path='*' element={<Home />} />
       </Routes>

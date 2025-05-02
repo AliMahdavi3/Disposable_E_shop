@@ -5,6 +5,7 @@ import { addToCartService } from '../../../services/product';
 import { Alert } from '../../../utils/alert';
 
 const AddToCartButton = ({ data, quantity, productId }) => {
+    
     const { updateCartCount } = useNavbarContext();
 
     const handleAddToCart = async () => {

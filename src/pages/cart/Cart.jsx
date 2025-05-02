@@ -10,10 +10,7 @@ const Cart = () => {
 
     return (
         <>
-            <div className="container pb-10 pt-16">
-                <h1 className="md:text-3xl text-center font-bold text-mgreen py-10">
-                    سبد خرید شما
-                </h1>
+            <div className="container mt-24">
                 <ProductsList />
             </div>
             <Footer />

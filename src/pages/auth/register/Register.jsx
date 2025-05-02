@@ -1,5 +1,5 @@
+import React from 'react'
 import { Form, Formik } from 'formik'
-import React, { useState } from 'react'
 // import Google from '../Google'
 import { useNavigate } from 'react-router-dom';
 import FormikControl from '../../../components/FormikComponents/FormikControl'
@@ -9,7 +9,6 @@ import useSolidNavbar from '../../../hooks/useSolidNavbar';
 const Register = () => {
 
   const navigate = useNavigate();
-
   useSolidNavbar(true);
 
   return (
@@ -98,7 +97,7 @@ const Register = () => {
                       />
 
                       <FormikControl
-                        control="input"
+                        control="password"
                         formik={formik}
                         type="password"
                         name="password"
@@ -107,7 +106,7 @@ const Register = () => {
                       />
 
                       <FormikControl
-                        control="input"
+                        control="password"
                         formik={formik}
                         type="password"
                         name="confirm_password"

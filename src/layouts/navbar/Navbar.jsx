@@ -10,10 +10,11 @@ import BottomNavbar from './navbarSections/mobileMenu/BottomNavbar';
 
 const Navbar = () => {
 
+  const { isSolid, cartCount } = useNavbarContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavbarScrolled, setIsNavbarScrolled] = useState(false);
-  const { isSolid, cartCount } = useNavbarContext();
   const [localCartCount, setLocalCartCount] = useState(cartCount);
+
 
   useEffect(() => {
     setLocalCartCount(cartCount);

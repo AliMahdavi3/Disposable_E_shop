@@ -39,8 +39,7 @@ const loginWithEmail = async (email, password) => {
 
 }
 
-export const onSubmit = async (values, actions, setLoading, navigate) => {
-    setLoading(true);
+export const onSubmit = async (values, actions, navigate) => {
     try {
         let response;
         if (values.auth_mode === 'phone') {
@@ -67,8 +66,6 @@ export const onSubmit = async (values, actions, setLoading, navigate) => {
             icon: "error",
             button: "متوجه شدم",
         });
-    } finally {
-        setLoading(false);
     }
 }
 
