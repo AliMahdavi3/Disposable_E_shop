@@ -27,25 +27,31 @@ const Content = () => {
     <section>
       <ScrollToTop />
       <Routes>
+
         <Route path='/' element={<Home />} />
+        <Route path='/search' element={<SearchResultPage />} />
+
         <Route path='/products' element={<Products />} />
         <Route path='/products/:productId' element={<SingleProduct />} />
-        <Route path='/about' element={<About />} />
+        <Route path='/products/category/:category' element={<CategoryResultPage />} />
+
+
         <Route path='/blog' element={<Blog />} />
         <Route path='/blog/:articleId' element={<SingleArticle />} />
+
+        <Route path='/about' element={<About />} />
         <Route path='/contact' element={<ContactUs />} />
+
         <Route path='/cart' element={<Cart />} />
         <Route path='/checkout/:orderId' element={<Checkout />} />
         <Route path="/payment-confirmation" element={<PaymentConfirmation />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/search' element={<SearchResultPage />} />
-        <Route path='/products/category/:category' element={<CategoryResultPage />} />
 
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/forgot-password' element={<ForgotPassword/>} />
         <Route path='/reset-password/:token' element={<ResetPassword/>} />
         <Route path='/redirect' element={<Redirect/>} />
+        <Route path='/profile' element={<Profile />} />
         
         <Route path='*' element={<Home />} />
       </Routes>

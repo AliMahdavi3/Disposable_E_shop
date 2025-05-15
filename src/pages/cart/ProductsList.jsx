@@ -7,7 +7,7 @@ import SpinnerLoad from '../../components/SpinnerLoad';
 import { Alert, Confirm } from '../../utils/alert';
 import AdditionalCommentBox from './order/AdditionalCommentBox';
 import OrderBox from './OrderBox';
-import ShippingAddressBox from './order/ShippingAddressBox';
+import ShippingAddressButton from './order/ShippingAddressButton';
 
 const ProductsList = () => {
 
@@ -84,18 +84,16 @@ const ProductsList = () => {
                                     additionalComment={additionalComment}
                                     shippingAddress={shippingAddress}
                                 />
+                                <ShippingAddressButton
+                                    shippingAddress={shippingAddress}
+                                    setShippingAddress={setShippingAddress}
+                                />
                             </div>
                         </div>
-                        <div>
-                            <AdditionalCommentBox
-                                additionalComment={additionalComment}
-                                setAdditionalComment={setAdditionalComment}
-                            />
-                            <ShippingAddressBox
-                                shippingAddress={shippingAddress}
-                                setShippingAddress={setShippingAddress}
-                            />
-                        </div>
+                        <AdditionalCommentBox
+                            additionalComment={additionalComment}
+                            setAdditionalComment={setAdditionalComment}
+                        />
                     </>
                 )
             }

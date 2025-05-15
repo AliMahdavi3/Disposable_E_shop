@@ -6,14 +6,10 @@ const SubmitOrderButton = ({ handleCreateOrder }) => {
             <div className='pt-3'>
                 <button
                     onClick={handleCreateOrder}
-                    className='font-bold hover:bg-violet-700 w-full
-                    py-3 bg-mgreen text-white text_shadow rounded-lg text-xl'>
+                    className='font-medium hover:bg-violet-700 w-full
+                    py-3 bg-mgreen text-white rounded-lg text-base'>
                     ادامه خرید
                 </button>
-            </div>
-
-            <div className='text-center mt-5'>
-                <a className='pt-5 text-blue-700 font-bold' href='/'>شرایط و قوانین</a>
             </div>
         </>
     )

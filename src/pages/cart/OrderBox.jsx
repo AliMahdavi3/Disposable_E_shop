@@ -36,25 +36,25 @@ const OrderBox = ({ cartItems, shippingAddress, additionalComment }) => {
 
     return (
         <>
-            <div className='py-10 px-5 lg:px-10 rounded-lg border-2 border-gray-300 w-full h-fit'>
+            <div className='py-5 px-5 lg:px-10 rounded-lg border-2 border-gray-300 w-full h-fit'>
                 <div className='flex justify-between items-center font-medium text-gray-500'>
                     <p className='flex'>
-                        <span className='me-1 text-xs lg:text-base'>
+                        <span className='me-1 text-xs lg:text-sm'>
                             {totalAmount}
                         </span>
                         <span className='text-xs lg:text-sm'>تومان</span>
                     </p>
-                    <p className='text-xs lg:text-base'>جمع کل محصولات</p>
+                    <p className='text-xs lg:text-sm'>جمع کل محصولات</p>
                 </div>
 
                 <div className='mt-3 flex justify-between items-center 
                     font-medium text-gray-500'>
                     <p className='flex'>
-                        <span className='me-1 text-xs lg:text-base'>
+                        <span className='me-1 text-xs lg:text-sm'>
                             {totalQuantity}
                         </span>
                     </p>
-                    <p className='text-xs lg:text-base'>تعداد کل محصولات</p>
+                    <p className='text-xs lg:text-sm'>تعداد کل محصولات</p>
                 </div>
 
                 <hr className="border border-gray-400 rounded-full mt-3" />
@@ -62,12 +62,12 @@ const OrderBox = ({ cartItems, shippingAddress, additionalComment }) => {
                 <div className='mt-3 flex justify-between items-center 
                     font-medium text-gray-500'>
                     <p className='flex'>
-                        <span className='me-1 text-xs lg:text-base'>
+                        <span className='me-1 text-xs lg:text-sm'>
                             {totalPrice}
                         </span>
                         <span className='text-xs lg:text-sm'>تومان</span>
                     </p>
-                    <p className='text-xs lg:text-base'>جمع مبلغ کل</p>
+                    <p className='text-xs lg:text-sm'>جمع مبلغ کل</p>
                 </div>
                 <DiscountSection />
             </div>

@@ -12,12 +12,21 @@ export const NavbarProvider = ({ children }) => {
     const [isSolid, setIsSolid] = useState(false);
 
     const fetchedCartCount = async () => {
+        const token = localStorage.getItem('token');
+        if(!token) {
+            setCartCount(0);
+            return;
+        }
         try {
             const res = await getCartCountService();
             setCartCount(res.data.count || 0);
         } catch (error) {
-            console.error('Error fetching cart count:', error);
-            Alert('خطایی رخ داده!', error.message, 'error');
+            if(error.response && error.response.status === 401) {
+                setCartCount(0);
+            } else {
+                console.log(error);
+                Alert('خطایی رخ داده!', error.message, 'error');
+            }
         }
     }
 

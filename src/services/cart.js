@@ -22,6 +22,10 @@ export const createOrderService = (data) => {
     return httpService('/api/create-order', 'post', data);
 }
 
+export const getUserOrdersService = () => {
+    return httpService('/api/orders', 'get');
+}
+
 export const getCheckoutService = (orderId) => {
     return httpService(`/api/checkout/${orderId}`, 'get');
 }
@@ -30,6 +34,7 @@ export const getPaymentRequestService = (orderId) => {
     return httpService(`/api/payment-request/${orderId}`, 'get');
 }
 
-export const getConfirmPaymentService = (data) => {
-    return httpService('/api/payment-confirmation', 'get', data);
+export const getPaymentConfirmationService = ({ Authority, Status }) => {
+    console.log('Sending API request:', { Authority, Status });
+    return httpService(`/api/payment-confirmation?Authority=${Authority}&Status=${Status}`, 'get');
 }

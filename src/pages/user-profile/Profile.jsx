@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../../components/Footer';
-import OrderHistory from './OrderHistory';
 import PaymentDetaile from './PaymentDetaile';
 import SupportOrHelp from './SupportOrHelp';
 import Logout from './Logout';
@@ -11,18 +10,22 @@ import { getUserService } from '../../services/profile';
 import UserInfo from './userInfo/UserInfo';
 import EmailConfirmation from './profile/EmailConfirmation';
 import ProfileList from './profile/ProfileList';
+import OrdersHistory from './orders/OrdersHistory';
+import OrderDetails from './orders/OrderDetails';
 
 
 const Profile = () => {
 
-    const [activeSection, setActiveSection] = useState('orderHistory');
-    const [userData, setUserData] = useState({ phone: '', });
-    const navigate = useNavigate();
     useSolidNavbar(true);
+    const navigate = useNavigate();
+    const [activeSection, setActiveSection] = useState('ordersHistory');
+    const [userData, setUserData] = useState({ phone: '', });
+    const [currentOrderId, setCurrentOrderId] = useState(null);
+
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if(!token && window.location.pathname !== '/login') {
+        if (!token && window.location.pathname !== '/login') {
             navigate('/login');
         }
     }, [navigate]);
@@ -41,8 +44,15 @@ const Profile = () => {
 
     const renderSection = () => {
         switch (activeSection) {
-            case 'orderHistory':
-                return <OrderHistory />;
+            case 'ordersHistory':
+                return (
+                    <OrdersHistory handleViewDetails={(orderId) => {
+                        setCurrentOrderId(orderId);
+                        setActiveSection('orderDetails');
+                    }} />
+                );
+            case 'orderDetails':
+                return <OrderDetails orderId={currentOrderId} />;
             case 'favorites':
                 return <Favorites />;
             case 'paymentDetails':
@@ -54,7 +64,7 @@ const Profile = () => {
             case 'logout':
                 return <Logout />;
             default:
-                return <OrderHistory />
+                return <OrdersHistory />
         }
     }
 

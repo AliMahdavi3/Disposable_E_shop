@@ -27,7 +27,7 @@ const ProfileList = ({ userData, handleSectionChange }) => {
 
             <hr className='pt-5' />
             <ul className='px-5'>
-                <ProfileListItems title={'تاریخچه سفارشات'} value={'orderHistory'} /><hr />
+                <ProfileListItems title={'تاریخچه سفارشات'} value={'ordersHistory'} /><hr />
                 <ProfileListItems title={'لیست علاقه مندی ها'} value={'favorites'} /><hr />
                 <ProfileListItems title={'جزئیات پرداخت'} value={'paymentDetails'} /><hr />
                 <ProfileListItems title={'اطلاعات حساب کاربری'} value={'userInfo'} /><hr />

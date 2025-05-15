@@ -2,22 +2,22 @@ import React from 'react'
 
 const DiscountSection = () => {
     return (
-        <div>
-            <p className='pb-10 pt-10 text-xl text-center
-                font-semibold text-yellow-400'>
-                اعمال کد تخفیف
-            </p>
+        <div className='mt-5'>
             <div className='w-full text-end mt-3'>
                 <label
                     htmlFor=""
-                    className='text-sm md:text-base font-medium text-gray-700'>
+                    className='text-xs md:text-sm font-medium text-gray-500'>
                     آیا کد تخفیف دارید ؟
                 </label>
-                <div className='flex items-center'>
+                <div className='flex justify-between items-center gap-2 mt-3
+                    text-xs md:text-sm'>
+                    <button className='bg-mgreen text-white hover:bg-violet-500
+                    rounded-md py-2 px-2 w-[25%]'>
+                        تایید کد
+                    </button>
                     <input
                         type="text"
-                        className='mt-3 py-2 text-xs md:text-base 
-                        w-full border-2 rounded-lg text-end px-2'
+                        className='py-2 px-2 w-[75%] border-2 rounded-md text-end'
                         placeholder='کد تخفیف خود را وارد کنید'
                     />
                 </div>
