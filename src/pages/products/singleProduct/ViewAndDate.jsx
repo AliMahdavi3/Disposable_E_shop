@@ -10,11 +10,11 @@ const ViewAndDate = ({ data }) => {
                 <span className='mx-3'>{data.product.views}</span>
             </div>
             <div className='flex justify-start py-2 items-center'>
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
+                <FaStar className='text-amber-500'/>
+                <FaStar className='text-amber-500'/>
+                <FaStar className='text-amber-500'/>
+                <FaStar className='text-amber-500'/>
+                <FaStar className='text-amber-500'/>
             </div>
             <div className='flex justify-start py-2 items-center'>
                 <span className='md:mx-5'>اضافه شده در تاریخ : {

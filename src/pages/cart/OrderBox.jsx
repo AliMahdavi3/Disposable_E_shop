@@ -5,11 +5,8 @@ import { Alert } from '../../utils/alert';
 import { createOrderService } from '../../services/cart';
 import { useNavigate } from 'react-router-dom';
 
-const OrderBox = ({ cartItems, shippingAddress, additionalComment }) => {
+const OrderBox = ({ cartItems, shippingAddress, additionalComment, handleFetchedCartItems }) => {
 
-    const totalAmount = cartItems && cartItems.cart && cartItems.cart.length > 0 ? cartItems.formattedPrice : '0 تومان';
-    const totalQuantity = cartItems && cartItems.cart && cartItems.cart.length > 0 ? cartItems.totalQuantity : '0';
-    const totalPrice = cartItems && cartItems.cart && cartItems.cart.length > 0 ? cartItems.formattedPrice : '0 تومان';
     const navigate = useNavigate();
 
     const handleCreateOrder = async () => {
@@ -30,7 +27,7 @@ const OrderBox = ({ cartItems, shippingAddress, additionalComment }) => {
             }
         } catch (error) {
             Alert('خطا', 'مشکلی در ثبت سفارش وجود دارد.', 'error');
-            console.error(error);
+            console.log(error);
         }
     }
 
@@ -40,7 +37,7 @@ const OrderBox = ({ cartItems, shippingAddress, additionalComment }) => {
                 <div className='flex justify-between items-center font-medium text-gray-500'>
                     <p className='flex'>
                         <span className='me-1 text-xs lg:text-sm'>
-                            {totalAmount}
+                            {cartItems?.formattedPrice || 0}
                         </span>
                         <span className='text-xs lg:text-sm'>تومان</span>
                     </p>
@@ -51,7 +48,7 @@ const OrderBox = ({ cartItems, shippingAddress, additionalComment }) => {
                     font-medium text-gray-500'>
                     <p className='flex'>
                         <span className='me-1 text-xs lg:text-sm'>
-                            {totalQuantity}
+                            {cartItems?.totalQuantity || 0}
                         </span>
                     </p>
                     <p className='text-xs lg:text-sm'>تعداد کل محصولات</p>
@@ -63,13 +60,36 @@ const OrderBox = ({ cartItems, shippingAddress, additionalComment }) => {
                     font-medium text-gray-500'>
                     <p className='flex'>
                         <span className='me-1 text-xs lg:text-sm'>
-                            {totalPrice}
+                            {cartItems?.formattedPrice || 0}
                         </span>
                         <span className='text-xs lg:text-sm'>تومان</span>
                     </p>
                     <p className='text-xs lg:text-sm'>جمع مبلغ کل</p>
                 </div>
-                <DiscountSection />
+
+                <div className='mt-3 flex justify-between items-center 
+                    font-medium text-teal-500'>
+                    <p className='flex'>
+                        <span className='me-1 text-xs lg:text-sm'>
+                            {cartItems?.formattedDiscountAmount || 0}
+                        </span>
+                        <span className='text-xs lg:text-sm'>تومان</span>
+                    </p>
+                    <p className='text-xs lg:text-sm'>مقدار تخفیف</p>
+                </div>
+
+                <div className='mt-3 flex justify-between items-center 
+                    font-medium text-teal-500'>
+                    <p className='flex'>
+                        <span className='me-1 text-xs lg:text-sm'>
+                            {cartItems?.formattedDiscountedPrice || cartItems?.formattedPrice}
+                        </span>
+                        <span className='text-xs lg:text-sm'>تومان</span>
+                    </p>
+                    <p className='text-xs lg:text-sm'>جمع مبلغ با تخفیف</p>
+                </div>
+
+                <DiscountSection handleFetchedCartItems={handleFetchedCartItems} />
             </div>
             <SubmitOrderButton handleCreateOrder={handleCreateOrder} />
         </>

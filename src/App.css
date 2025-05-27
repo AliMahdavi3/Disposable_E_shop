@@ -27,8 +27,7 @@ body {
 }
 
 .box_shadow {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 
-  0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 
 .text_shadow {
@@ -158,4 +157,19 @@ body {
 
 .animate-spin-reverse {
   animation: spin-reverse 1s linear infinite;
+}
+
+/* Cross-browser solution to hide spinners */
+input[type="number"] {
+  appearance: none;
+  /* Standardized property */
+  -moz-appearance: textfield;
+  /* Firefox-specific */
+}
+
+/* Remove spinners on Chrome, Safari, and Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

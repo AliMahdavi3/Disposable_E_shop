@@ -94,14 +94,11 @@ const PaymentConfirmation = () => {
                                     <p className="mt-2 text-gray-500 mb-4">پرداخت شما تایید شد!</p>
                                     {orderDetails ? (
                                         <div>
-                                            <DetailItem label='شناسه سفارش'
-                                                value={orderDetails.id} />
-                                            <DetailItem label='قیمت کل'
-                                                value={orderDetails.totalPrice} />
-                                            <DetailItem label='قیمت کل'
-                                                value={orderDetails.totalQuantity} />
-                                            <DetailItem label='قیمت کل'
-                                                value={orderDetails.formattedPrice} />
+                                            <DetailItem label='شناسه سفارش' value={orderDetails.id} />
+                                            <DetailItem label='قیمت کل' value={orderDetails.formattedDiscountedPrice} />
+                                            <DetailItem label="شناسه پرداخت" value={orderDetails.refId} />
+                                            <DetailItem label="شماره کارت" value={orderDetails.cardPan} />
+                                            <DetailItem label="هزینه تراکنش" value={`${orderDetails.fee / 1000} تومان`} />
                                         </div>
                                     ) : (
                                         <p>اطلاعات سفارش موجود نیست.</p>
@@ -132,14 +129,11 @@ const PaymentConfirmation = () => {
                                     </p>
                                     {orderDetails ? (
                                         <div>
-                                            <DetailItem label='شناسه سفارش'
-                                                value={orderDetails.id} />
-                                            <DetailItem label='قیمت کل'
-                                                value={orderDetails.totalPrice} />
-                                            <DetailItem label='قیمت کل'
-                                                value={orderDetails.totalQuantity} />
-                                            <DetailItem label='قیمت کل'
-                                                value={orderDetails.formattedPrice} />
+                                            <DetailItem label='شناسه سفارش' value={orderDetails.id} />
+                                            <DetailItem label='قیمت کل' value={orderDetails.formattedDiscountedPrice} />
+                                            <DetailItem label="شناسه پرداخت" value={orderDetails.refId} />
+                                            <DetailItem label="شماره کارت" value={orderDetails.cardPan} />
+                                            <DetailItem label="هزینه تراکنش" value={`${orderDetails.fee / 1000} تومان`} />
                                         </div>
                                     ) : (
                                         <p>اطلاعات سفارش موجود نیست.</p>

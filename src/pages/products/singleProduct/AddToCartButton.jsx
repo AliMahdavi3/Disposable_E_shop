@@ -22,26 +22,27 @@ const AddToCartButton = ({ data, quantity, productId }) => {
     }
 
     return (
-        <div className='px-10'>
-            {
-                <button
-                    className={`bg-mgreen flex justify-center items-center w-full 
-                    text-white py-2 font-medium rounded-lg 
-                    ${data.product.available ? 'hover:bg-violet-800' : 'disabled'}`}
-                    onClick={handleAddToCart}
-                >
-                    <span>افزودن به سبد خرید</span>
-                    <FaCartPlus className='text-lg ms-3' />
-                </button>
+        <>
+            <div className='md:px-8'>
+                {
+                    <button
+                        className={`bg-mgreen flex justify-center items-center 
+                        w-full text-white py-2 font-medium rounded-lg 
+                        ${data.product.available ? 'hover:bg-violet-800' : 'disabled'}`}
+                        onClick={handleAddToCart}
+                    >
+                        <span>افزودن به سبد</span>
+                        <FaCartPlus className='text-lg ms-3' />
+                    </button>
 
-            }
-            <button className='bg-rose-700 mt-3 flex justify-center items-center w-full py-2
+                }
+                <button className='bg-rose-700 mt-3 flex justify-center items-center w-full py-2
                 text-white font-medium rounded-lg hover:bg-violet-800'>
-                <span className='mt-1'>سوالی دارید ؟</span>
-                <FaQuestionCircle className='text-lg ms-3' />
-            </button>
-
-        </div>
+                    <span className='mt-1'>سوالی دارید ؟</span>
+                    <FaQuestionCircle className='text-lg ms-3' />
+                </button>
+            </div>
+        </>
     )
 }
 

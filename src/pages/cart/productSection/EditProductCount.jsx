@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ModalContainer from '../../../components/ModalContainer'
 import { updateCartItemQuantityService } from '../../../services/cart';
 import { Alert } from '../../../utils/alert';
+import { FaMinus, FaPlus } from 'react-icons/fa';
 
 const EditProductCount = ({ open, setOpen, currentItem, setCartItems, handleFetchedCartItems }) => {
 
@@ -27,6 +28,21 @@ const EditProductCount = ({ open, setOpen, currentItem, setCartItems, handleFetc
         setOpen(false);
     }
 
+    const increaseQuantity = () => {
+        setQuantity(quantity + 1);
+    };
+    const decreaseQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+    const handleInputChange = (e) => {
+        const value = parseInt(e.target.value, 10);
+        if (!isNaN(value) && value >= 1) {
+            setQuantity(value);
+        }
+    };
+
     return (
         <>
             {open && currentItem && (
@@ -34,29 +50,43 @@ const EditProductCount = ({ open, setOpen, currentItem, setCartItems, handleFetc
                     open={open}
                     onClose={() => setOpen(false)}
                 >
-                    <form className="container w-full">
-                        <h2 className='text-center mb-5'>ویرایش تعداد محصول</h2>
-                        <div className='w-full'>
-                            <input
-                                className='w-full py-2 rounded-md border-2 px-4'
-                                type="number"
-                                value={quantity}
-                                onChange={(e) => setQuantity(e.target.value)}
-                            />
-                        </div>
-                        <div className='flex justify-end items-center mt-3'>
-                            <button
-                                className='bg-rose-600 text-white py-2 px-3 rounded-md'
-                                onClick={() => setOpen(false)}>
-                                انصراف
-                            </button>
-                            <button
-                                className='bg-mgreen text-white py-2 px-3 rounded-md ms-4'
-                                onClick={handleOnSave}>
-                                ذخیره
-                            </button>
-                        </div>
-                    </form>
+                    <div className="flex items-center justify-center my-5">
+                        <button
+                            className="bg-white text-amber-500 p-2 rounded-md
+                            border-2 border-amber-500"
+                            onClick={decreaseQuantity}
+                        >
+                            <FaMinus />
+                        </button>
+                        <input
+                            type="number"
+                            value={quantity}
+                            onChange={handleInputChange}
+                            className="w-full py-1 text-center rounded text-amber-500 
+                            border-y-2 border-amber-500"
+                        />
+                        <button
+                            className="bg-white text-amber-500 p-2 rounded-md
+                            border-2 border-amber-500"
+                            onClick={increaseQuantity}
+                        >
+                            <FaPlus />
+                        </button>
+                    </div>
+                    <div className='flex justify-end items-center'>
+                        <button
+                            className='bg-rose-600 text-white text-xs md:text-sm
+                            py-2 px-3 rounded-md'
+                            onClick={() => setOpen(false)}>
+                            انصراف
+                        </button>
+                        <button
+                            className='bg-mgreen text-white text-xs md:text-sm
+                            py-2 px-3 rounded-md ms-4'
+                            onClick={handleOnSave}>
+                            ذخیره
+                        </button>
+                    </div>
                 </ModalContainer>
             )}
         </>

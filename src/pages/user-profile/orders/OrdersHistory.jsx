@@ -3,9 +3,11 @@ import { getUserOrdersService } from '../../../services/cart';
 import { Alert } from '../../../utils/alert';
 import { convertDateToJalali } from '../../../utils/convertDate';
 import { apiPath } from '../../../services/httpService';
+import { useNavigate } from 'react-router-dom';
 
 const OrdersHistory = ({ handleViewDetails }) => {
     const [userOrders, setUserOrders] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleFetchUserOrders = async () => {
@@ -22,6 +24,12 @@ const OrdersHistory = ({ handleViewDetails }) => {
         handleFetchUserOrders();
     }, []);
 
+    const handleGoToCheckout = (o) => {
+        navigate(`/checkout/${o._id}`)
+        return;
+    }
+
+
     return (
         <div className='my-5'>
             {
@@ -29,7 +37,7 @@ const OrdersHistory = ({ handleViewDetails }) => {
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                         {userOrders.map((o) => (
                             <div key={o._id} className='font-medium text-xs
-                                            border-2 rounded-lg p-4 text-gray-500'>
+                                border-2 rounded-lg p-4 text-gray-500'>
                                 <h2 className='text-mgreen mb-2'>
                                     سفارش شناسه: {o._id}
                                 </h2>
@@ -69,13 +77,25 @@ const OrdersHistory = ({ handleViewDetails }) => {
                                             </span>
                                         )}
                                     </p>
-                                    <button
-                                        className='bg-mgreen text-white rounded-md 
+                                    {
+                                        o.status === 'Pending' ? (
+                                            <button
+                                                className='bg-mgreen text-white rounded-md 
                                                     px-4 py-2 text-xs'
-                                        onClick={() => handleViewDetails(o._id)}
-                                    >
-                                        جزئیات بیشتر...
-                                    </button>
+                                                onClick={()=>handleGoToCheckout(o)}
+                                            >
+                                                پرداخت
+                                            </button>
+                                        ) : (
+                                            <button
+                                                className='bg-amber-500 text-white rounded-md 
+                                                    px-4 py-2 text-xs'
+                                                onClick={() => handleViewDetails(o._id)}
+                                            >
+                                                جزئیات بیشتر...
+                                            </button>
+                                        )
+                                    }
                                 </div>
                             </div>
                         ))}

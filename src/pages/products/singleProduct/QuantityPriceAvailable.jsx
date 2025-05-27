@@ -1,20 +1,48 @@
 import React from 'react'
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const QuantityPriceAvailable = ({ quantity, setQuantity, data }) => {
+    const increaseQuantity = () => {
+        setQuantity(quantity + 1);
+    };
+    const decreaseQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+    const handleInputChange = (e) => {
+        const value = parseInt(e.target.value, 10);
+        if (!isNaN(value) && value >= 1) {
+            setQuantity(value);
+        }
+    };
     return (
-        <div className='flex justify-between md:flex-row flex-col items-center py-10 px-10'>
+        <div className='flex justify-between items-center md:flex-row flex-col py-10 px-10'>
+            <div className="flex items-center justify-center md:justify-start mb-5">
+                <button
+                    className="bg-white text-amber-500 p-1 md:p-2 rounded-md
+                    border-2 border-amber-500"
+                    onClick={decreaseQuantity}
+                >
+                    <FaMinus />
+                </button>
+                <input
+                    type="number"
+                    value={quantity}
+                    onChange={handleInputChange}
+                    className="w-[25%] md:py-1 text-center rounded text-amber-500 
+                    border-y-2 border-amber-500"
+                />
+                <button
+                    className="bg-white text-amber-500 p-1 md:p-2 rounded-md
+                    border-2 border-amber-500"
+                    onClick={increaseQuantity}
+                >
+                    <FaPlus />
+                </button>
+            </div>
 
-            <input
-                type="number"
-                value={quantity}
-                onChange={(e) => setQuantity(Number(e.target.value))}
-                placeholder='تعداد محصول'
-                min='1'
-                className='rounded-lg box_shadow mb-5 bg-opacity-50 
-                text-start px-3 text-xs py-2 md:w-[25%]'
-            />
-
-            <span className='text-xs mb-5'>در انبار :
+            <span className='text-xs md:text-sm mb-5'>در انبار :
                 {
                     data.product.available ? (
                         <span className='font-medium text-green-800'>موجود است</span>
@@ -24,7 +52,7 @@ const QuantityPriceAvailable = ({ quantity, setQuantity, data }) => {
                 }
             </span>
 
-            <p className='flex items-center mb-5 '>
+            <p className='flex items-center mb-5 text-gray-500'>
                 <span className='mx-2 font-medium text-xs lg:text-xl'>
                     {data.product.price}
                 </span>

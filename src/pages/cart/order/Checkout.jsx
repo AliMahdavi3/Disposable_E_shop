@@ -71,16 +71,16 @@ const Checkout = () => {
                                         </h2>
                                         <div className='text-gray-500'>
                                             <DetailItem label='شناسه سفارش'
-                                                value={orderDetails.id} />
+                                                value={orderDetails?.id} />
                                             <DetailItem label='تاریخ ثبت سفارش'
-                                                value={convertDateToJalali(orderDetails.createdAt)} />
+                                                value={convertDateToJalali(orderDetails?.createdAt)} />
                                             <DetailItem label='وضعیت سفارش'
-                                                value={orderDetails.status} />
+                                                value={orderDetails?.status} />
                                             <DetailItem label='آدرس سفارش'
-                                                value={orderDetails.shippingAddress} />
-                                            {orderDetails.additionalComment ? (
+                                                value={orderDetails?.shippingAddress} />
+                                            {orderDetails?.additionalComment ? (
                                                 <DetailItem label="توضیحات اضافه"
-                                                    value={orderDetails.additionalComment} />
+                                                    value={orderDetails?.additionalComment} />
                                             ) : (
                                                 <p>
                                                     هیچ توضیحی برای این سفارش وجود ندارد!
@@ -122,17 +122,17 @@ const Checkout = () => {
                                             جمع کل
                                         </h2>
                                         <DetailItem label="تعداد کل محصولات"
-                                            value={orderDetails.totalQuantity} />
-                                        <DetailItem label="IRT"
-                                            value={orderDetails.formattedPrice} />
-                                        <DetailItem label="جمع کل مبلغ به تومان"
-                                            value={orderDetails.totalPrice} />
+                                            value={orderDetails?.totalQuantity} />
+                                        <div className='text-xl mt-2'>
+                                            <DetailItem label="مبلغ قابل پرداخت به تومان"
+                                                value={orderDetails?.formattedDiscountedPrice || orderDetails?.formattedPrice} />
+                                        </div>
                                     </div>
 
-                                    <div className="mt-5">
+                                    <div className="w-full my-5">
                                         <button
-                                            className="bg-mgreen text-white 
-                                            font-medium py-2 px-4 rounded-lg hover:bg-violet-600"
+                                            className="bg-mgreen text-white w-full
+                                            font-medium py-4 px-4 rounded-lg hover:bg-violet-600"
                                             onClick={handlePaymentRequest}
                                         >
                                             پرداخت

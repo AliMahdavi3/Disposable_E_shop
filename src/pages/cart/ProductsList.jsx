@@ -24,6 +24,7 @@ const ProductsList = () => {
             const res = await getCartItemsService();
             if (res.status === 200) {
                 setCartItems(res.data);
+                console.log(res.data);
             }
         } catch (error) {
             console.error(error);
@@ -83,6 +84,7 @@ const ProductsList = () => {
                                     cartItems={cartItems}
                                     additionalComment={additionalComment}
                                     shippingAddress={shippingAddress}
+                                    handleFetchedCartItems={handleFetchedCartItems}
                                 />
                                 <ShippingAddressButton
                                     shippingAddress={shippingAddress}

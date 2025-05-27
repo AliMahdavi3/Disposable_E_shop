@@ -29,7 +29,6 @@ const ProfileList = ({ userData, handleSectionChange }) => {
             <ul className='px-5'>
                 <ProfileListItems title={'تاریخچه سفارشات'} value={'ordersHistory'} /><hr />
                 <ProfileListItems title={'لیست علاقه مندی ها'} value={'favorites'} /><hr />
-                <ProfileListItems title={'جزئیات پرداخت'} value={'paymentDetails'} /><hr />
                 <ProfileListItems title={'اطلاعات حساب کاربری'} value={'userInfo'} /><hr />
                 <ProfileListItems title={'پشتیبانی/راهنمایی'} value={'support'} /><hr />
                 <ProfileListItems title={'خروج'} value={'logout'} /><hr />

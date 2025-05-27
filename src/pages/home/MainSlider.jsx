@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { getMainSliderService } from '../../services/home';
 import { apiPath } from '../../services/httpService';
@@ -7,6 +7,7 @@ const MainSlider = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const [data, setData] = useState([]);
+    const autoplayInterval = 3000;
 
     useEffect(() => {
         const handleGetMainSlider = async () => {
@@ -23,12 +24,21 @@ const MainSlider = () => {
         handleGetMainSlider();
     }, []);
 
-    const goToSlide = (index) => {
+    const goToSlide = useCallback((index) => {
         setCurrentIndex((index + data.length) % data.length);
-    };
+    }, [data.length]);
 
-    const prevSlide = () => goToSlide(currentIndex - 1);
-    const nextSlide = () => goToSlide(currentIndex + 1);
+    const prevSlide = useCallback(() => goToSlide(currentIndex - 1), [currentIndex, goToSlide]);
+    const nextSlide = useCallback(() => goToSlide(currentIndex + 1), [currentIndex, goToSlide]);
+
+    // Autoplay functionality
+    useEffect(() => {
+        const timer = setInterval(() => {
+            nextSlide(); // Automatically move to the next slide
+        }, autoplayInterval);
+
+        return () => clearInterval(timer); // Cleanup the timer when the component unmounts
+    }, [nextSlide]); // Re-run the interval when nextSlide changes
 
 
     return (

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../../components/Footer';
-import PaymentDetaile from './PaymentDetaile';
 import SupportOrHelp from './SupportOrHelp';
 import Logout from './Logout';
 import { useNavigate } from 'react-router-dom';
@@ -55,8 +54,6 @@ const Profile = () => {
                 return <OrderDetails orderId={currentOrderId} />;
             case 'favorites':
                 return <Favorites />;
-            case 'paymentDetails':
-                return <PaymentDetaile />;
             case 'userInfo':
                 return <UserInfo />;
             case 'support':

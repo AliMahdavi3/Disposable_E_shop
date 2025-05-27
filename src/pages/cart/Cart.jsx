@@ -3,11 +3,8 @@ import Footer from '../../components/Footer'
 import ProductsList from './ProductsList';
 import useSolidNavbar from '../../hooks/useSolidNavbar';
 
-
 const Cart = () => {
-
     useSolidNavbar(true);
-
     return (
         <>
             <div className="container mt-24">

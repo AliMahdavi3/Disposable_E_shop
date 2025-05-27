@@ -16,8 +16,12 @@ export const deleteItemsFromCartService = (productId) => {
     return httpService(`/api/cart/${productId}`, 'delete');
 }
 
-// Order services
+// Discount section
+export const applyDiscountService = (data) => {
+    return httpService('/api/apply-discount', 'post', data);
+}
 
+// Order services
 export const createOrderService = (data) => {
     return httpService('/api/create-order', 'post', data);
 }
