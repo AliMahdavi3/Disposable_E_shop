@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
-import { Alert } from '../../../../utils/alert';
 import { changePasswordService } from '../../../../services/profile';
+import { Alert } from '../../../../utils/sweetalert2';
 
 
 export const initialValues = {

@@ -4,10 +4,10 @@ import TableTitles from './productSection/TableTitles';
 import ProductsSection from './productSection/ProductsSection';
 import { deleteItemsFromCartService, getCartItemsService } from '../../services/cart';
 import SpinnerLoad from '../../components/SpinnerLoad';
-import { Alert, Confirm } from '../../utils/alert';
 import AdditionalCommentBox from './order/AdditionalCommentBox';
 import OrderBox from './OrderBox';
 import ShippingAddressButton from './order/ShippingAddressButton';
+import { Alert, Confirm } from '../../utils/sweetalert2';
 
 const ProductsList = () => {
 
@@ -38,7 +38,7 @@ const ProductsList = () => {
     }, []);
 
     const handleDeleteItemFromCart = async (productId) => {
-        if (await Confirm('حذف محصول از سبد خرید!', 'آیا از حذف محصول مطمئن هستید ؟')) {
+        if (await Confirm('حذف محصول از سبد خرید!', 'آیا از حذف محصول مطمئن هستید ؟', 'question')) {
             try {
                 const res = await deleteItemsFromCartService(productId);
                 if (res.status === 200) {

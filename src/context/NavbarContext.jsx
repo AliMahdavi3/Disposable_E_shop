@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
 import { getCartCountService } from "../services/cart";
-import { Alert } from "../utils/alert";
+import { Alert } from "../utils/sweetalert2";
 
 const NavbarContext = createContext();
 export const useNavbarContext = () => useContext(NavbarContext);

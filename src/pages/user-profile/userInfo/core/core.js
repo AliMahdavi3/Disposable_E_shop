@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { editUserInfoService } from '../../../../services/profile';
-import { Alert } from '../../../../utils/alert';
+import { Alert } from '../../../../utils/sweetalert2';
 
 export const initialValues = {
     name: '',

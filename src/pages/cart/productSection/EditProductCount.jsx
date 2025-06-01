@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import ModalContainer from '../../../components/ModalContainer'
 import { updateCartItemQuantityService } from '../../../services/cart';
-import { Alert } from '../../../utils/alert';
 import { FaMinus, FaPlus } from 'react-icons/fa';
+import { Alert } from '../../../utils/sweetalert2';
 
 const EditProductCount = ({ open, setOpen, currentItem, setCartItems, handleFetchedCartItems }) => {
 

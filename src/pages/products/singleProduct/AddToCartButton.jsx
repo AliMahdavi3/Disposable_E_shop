@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavbarContext } from '../../../context/NavbarContext';
 import { FaCartPlus, FaQuestionCircle } from 'react-icons/fa';
 import { addToCartService } from '../../../services/product';
-import { Alert } from '../../../utils/alert';
+import { Alert } from '../../../utils/sweetalert2';
 
 const AddToCartButton = ({ data, quantity, productId }) => {
     

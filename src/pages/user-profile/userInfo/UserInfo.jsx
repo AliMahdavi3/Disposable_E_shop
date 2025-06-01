@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { initialValues } from './core/core';
 import { getUserService } from '../../../services/profile';
-import { Alert } from '../../../utils/alert';
 import DisplayUserInfo from './DisplayUserInfo';
 import ChangePassword from './ChangePassword';
 import EditUser from './EditUser';
+import { Alert } from '../../../utils/sweetalert2';
 
 const UserInfo = () => {
 
@@ -24,7 +24,7 @@ const UserInfo = () => {
             }
         } catch (error) {
             console.log(error);
-            Alert('خطا!', 'محصول موردنظر یافت نشد!', 'warning')
+            Alert('خطا!', error.message, 'warning')
         }
     }
 

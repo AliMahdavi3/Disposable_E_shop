@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Alert } from '../../../utils/alert';
 import { applyDiscountService } from '../../../services/cart';
+import { Alert } from '../../../utils/sweetalert2';
 
 const DiscountSection = ({ handleFetchedCartItems }) => {
 

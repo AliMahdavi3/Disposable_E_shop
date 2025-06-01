@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Alert, Confirm } from '../../../utils/alert';
 import ProductCard from '../../../components/cardComponents/ProductCard';
 import Pagination from '../../../components/Pagination';
 import { deleteFavoritesService, getFavoritesService } from '../../../services/profile';
+import { Alert, Confirm } from '../../../utils/sweetalert2';
 
 const Favorites = () => {
 
@@ -43,7 +43,7 @@ const Favorites = () => {
     }, [currentPage, data, numOfPage])
 
     const handleRemoveFavorite = async (productId) => {
-        const confirmDelete = await Confirm("آیا مطمئن هستید؟", "حذف محصول از لیست!");
+        const confirmDelete = await Confirm("آیا مطمئن هستید؟", "حذف محصول از لیست!", 'question');
         if (confirmDelete) {
             try {
                 const res = await deleteFavoritesService(productId);

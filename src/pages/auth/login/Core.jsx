@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
-import swal from 'sweetalert';
 import axios from 'axios';
+import { Alert } from '../../../utils/sweetalert2';
 
 export const initialValues = {
     email: "",
@@ -49,23 +49,12 @@ export const onSubmit = async (values, actions, navigate) => {
         }
 
         localStorage.setItem('token', response.token);
-
-        await swal({
-            title: "عملیات موفقیت آمیز بود",
-            text: "شما وارد شدید!",
-            icon: "success",
-            button: "متوجه شدم",
-        });
+        await Alert('عملیات موفقیت آمیز بود!', 'شما وارد شدید', 'success')
         navigate('/');
 
     } catch (error) {
         console.log(error.message);
-        await swal({
-            title: "خطایی رخ داده است",
-            text: error.message,
-            icon: "error",
-            button: "متوجه شدم",
-        });
+        Alert('خطایی رخ داده است!', error.message, 'error');
     }
 }
 

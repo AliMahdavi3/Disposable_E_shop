@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 import axios from 'axios';
-import swal from 'sweetalert';
+import { Alert } from '../../../utils/sweetalert2';
 
 
 export const initialValues = {
@@ -19,39 +19,19 @@ export const initialValues = {
 export const onSubmit = async (values, actions, navigate) => {
     // console.log(values);
     const { confirm_password, ...dataToSend } = values;
-
     try {
-
         const response = await axios.post('http://localhost:4000/auth/register', dataToSend);
-
         if (response.status === 201) {
             console.log(response);
-
-            await swal({
-                title: "عملیات موفقیت آمیز بود",
-                text: "ثبت نام انجام شد!",
-                icon: "success",
-                button: "متوجه شدم",
-            });
+            Alert('عملیات موفقیت آمیز بود!', 'ثبت نام انجام شد', 'success');
             navigate('/login');
 
         } else {
-
-            await swal({
-                title: "خطایی از سمت سرور رخ داده!",
-                text: "404",
-                icon: "warning",
-                button: "متوجه شدم",
-            });
+            Alert('خطایی سمت سرور رخ داده است!', '404', 'warning');
         }
     } catch (error) {
         console.log(error.message);
-        await swal({
-            title: "خطایی رخ داده است",
-            text: error.message,
-            icon: "error",
-            button: "متوجه شدم",
-        });
+        Alert('خطایی رخ داده است!', error.message, 'error');
     }
 }
 

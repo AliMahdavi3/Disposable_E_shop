@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import useSolidNavbar from '../../../hooks/useSolidNavbar';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Alert } from '../../../utils/alert';
 import { getPaymentConfirmationService } from '../../../services/cart';
 import SpinnerLoad from '../../../components/SpinnerLoad';
 import { FaCheck, FaRedoAlt, FaTimes } from "react-icons/fa";
+import { Alert } from '../../../utils/sweetalert2';
 
 const PaymentConfirmation = () => {
     const [searchParams] = useSearchParams();

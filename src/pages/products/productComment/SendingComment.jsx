@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaStar } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { createProductCommentService } from '../../../services/product';
-import { Alert } from '../../../utils/alert';
+import { Alert } from '../../../utils/sweetalert2';
 
 const SendingComment = ({ productId, setRating, fetchComments, rating, handleRating }) => {
 

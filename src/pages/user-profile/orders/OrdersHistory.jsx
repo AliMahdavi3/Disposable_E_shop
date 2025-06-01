@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { getUserOrdersService } from '../../../services/cart';
-import { Alert } from '../../../utils/alert';
 import { convertDateToJalali } from '../../../utils/convertDate';
 import { apiPath } from '../../../services/httpService';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from '../../../utils/sweetalert2';
 
 const OrdersHistory = ({ handleViewDetails }) => {
     const [userOrders, setUserOrders] = useState([]);

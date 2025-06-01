@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { convertDateToJalali } from '../../../utils/convertDate';
 import { apiPath } from '../../../services/httpService';
 import { getCheckoutService } from '../../../services/cart';
-import { Alert } from '../../../utils/alert';
+import { Alert } from '../../../utils/sweetalert2';
 
 const OrderDetails = ({ orderId }) => {
 

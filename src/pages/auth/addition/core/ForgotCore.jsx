@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 import axios from 'axios';
-import { Alert } from '../../../../utils/alert';
+import { Alert } from '../../../../utils/sweetalert2';
 
 export const initialValues = {
     email: "",

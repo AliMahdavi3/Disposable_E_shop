@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 import { createNewTicketService } from '../../../../services/contactUs';
-import { Alert } from '../../../../utils/alert';
+import { Alert } from '../../../../utils/sweetalert2';
 
 
 export const initialValues = {

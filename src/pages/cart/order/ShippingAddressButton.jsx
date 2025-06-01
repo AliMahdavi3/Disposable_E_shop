@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ModalContainer from '../../../components/ModalContainer'
-import { Alert } from '../../../utils/alert';
+import { Alert } from '../../../utils/sweetalert2';
 
 const ShippingAddressButton = ({ shippingAddress, setShippingAddress }) => {
 

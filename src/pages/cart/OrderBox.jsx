@@ -1,9 +1,9 @@
 import React from 'react'
 import DiscountSection from './actions/DiscountSection';
 import SubmitOrderButton from './order/SubmitOrderButton';
-import { Alert } from '../../utils/alert';
 import { createOrderService } from '../../services/cart';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from '../../utils/sweetalert2';
 
 const OrderBox = ({ cartItems, shippingAddress, additionalComment, handleFetchedCartItems }) => {
 

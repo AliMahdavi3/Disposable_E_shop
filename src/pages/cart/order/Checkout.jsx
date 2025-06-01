@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { getCheckoutService, getPaymentRequestService } from '../../../services/cart';
-import { Alert } from '../../../utils/alert';
 import SpinnerLoad from '../../../components/SpinnerLoad';
 import useSolidNavbar from '../../../hooks/useSolidNavbar';
 import { apiPath } from '../../../services/httpService';
 import { convertDateToJalali } from '../../../utils/convertDate';
+import { Alert } from '../../../utils/sweetalert2';
 
 
 const Checkout = () => {

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaStar } from 'react-icons/fa';
 import { useNavigate, useParams } from 'react-router-dom';
-import swal from 'sweetalert';
+import { Alert } from '../../utils/sweetalert2';
 
 const ArticleComments = () => {
 
@@ -75,26 +75,14 @@ const ArticleComments = () => {
                 commentData,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-
-            await swal({
-                title: "عملیات موفقیت آمیز بود",
-                text: "نظر شما ارسال شد!",
-                icon: "success",
-                button: "متوجه شدم",
-            });
-
+            Alert('عملیات موفقیت آمیز بود', 'نظر شما ارسال شد!', 'success');
             fetchComments();
             setNewComment('');
             setRating(0);
 
         } catch (error) {
             console.error('Error submitting comment:', error);
-            swal({
-                title: "خطایی رخ داده است",
-                text: error.response?.data?.message || error.message,
-                icon: "error",
-                button: "متوجه شدم",
-            });
+            Alert('خطایی رخ داده است', error.message, 'error');
         }
     };
 
