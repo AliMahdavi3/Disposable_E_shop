@@ -24,8 +24,14 @@ export const createNewTicketService = (data) => {
     return httpService('/api/ticket', 'post', formData, 'multipart/form-data');
 }
 
-// router.get('/tickets', authenticate, ticketsControllers.getAllTickets);
-// router.post('/ticket', authenticate, upload.array('image', 5), ticketsControllers.createTicket);
-// router.get('/tickets/:ticketId', authenticate, ticketsControllers.getSingleTicket);
-// router.put('/tickets/:ticketId', authenticate, upload.array('image', 5), ticketsControllers.updateTicket);
-// router.delete('/tickets/:ticketId', authenticate, ticketsControllers.deleteTicket);
+export const getUserAllTicketsService = () => {
+    return httpService('/api/user-tickets', 'get');
+}
+
+export const getSingleTicketService = (ticketId) => {
+    return httpService(`/api/tickets/${ticketId}`, 'get');
+}
+
+export const respondToTicketService = (ticketId, data) => {
+    return httpService(`/api/tickets/${ticketId}/respond`, 'post', data);
+};

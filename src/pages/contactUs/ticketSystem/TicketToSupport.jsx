@@ -29,6 +29,9 @@ const TicketToSupport = () => {
                 name: userData.name || '',
                 email: userData.email || '',
                 phone: userData.phone || '',
+                subject: "",
+                description: "",
+                image: [],
             });
         }
     }, [userData]);
@@ -109,8 +112,8 @@ const TicketToSupport = () => {
                                 type='submit'
                                 className={`w-1/3 mt-3 rounded-full text-white bg-blue-600
                                 font-medium bg-opacity-60 text-sm hover:bg-violet-700 py-3
-                                ${!formik.values.subject || !formik.values.description ? 
-                                "disabled" : null}`}
+                                ${!formik.values.subject || !formik.values.description ?
+                                        "disabled" : null}`}
                             >
                                 ارسال پیام
                             </button>
