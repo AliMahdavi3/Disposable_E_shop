@@ -44,7 +44,7 @@ const Favorites = () => {
 
     const handleRemoveFavorite = async (productId) => {
         const confirmDelete = await Confirm("آیا مطمئن هستید؟", "حذف محصول از لیست!", 'question');
-        if (confirmDelete) {
+        if (confirmDelete.isConfirmed) {
             try {
                 const res = await deleteFavoritesService(productId);
                 if (res.status === 200) {
@@ -71,7 +71,10 @@ const Favorites = () => {
                         />
                     )) : (
                         <div className='col-span-3 flex flex-col justify-center items-center mt-10'>
-                            <img className='w-[25%]' src="/assets/images/profile/favorites.png" alt="" />
+                            <img className='w-[25%] border-4 rounded-full'
+                                src="/assets/images/profile/favorites.png"
+                                alt="orders"
+                            />
                             <p className='mt-2 text-xs md:text-lg font-medium text-rose-500'>
                                 هنوز محصولی به لیست اضافه نکرده اید!
                             </p>

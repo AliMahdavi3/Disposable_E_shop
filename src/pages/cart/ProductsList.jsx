@@ -38,7 +38,8 @@ const ProductsList = () => {
     }, []);
 
     const handleDeleteItemFromCart = async (productId) => {
-        if (await Confirm('حذف محصول از سبد خرید!', 'آیا از حذف محصول مطمئن هستید ؟', 'question')) {
+        const confirmDelete = await Confirm('حذف محصول از سبد خرید!', 'آیا از حذف محصول مطمئن هستید ؟', 'question');
+        if (confirmDelete.isConfirmed) {
             try {
                 const res = await deleteItemsFromCartService(productId);
                 if (res.status === 200) {

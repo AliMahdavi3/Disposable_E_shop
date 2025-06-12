@@ -4,6 +4,7 @@ import { Alert, Confirm } from '../../utils/sweetalert2';
 
 const Logout = () => {
     const navigate = useNavigate();
+    
     useEffect(() => {
         const handleLogout = async () => {
             const confirmLogout = await Confirm('آیا مطمئن هستید؟', 'شما میخواهید خارج شوید!', 'question');
