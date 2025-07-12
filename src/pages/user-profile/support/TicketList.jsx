@@ -7,20 +7,24 @@ const TicketList = ({ data, handleViewTicket }) => {
                 data?.length > 0 ? (
                     <ul>
                         <li className='flex justify-between items-center py-2 border-b
-                            text-amber-500 text-xs'>
+                            text-amber-500 text-xs md:text-sm'>
                             <span className='w-[20%]'>موضوع</span>
                             <span className='w-[50%]'>توضیحات</span>
                         </li>
                         {
                             data?.map((t, index) => (
-                                <li key={index} className='border-b py-3 flex justify-between items-center
-                                    text-sm text-gray-500'>
-                                    <span className='w-[20%] line-clamp-1 truncate'>{t.subject}</span>
-                                    <span className='w-[50%] line-clamp-1 truncate'>{t.description}</span>
+                                <li key={index} className='border-b py-3 flex justify-between 
+                                    items-center text-gray-500 text-xs md:text-sm'>
+                                    <span className='w-[20%] line-clamp-1 truncate'>
+                                        {t.subject}
+                                    </span>
+                                    <span className='w-[50%] line-clamp-1 truncate'>
+                                        {t.description}
+                                    </span>
                                     <button
                                         onClick={() => handleViewTicket(t._id)}
                                         className='bg-mgreen text-white px-2 py-1
-                                        rounded-md text-sm'
+                                        rounded-md text-xs md:text-sm'
                                     >
                                         مشاهده
                                     </button>

@@ -13,7 +13,7 @@ const Textarea = ({ name, label, placeholder, cols, rows, className }) => {
             </label>
 
             <FastField
-                className={`w-full ${className} scrollbar_hidden
+                className={`w-full ${className} scrollbar_hidden text-xs md:text-sm
                 placeholder:italic mb-3 placeholder:text-xs text-gray-700 placeholder:px-1`}
                 as="textarea"
                 placeholder={placeholder}

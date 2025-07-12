@@ -88,7 +88,6 @@ const OrderBox = ({ cartItems, shippingAddress, additionalComment, handleFetched
                     </p>
                     <p className='text-xs lg:text-sm'>جمع مبلغ با تخفیف</p>
                 </div>
-
                 <DiscountSection handleFetchedCartItems={handleFetchedCartItems} />
             </div>
             <SubmitOrderButton handleCreateOrder={handleCreateOrder} />

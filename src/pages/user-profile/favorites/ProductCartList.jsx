@@ -18,12 +18,12 @@ const ProductCartList = ({ product, handleRemoveFavorite }) => {
             </span>
             {
                 product.available ? (
-                    <span className='font-medium text-xs 
+                    <span className='hidden md:flex font-medium text-xs 
                         md:text-sm text-green-800'>
                         موجود است
                     </span>
                 ) : (
-                    <span className='font-medium text-xs 
+                    <span className='hidden md:flex font-medium text-xs 
                         md:text-sm text-rose-600'>
                         موجود نیست
                     </span>

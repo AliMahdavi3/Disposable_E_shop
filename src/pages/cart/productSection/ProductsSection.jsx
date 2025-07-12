@@ -6,7 +6,7 @@ const ProductsSection = ({ setOpen, cartItems, setCurrentItem, handleDeleteItemF
 
     return (
         <>
-            <div className='max-h-96 overflow-y-auto'>
+            <div className='max-h-96 overflow-y-auto scrollbar_hidden'>
                 {Array.isArray(cartItems) && cartItems.length > 0 ? (
                     cartItems.map((item, index) => (
                         <div
@@ -19,13 +19,14 @@ const ProductsSection = ({ setOpen, cartItems, setCurrentItem, handleDeleteItemF
                                 src={`${apiPath}/${item.product.imageUrl[0]}`}
                                 alt=""
                             />
-                            <span className="text-gray-500 font-medium">
+                            <span className="text-gray-500 font-medium text-xs md:text-sm">
                                 {item.product.title}
                             </span>
-                            <p className='text-xs md:text-base font-medium text-gray-500'>
+                            <p className='text-xs md:text-sm font-medium text-gray-500'>
                                 {item.product.price}
                             </p>
-                            <p className='md:ms-5 text-center font-medium text-gray-500'>
+                            <p className='md:ms-5 text-center font-medium text-gray-500 
+                                text-xs md:text-sm'>
                                 {item.quantity}
                             </p>
                             <div className='md:me-3 flex items-center'>

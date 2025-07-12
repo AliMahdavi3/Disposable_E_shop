@@ -6,12 +6,13 @@ const CreateTicket = ({ setCreateTicketModal, createTicketModal }) => {
     return (
         <>
             <div className='flex justify-between items-center border-b-2 border-mgreen pb-3'>
-                <button className='text-sm text-gray-500'>
+                <p className='text-xs md:text-sm text-gray-500'>
                     پشتیبانی / راهنمایی
-                </button>
+                </p>
                 <button onClick={() => setCreateTicketModal(true)}
-                    className='py-2 px-5 bg-mgreen text-white font-medium text-sm rounded-md'>
-                    ارسال تیکت به پشتیبانی
+                    className='py-2 px-5 bg-mgreen text-white font-medium
+                    text-xs md:text-sm rounded-md'>
+                    ارسال تیکت
                 </button>
             </div>
 

@@ -10,8 +10,8 @@ export const onSubmit = async (values, actions, ticketId, setTicket) => {
     try {
         const res = await respondToTicketService(ticketId, values);
         if (res.status === 200) {
-            Alert('موفقیت!', 'پاسخ شما با موفقیت ثبت شد.', 'success');
             setTicket(res.data.ticket);
+            await Alert('موفقیت!', 'پاسخ شما با موفقیت ثبت شد.', 'success');
             actions.resetForm();
         }
     } catch (error) {

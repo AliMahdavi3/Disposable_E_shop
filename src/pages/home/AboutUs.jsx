@@ -36,9 +36,9 @@ const AboutUs = () => {
                                 یاز، و کاربردهای متنوع با هدف بهبو
                             </p>
                             <div className='flex justify-end items-center'>
-                                <a className='px-4' href="/">
+                                <a className='px-4' href="/about">
                                     <button className='text-xs md:text-base px-2 md:mt-5
-                                    rounded-md bg-mgreen text-white font-medium py-2'>
+                                        rounded-md bg-mgreen text-white font-medium py-2'>
                                         بیشتر بدانید
                                     </button>
                                 </a>

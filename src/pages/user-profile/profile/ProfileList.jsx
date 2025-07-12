@@ -7,8 +7,8 @@ const ProfileList = ({ userData, handleSectionChange }) => {
         return (
             <li
                 onClick={() => handleSectionChange(value)}
-                className='cursor-pointer hover:text-mgreen py-5 
-                font-medium text-gray-700'>
+                className='cursor-pointer md:hover:text-mgreen py-5 
+                font-medium text-gray-500 text-xs md:text-base'>
                 {title}
             </li>
         )
@@ -17,11 +17,17 @@ const ProfileList = ({ userData, handleSectionChange }) => {
     return (
         <div className="col-span-7 h-fit w-full lg:col-span-2 rounded-lg border-2">
             <div className='px-5 py-5'>
-                <h6 className='pb-5 font-medium text-mblack'>{userData.name}</h6>
+                <h6 className='pb-5 font-medium text-gray-500 text-xs md:text-base'>
+                    {userData.name}
+                </h6>
                 <div className='flex justify-between items-center'>
-                    <span className='text-mblack'>{userData.phone}</span>
-                    <FaEdit onClick={() => handleSectionChange('userInfo')}
-                    className='text-amber-500 cursor-pointer text-xl' />
+                    <span className='text-gray-500 text-xs md:text-base'>
+                        {userData.phone}
+                    </span>
+                    <FaEdit
+                        onClick={() => handleSectionChange('userInfo')}
+                        className='text-amber-500 cursor-pointer text-xl'
+                    />
                 </div>
             </div>
 

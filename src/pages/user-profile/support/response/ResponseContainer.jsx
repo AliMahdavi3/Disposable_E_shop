@@ -14,16 +14,16 @@ const ResponseContainer = ({ ticket }) => {
 
     return (
         <div ref={responsesContainerRef}
-            className="pt-2 border-t overflow-y-auto max-h-[40vh]">
-            <h3 className="text-mgreen font-medium">پاسخ ها</h3>
+            className="pt-2 container border-t overflow-y-auto max-h-[40vh]">
+            <h3 className="text-mgreen font-medium text-xs md:text-sm">پاسخ ها</h3>
             {ticket.responses.length > 0 ? (
                 ticket.responses.map((response, index) => (
                     <div
                         key={index}
                         className="border-b border-gray-300 
-                        py-2 text-gray-500 text-sm"
+                        py-2 text-gray-500 text-xs md:text-sm"
                     >
-                        <p className='mb-2 text-gray-500 dark:text-darkModeTextColor'>
+                        <p className='mb-2 text-gray-500 truncate'>
                             <span className="text-amber-500">شناسه گفتگو : </span>
                             {response.responderId}
                         </p>
@@ -44,7 +44,9 @@ const ResponseContainer = ({ ticket }) => {
                     </div>
                 ))
             ) : (
-                <p className="text-gray-500">هنوز پاسخی ثبت نشده است.</p>
+                <div className='text-center text-xs md:text-sm'>
+                    <p className="text-gray-500">هنوز پاسخی ثبت نشده است.</p>
+                </div>
             )}
         </div>
     )

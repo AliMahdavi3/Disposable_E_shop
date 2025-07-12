@@ -5,9 +5,7 @@ import MoreViewedArticle from './MoreViewedArticle';
 import useSolidNavbar from '../../hooks/useSolidNavbar';
 
 const Blog = () => {
-
    useSolidNavbar(true);
-
     return (
         <>
             <MoreViewedArticle />

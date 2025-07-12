@@ -64,12 +64,13 @@ const Checkout = () => {
                     <>
                         {
                             orderDetails ? (
-                                <div className="container pb-12 pt-24">
+                                <div className="container pb-12 pt-20 md:pt-24">
                                     <div className="border-2 border-gray-300 rounded-lg p-5">
-                                        <h2 className="text-gray-500 font-medium mb-3">
+                                        <h2 className="text-gray-500 font-medium mb-3
+                                            text-xs md:text-sm">
                                             اطلاعات سفارش
                                         </h2>
-                                        <div className='text-gray-500'>
+                                        <div className='text-gray-500 text-xs md:text-sm'>
                                             <DetailItem label='شناسه سفارش'
                                                 value={orderDetails?.id} />
                                             <DetailItem label='تاریخ ثبت سفارش'
@@ -90,14 +91,14 @@ const Checkout = () => {
                                     </div>
 
                                     <div className="border-2 border-gray-300 rounded-lg p-5 mt-5">
-                                        <h2 className="text-gray-500 font-medium mb-3">
+                                        <h2 className="text-gray-500 font-medium mb-3 text-xs md:text-sm">
                                             جزئیات محصولات
                                         </h2>
                                         {orderDetails.items.map((item, index) => (
                                             <div
                                                 key={index}
                                                 className="flex justify-between items-center
-                                                border-b-2 py-2"
+                                                border-b-2 py-2 text-xs md:text-sm"
                                             >
                                                 <img
                                                     src={`${apiPath}/${item.product.imageUrl[0]}`}
@@ -107,10 +108,10 @@ const Checkout = () => {
                                                 <p className="text-gray-500 mb-1">
                                                     {item.product.title}
                                                 </p>
-                                                <p className="text-gray-500">تعداد:
+                                                <p className="text-gray-500">
                                                     {item.quantity}
                                                 </p>
-                                                <p className="text-gray-500">قیمت:
+                                                <p className="text-gray-500">
                                                     {item.product.price} تومان
                                                 </p>
                                             </div>
@@ -118,12 +119,14 @@ const Checkout = () => {
                                     </div>
 
                                     <div className="border-2 border-gray-300 rounded-lg p-5 mt-5">
-                                        <h2 className="text-gray-500  font-medium mb-3">
+                                        <h2 className="text-gray-500  font-medium mb-3 text-xs md:text-sm">
                                             جمع کل
                                         </h2>
-                                        <DetailItem label="تعداد کل محصولات"
-                                            value={orderDetails?.totalQuantity} />
-                                        <div className='text-xl mt-2'>
+                                        <div className='text-xs md:text-sm'>
+                                            <DetailItem label="تعداد کل محصولات"
+                                                value={orderDetails?.totalQuantity} />
+                                        </div>
+                                        <div className='text-sm md:text-xl mt-2'>
                                             <DetailItem label="مبلغ قابل پرداخت به تومان"
                                                 value={orderDetails?.formattedDiscountedPrice || orderDetails?.formattedPrice} />
                                         </div>
@@ -141,7 +144,9 @@ const Checkout = () => {
                                 </div>
                             ) : (
                                 <div className="h-screen flex justify-center items-center">
-                                    <p>اطلاعات سفارش پیدا نشد!</p>
+                                    <p className='text-gray-500 text-xs md:text-sm'>
+                                        اطلاعات سفارش پیدا نشد!
+                                    </p>
                                 </div>
                             )
                         }

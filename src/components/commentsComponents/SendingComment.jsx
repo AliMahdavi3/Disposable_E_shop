@@ -20,13 +20,15 @@ const SendingComment = ({ handleCommentSubmit, newComment, setNewComment, rating
         <>
             {
                 !isAuthenticated() ? (
-                    <button
-                        onClick={() => navigate('/login')}
-                        className='bg-mgreen rounded-lg text-white px-4
-                        py-2 hover:bg-violet-600'
-                    >
-                        برای ارسال نظر لطفا وارد حساب کاربری خود شوید
-                    </button>
+                    <div className='flex justify-center items-center'>
+                        <button
+                            onClick={() => navigate('/login')}
+                            className='bg-mgreen rounded-lg text-white px-4
+                            py-2 hover:bg-violet-600 text-xs md:text-base'
+                        >
+                            برای ارسال نظر لطفا وارد حساب کاربری خود شوید
+                        </button>
+                    </div>
                 ) : (
                     <form
                         onSubmit={handleCommentSubmit}

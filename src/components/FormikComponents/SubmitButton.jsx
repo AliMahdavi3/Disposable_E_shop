@@ -1,5 +1,6 @@
 import { FastField } from 'formik'
 import React from 'react'
+import ButtonSpinner from '../ButtonSpinner'
 
 const SubmitButton = ({ setOpen }) => {
     return (
@@ -7,10 +8,10 @@ const SubmitButton = ({ setOpen }) => {
             {({ form }) => {
                 return (
                     <div className='flex justify-start mt-5 items-center'>
-                        <button type='submit' className='text-white cursor-pointer bg-mgreen 
-                            px-3 py-2 rounded-md font-medium' disabled={form.isSubmitting}>
-                            ذخیره
-                            {/* {form.isSubmitting ? <SpinnerLoad isSmall={true} /> : 'ذخیره'} */}
+                        <button type='submit' className='text-white cursor-pointer
+                            bg-mgreen px-3 py-2 rounded-md font-medium'
+                            disabled={form.isSubmitting}>
+                            {form.isSubmitting ? <ButtonSpinner /> : 'ذخیره'}
                         </button>
                         <button onClick={() => setOpen(false)} type='button'
                             className='text-white bg-rose-600 cursor-pointer 

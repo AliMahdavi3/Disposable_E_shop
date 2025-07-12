@@ -26,7 +26,11 @@ const MoreViewedArticle = () => {
             {article ? (
                 <ArticleCard article={article} modify={true} />
             ) : (
-                <p className="mt-5 text-gray-500 text-center">مقاله ای یافت نشد!</p>
+                <div className='border-2 shadow-md rounded-xl'>
+                    <p className="py-5 text-xs md:text-base text-gray-500 text-center">
+                        مقاله ای یافت نشد!
+                    </p>
+                </div>
             )}
         </div>
     )

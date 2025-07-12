@@ -68,12 +68,13 @@ const Profile = () => {
 
     const handleSectionChange = (section) => {
         setActiveSection(section);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     return (
         <>
-            <div className='container pt-20'>
-                <div className="grid grid-cols-7 gap-4 py-5">
+            <div className='container pt-16 md:pt-24 pb-5'>
+                <div className="grid grid-cols-7 gap-4">
                     <EmailConfirmation renderSection={renderSection} />
                     <ProfileList
                         handleSectionChange={handleSectionChange}

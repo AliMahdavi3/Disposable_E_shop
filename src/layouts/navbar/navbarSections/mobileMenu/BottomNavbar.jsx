@@ -37,7 +37,7 @@ const BottomNavbar = ({ isLoggedIn, cartCount }) => {
         <>
             <nav
                 className="md:hidden h-fit py-2 rounded-t-xl border-t-2
-            fixed bg-gradient-to-r from-mgreen to-[#0dafa7] bottom-0 z_index w-full"
+                fixed bg-gradient-to-r from-mgreen to-[#0dafa7] bottom-0 z_index w-full"
             >
                 <div className='px-3 flex justify-between items-center'>
 

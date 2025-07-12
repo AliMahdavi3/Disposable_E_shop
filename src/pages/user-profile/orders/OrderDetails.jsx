@@ -27,7 +27,7 @@ const OrderDetails = ({ orderId }) => {
     return (
          <div className='my-5'>
             {orderDetails ? (
-                <div className='border-2 rounded-lg p-4 text-gray-500'>
+                <div className='border-2 rounded-lg p-4 text-gray-500 text-xs md:text-sm'>
                     <h2 className='text-mgreen mb-2'>سفارش شناسه: {orderDetails.id}</h2>
                     <p className='mb-2'>قیمت کل: {orderDetails.totalPrice} تومان</p>
                     <p className='mb-2'>تاریخ ثبت: {convertDateToJalali(orderDetails.createdAt)}</p>
@@ -45,7 +45,7 @@ const OrderDetails = ({ orderId }) => {
                     </p>
 
                     <hr className='border my-5' />
-                    <h3>محصولات سفارش</h3>
+                    <h3 className='mb-2'>محصولات سفارش</h3>
 
                     <div className='flex overflow-x-auto pb-2 space-x-2'>
                         {orderDetails.items.map((item, index) => (
@@ -58,7 +58,7 @@ const OrderDetails = ({ orderId }) => {
                                     alt={item.product.title}
                                     className='w-full h-40 object-cover mb-2 rounded-lg'
                                 />
-                                <h4 className='text-sm text-gray-700 mb-2'>
+                                <h4 className='text-sm text-gray-500 py-2'>
                                     {item.product.title}
                                 </h4>
                                 <p className='text-xs text-gray-500'>قیمت: {item.product.price} تومان</p>

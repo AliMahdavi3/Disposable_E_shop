@@ -46,28 +46,31 @@ body {
   /* border-radius: 10px; */
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #0dafa7;
   /* border-radius: 10px; */
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
 }
 
 .scrollbar_hidden::-webkit-scrollbar {
   display: none;
-  /* Hide scrollbar */
 }
 
 .scrollbar_hidden {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
+
+/* .custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  border-radius: 10px;
+} */
 
 /* ============================================= HOME ======================================== */
 .slick-slide>div {

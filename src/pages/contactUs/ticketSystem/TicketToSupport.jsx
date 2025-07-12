@@ -54,7 +54,7 @@ const TicketToSupport = () => {
             {formik => {
                 return (
                     <div className="col-span-5 md:col-span-3">
-                        <h3 className='mb-5 font-medium text-mgreen text-lg'>
+                        <h3 className='mb-5 font-medium text-mgreen text-base md:text-lg'>
                             ارسال پیام به تیم پشتیبانی
                         </h3>
                         <Form>

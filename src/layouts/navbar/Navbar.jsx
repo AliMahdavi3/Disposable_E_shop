@@ -60,7 +60,7 @@ const Navbar = () => {
   return (
     <header >
       <nav
-        className={`${isSolid ? 'bg-gradient-to-r from-mgreen to-[#0dafa7]' : isNavbarScrolled ?
+        className={`${isSolid ? 'bg-gradient-to-r from-mgreen to-[#0dafa7] border-b-2 rounded-b-xl' : isNavbarScrolled ?
           "bg-gradient-to-r from-mgreen to-[#0dafa7]" : "bg-transparent"} 
           h-fit py-5 rounded-b-2xl fixed top-0 z-50 w-full`}
       >

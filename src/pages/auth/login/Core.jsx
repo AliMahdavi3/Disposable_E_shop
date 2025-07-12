@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
-import axios from 'axios';
 import { Alert } from '../../../utils/sweetalert2';
+import { loginWithEmailService, loginWithPhoneService } from '../../../services/auth';
 
 export const initialValues = {
     email: "",
@@ -10,51 +10,48 @@ export const initialValues = {
 }
 
 const loginWithPhone = async (phone, password) => {
-
     try {
-        const response = await axios.post('http://localhost:4000/auth/login', {
-            phone,
-            password,
-        })
-        return response.data;
-
+        const res = await loginWithPhoneService(phone, password);
+        if (res.status === 200) {
+            return res.data;
+        }
     } catch (error) {
         throw error.response.data.message || 'Login failed!';
     }
-
 }
 
 const loginWithEmail = async (email, password) => {
-
     try {
-        const response = await axios.post('http://localhost:4000/auth/login', {
-            email,
-            password,
-        })
-        return response.data;
-
+        const res = await loginWithEmailService(email, password);
+        if (res.status === 200) {
+            return res.data;
+        }
     } catch (error) {
         throw error.response.data.message || 'Login failed!';
     }
-
 }
 
 export const onSubmit = async (values, actions, navigate) => {
     try {
-        let response;
+        let res;
         if (values.auth_mode === 'phone') {
-            response = await loginWithPhone(values.phone, values.password);
+            res = await loginWithPhone(values.phone, values.password);
         } else {
-            response = await loginWithEmail(values.email, values.password);
+            res = await loginWithEmail(values.email, values.password);
         }
-
-        localStorage.setItem('token', response.token);
-        await Alert('عملیات موفقیت آمیز بود!', 'شما وارد شدید', 'success')
+        localStorage.setItem('token', res.token);
+        actions.resetForm();
+        await Alert('عملیات موفقیت آمیز بود!', 'شما وارد شدید', 'success');
         navigate('/');
 
     } catch (error) {
-        console.log(error.message);
-        Alert('خطایی رخ داده است!', error.message, 'error');
+        if (error === 'User not found!') {
+            Alert('خطایی رخ داده است!', 'کاربر یافت نشد!', 'error');
+        } else if (error === 'Invalid password!') {
+            Alert('خطایی رخ داده است!', 'رمزعبور اشتباه است!', 'error');
+        } else {
+            Alert('خطایی رخ داده است!', error || 'ورود ناموفق بود!', 'error');
+        }
     }
 }
 
@@ -65,12 +62,10 @@ export const validationSchema = Yup.object({
         then: () => Yup.string().required("لطفا این قسمت را پر کنید")
             .email("لطفا قالب ایمیل را رعایت کنید"),
     }),
-
     phone: Yup.string().when('auth_mode', {
         is: 'phone',
         then: () => Yup.string().required("لطفا این قسمت را پر کنید"),
     }),
-
     password: Yup.string()
         .required("لطفا این قسمت را پر کنید")
         .min(8, "حداقل 8 کاراکتر")

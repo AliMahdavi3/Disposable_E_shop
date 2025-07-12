@@ -25,15 +25,15 @@ const ArticleCard = ({ article, modify }) => {
                             modify ? (
                                 <p
                                     className='bg-gray-300 mb-2 w-full py-2 rounded-xl
-                                    px-2 font-semibold text-xl text-white navbar_shadow
-                                    bg-opacity-50'
+                                    px-2 font-semibold text-sm md:text-xl text-white 
+                                    navbar_shadow bg-opacity-50'
                                 >
                                     پربازدید ترین مقاله
                                 </p>
                             ) : null
                         }
                         <h5
-                            className='font-semibold text-white navbar_shadow text-sm
+                            className='font-semibold text-white navbar_shadow text-xs
                             hover:text-xl hover:mb-3 mb-2 md:text-lg duration-300 px-1'
                         >
                             {article.title}
@@ -45,7 +45,7 @@ const ArticleCard = ({ article, modify }) => {
                         >
                             {article.content}
                         </p>
-                        <div className='mt-5 px-1 text-sm text-white navbar_shadow'>
+                        <div className='mt-5 px-1 text-xs md:text-sm text-white navbar_shadow'>
                             <p>
                                 <span>نوشته شده توسط : </span>
                                 {article.author.name}
@@ -57,13 +57,13 @@ const ArticleCard = ({ article, modify }) => {
                                 </p>
                                 <p className='flex items-center'>
                                     <FaHeart className='me-2' />
-                                    <span className='text-xs me-3'>
+                                    <span className='me-3'>
                                         {article.likes}
                                     </span>
                                 </p>
                                 <p className='flex items-center'>
                                     <FaEye className='me-2' />
-                                    <span className='text-xs me-3'>
+                                    <span className='me-3'>
                                         {article.views}
                                     </span>
                                 </p>

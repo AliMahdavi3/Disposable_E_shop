@@ -10,7 +10,7 @@ const ContactUs = () => {
     return (
         <>
             <TitleAndImageSection />
-            <div className='container py-20'>
+            <div className='container py-10 md:py-20'>
                 <div className="grid grid-cols-5 gap-6">
                     <NewsMembership />
                     <TicketToSupport />

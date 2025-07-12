@@ -47,9 +47,9 @@ const UserInfo = () => {
     }, [editUserInfo]);
 
     return (
-        <section className="border-2 mt-5 px-5 py-10 h-fit w-full rounded-lg">
-            <div className='flex justify-between border-b-4 pb-5 border-b-mgreen'>
-                <h3 className='text-xs md:text-base font-bold mt-2 text-rose-700'>
+        <section className="border-2 mt-5 px-5 pb-10 pt-5 h-fit w-full rounded-lg">
+            <div className='flex justify-between items-center border-b-4 pb-5 border-b-mgreen'>
+                <h3 className='text-xs md:text-base font-bold text-rose-700'>
                     اطلاعات شخصی
                 </h3>
                 <EditUser

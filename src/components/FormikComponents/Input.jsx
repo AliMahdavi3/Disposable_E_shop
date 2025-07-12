@@ -17,7 +17,7 @@ const Input = ({ formik, type, name, placeholder, label }) => {
                 className={`${formik.touched[name] && formik.errors[name] ?
                 "border-2 border-rose-600" : null} 
                 py-2 placeholder:italic placeholder:text-sm md:placeholder:text-base 
-                placeholder:ps-1 rounded-xl
+                placeholder:ps-1 rounded-xl text-sm
                 mt-3 outline-none px-3 border-2`}
             />
 

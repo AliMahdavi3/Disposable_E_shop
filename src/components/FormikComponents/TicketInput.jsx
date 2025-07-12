@@ -18,7 +18,7 @@ const TicketInput = ({ type, name, placeholder, label, readOnly }) => {
                 name={name}
                 readOnly={readOnly}
                 className={`${readOnly ? "text-gray-500" : "text-gray-700"}
-                placeholder:italic placeholder:text-xs placeholder:px-1
+                placeholder:italic placeholder:text-xs placeholder:px-1 text-xs md:text-sm
                 w-full py-2 px-5 mb-3 rounded-full bg-blue-600 bg-opacity-25`}
             />
 

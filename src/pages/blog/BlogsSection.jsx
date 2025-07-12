@@ -9,7 +9,7 @@ const BlogsSection = () => {
     const [getArticles, setGetArticles] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    let articlesPerPage = 9;
+    let articlesPerPage = 6;
 
     useEffect(() => {
         const fetchArticles = async () => {
@@ -51,7 +51,7 @@ const BlogsSection = () => {
                     </div>
                 ) : (
                     <div className="container pb-10">
-                        <h1 className='pb-4 px-2 text-gray-700'>
+                        <h1 className='text-xs md:text-sm pb-4 px-3 text-gray-500'>
                             مقالات تازه نوشته شده
                         </h1>
                         <div className="grid grid-cols-3 gap-4">
@@ -61,7 +61,6 @@ const BlogsSection = () => {
                                 ))
                             }
                         </div>
-
                         <Pagination
                             currentPage={currentPage}
                             pageCount={pageCount}

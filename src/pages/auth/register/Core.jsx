@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
-import axios from 'axios';
 import { Alert } from '../../../utils/sweetalert2';
+import { registerService } from '../../../services/auth';
 
 
 export const initialValues = {
@@ -17,24 +17,24 @@ export const initialValues = {
 
 
 export const onSubmit = async (values, actions, navigate) => {
-    // console.log(values);
     const { confirm_password, ...dataToSend } = values;
     try {
-        const response = await axios.post('http://localhost:4000/auth/register', dataToSend);
-        if (response.status === 201) {
-            console.log(response);
-            Alert('عملیات موفقیت آمیز بود!', 'ثبت نام انجام شد', 'success');
+        const res = await registerService(dataToSend);
+        if (res.status === 201) {
+            await Alert('عملیات موفقیت آمیز بود!', 'ثبت نام انجام شد', 'success');
+            actions.resetForm();
             navigate('/login');
-
-        } else {
-            Alert('خطایی سمت سرور رخ داده است!', '404', 'warning');
         }
     } catch (error) {
-        console.log(error.message);
-        Alert('خطایی رخ داده است!', error.message, 'error');
+        if (error.response && error.response.data.message === 'User with this email already exists!') {
+            await Alert('خطا!', 'کاربری با این ایمیل قبلا ثبت شده', 'error');
+        } else if (error.response && error.response.data.message === 'User with this phone number already exists!') {
+            await Alert('خطا!', 'کاربری با این شماره تلفن قبلا ثبت شده', 'error');
+        } else {
+            await Alert('خطا!', error.message, 'error');
+        }
     }
 }
-
 
 
 export const validationSchema = Yup.object({

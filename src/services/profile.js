@@ -1,9 +1,9 @@
 import httpService from "./httpService"
 
-
-export const getUserService = () => {
-    return httpService('/auth/user', 'get');
-}
+export const getUserService = (userId = null) => {
+    const endpoint = userId ? `/auth/user/${userId}` : '/auth/user';
+    return httpService(endpoint, 'get');
+};
 
 export const getFavoritesService = () => {
     return httpService('/auth/user/favorites', 'get');

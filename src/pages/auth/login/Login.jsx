@@ -7,10 +7,8 @@ import Google from '../Google';
 import useSolidNavbar from '../../../hooks/useSolidNavbar';
 
 const Login = () => {
-
     const navigate = useNavigate();
     useSolidNavbar(true);
-
     return (
         <>
             <div className='mt-24 rounded-2xl pb-10 w-full h-fit flex justify-center'>
@@ -22,15 +20,29 @@ const Login = () => {
                     {
                         formik => {
                             return (
-                                <div className='grid grid-cols-2 rounded-2xl shadow-md shadow-mgreen w-[85%]'>
-                                    <div className="col-span-2 md:col-span-1 bg-white bg-opacity-50 pb-10 rounded-r-2xl">
-                                        <div className='flex justify-between items-center px-5 md:px-10 pt-5'>
-                                            <p className='text-xs text-gray-500 font-medium'>هنوز ثبت نام نکردید ؟</p>
-                                            <a href='register' className='text-xs bg-gray-50 border-2 px-2 md:px-5
-                                            rounded-3xl hover:text-indigo-500 cursor-pointer py-1'>ثبت نام</a>
+                                <div className='grid grid-cols-2 rounded-2xl shadow-md 
+                                    shadow-mgreen w-[85%]'>
+                                    <div className="col-span-2 md:col-span-1 bg-white 
+                                        bg-opacity-50 pb-10 rounded-r-2xl">
+                                        <div className='flex justify-between items-center 
+                                            px-5 md:px-10 pt-5'>
+                                            <p className='text-xs text-gray-500 font-medium'>
+                                                هنوز ثبت نام نکردید ؟
+                                            </p>
+                                            <a
+                                                href='register'
+                                                className='text-xs bg-gray-50 border-2 px-2 
+                                                md:px-5 rounded-3xl hover:text-indigo-500 
+                                                cursor-pointer py-1'
+                                            >
+                                                ثبت نام
+                                            </a>
                                         </div>
 
-                                        <h3 className='px-5 md:px-10 pt-5 pb-5 md:text-lg font-medium text-gray-500'>ورود به حساب کاربری</h3>
+                                        <h3 className='px-5 md:px-10 pt-5 pb-5 md:text-lg 
+                                        font-medium text-gray-500'>
+                                            ورود به حساب کاربری
+                                        </h3>
 
                                         <Form className='px-5 md:px-10'>
 
@@ -77,14 +89,15 @@ const Login = () => {
 
                                             <div className='pb-5'>
                                                 <button
-                                                    type='submit'
-                                                    className='w-full bg-mgreen text-white
-                                                    font-medium py-2 hover:bg-indigo-500 
-                                                    rounded-3xl cursor-pointer'>
-                                                    ورود
+                                                    type="submit"
+                                                    disabled={formik.isSubmitting}
+                                                    className={`w-full text-white font-medium py-2 text-sm md:text-base
+                                                    rounded-3xl cursor-pointer
+                                                    ${formik.isSubmitting ? 'bg-mgreen bg-opacity-50' : 'bg-mgreen md:hover:bg-indigo-500'}`}
+                                                >
+                                                    {formik.isSubmitting ? 'لطفا صبر کنید...' : 'ورود'}
                                                 </button>
                                             </div>
-
                                         </Form>
 
                                         <div className='text-center pb-5 md:pb-0'>
@@ -96,7 +109,8 @@ const Login = () => {
                                             </NavLink>
                                         </div>
                                     </div>
-                                    <div className="hidden sm:block sm:col-span-1 px-20 py-20 rounded-l-2xl bg-white">
+                                    <div className="hidden sm:block sm:col-span-1 
+                                        px-20 py-20 rounded-l-2xl bg-white">
                                         <img src="/assets/images/auth.jpg" alt="" />
                                     </div>
                                 </div>

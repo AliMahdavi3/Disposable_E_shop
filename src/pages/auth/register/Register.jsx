@@ -34,42 +34,52 @@ const Register = () => {
                      md:text-lg font-medium text-gray-500'>ثبت نام</h3>
 
                     <Form className='px-5 md:px-10'>
+                      <div className='flex flex-col lg:flex-row justify-between items-center gap-2'>
+                        <div className='w-full'>
+                          <FormikControl
+                            control="input"
+                            formik={formik}
+                            type="text"
+                            name="name"
+                            label="نام و نام خانوادگی"
+                            placeholder="نام نام خانوادگی"
+                          />
+                        </div>
+                        <div className='w-full'>
+                          <FormikControl
+                            control="input"
+                            formik={formik}
+                            type="email"
+                            name="email"
+                            label="ایمیل"
+                            placeholder="aaa@example.bbb"
+                          />
+                        </div>
+                      </div>
 
-                      <FormikControl
-                        control="input"
-                        formik={formik}
-                        type="text"
-                        name="name"
-                        label="نام و نام خانوادگی"
-                        placeholder="نام نام خانوائگی"
-                      />
+                      <div className='flex flex-col lg:flex-row justify-between items-center gap-2'>
+                        <div className='w-full'>
+                          <FormikControl
+                            control="input"
+                            formik={formik}
+                            type="text"
+                            name="phone"
+                            label="شماره همراه"
+                            placeholder="09123456789"
+                          />
+                        </div>
 
-                      <FormikControl
-                        control="input"
-                        formik={formik}
-                        type="email"
-                        name="email"
-                        label="ایمیل"
-                        placeholder="aaa@example.bbb"
-                      />
-
-                      <FormikControl
-                        control="input"
-                        formik={formik}
-                        type="text"
-                        name="phone"
-                        label="شماره همراه"
-                        placeholder="09123456789"
-                      />
-
-                      <FormikControl
-                        control="input"
-                        formik={formik}
-                        type="text"
-                        name="city"
-                        label="استان"
-                        placeholder="استان"
-                      />
+                        <div className='w-full'>
+                          <FormikControl
+                            control="input"
+                            formik={formik}
+                            type="text"
+                            name="city"
+                            label="استان"
+                            placeholder="استان"
+                          />
+                        </div>
+                      </div>
 
                       <FormikControl
                         control="input"
@@ -96,27 +106,39 @@ const Register = () => {
                         label="تاریخ تولد"
                       />
 
-                      <FormikControl
-                        control="password"
-                        formik={formik}
-                        type="password"
-                        name="password"
-                        label="رمزعبور"
-                        placeholder="رمزعبور"
-                      />
-
-                      <FormikControl
-                        control="password"
-                        formik={formik}
-                        type="password"
-                        name="confirm_password"
-                        label="تکرار رمزعبور"
-                        placeholder="تکرار رمزعبور"
-                      />
+                      <div className='flex flex-col lg:flex-row justify-between items-center gap-3'>
+                        <div className="w-full">
+                          <FormikControl
+                            control="password"
+                            formik={formik}
+                            type="password"
+                            name="password"
+                            label="رمزعبور"
+                            placeholder="رمزعبور"
+                          />
+                        </div>
+                        <div className="w-full">
+                          <FormikControl
+                            control="password"
+                            formik={formik}
+                            type="password"
+                            name="confirm_password"
+                            label="تکرار رمزعبور"
+                            placeholder="تکرار رمزعبور"
+                          />
+                        </div>
+                      </div>
 
                       <div className='pb-10 md:pb-0'>
-                        <button className='w-full bg-mgreen text-white
-                        font-medium py-2 rounded-3xl hover:bg-indigo-500 cursor-pointer'>ثبت نام</button>
+                        <button
+                          type="submit"
+                          disabled={formik.isSubmitting}
+                          className={`w-full text-white font-medium py-2 rounded-3xl 
+                            text-sm md:text-base cursor-pointer 
+                            ${formik.isSubmitting ? 'bg-mgreen bg-opacity-50' : 'bg-mgreen hover:bg-indigo-500'}`}
+                        >
+                          {formik.isSubmitting ? 'لطفا صبر کنید...' : 'ثبت نام'}
+                        </button>
                       </div>
                     </Form>
                   </div>

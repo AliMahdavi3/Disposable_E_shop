@@ -15,9 +15,10 @@ const createFormData = (data) => {
     return formData;
 }
 
-export const getUserService = () => {
-    return httpService('/auth/user', 'get');
-}
+export const getUserService = (userId = null) => {
+    const endpoint = userId ? `/auth/user/${userId}` : '/auth/user';
+    return httpService(endpoint, 'get');
+};
 
 export const createNewTicketService = (data) => {
     const formData = createFormData(data);
