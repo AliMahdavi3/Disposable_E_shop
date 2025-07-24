@@ -1,8 +1,13 @@
 import httpService from "./httpService";
 
-export const getCartItemsService = () => {
-    return httpService('/api/cart', 'get');
-}
+// export const getCartItemsService = () => {
+//     return httpService('/api/cart', 'get');
+// }
+
+export const getCartItemsService = (userId = null) => {
+    const endpoint = userId ? `/api/cart/${userId}` : '/api/cart';
+    return httpService(endpoint, 'get');
+};
 
 export const getCartCountService = () => {
     return httpService('/api/cart/count', 'get');

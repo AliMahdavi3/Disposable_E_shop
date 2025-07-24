@@ -67,7 +67,7 @@ const ProductsList = () => {
                                 open={open}
                                 setOpen={setOpen}
                                 currentItem={currentItem}
-                                cartItems={cartItems.cart}
+                                // cartItems={cartItems.cart}
                                 setCartItems={setCartItems}
                                 handleFetchedCartItems={handleFetchedCartItems}
                             />

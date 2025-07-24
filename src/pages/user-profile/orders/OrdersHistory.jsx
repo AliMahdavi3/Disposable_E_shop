@@ -42,7 +42,7 @@ const OrdersHistory = ({ handleViewDetails }) => {
                                     سفارش شناسه: {o._id}
                                 </h2>
                                 <p className='mb-2'>
-                                    قیمت کل: {o.totalPrice} تومان
+                                    قیمت کل: {o.formattedDiscountedPrice || o.formattedPrice} تومان
                                 </p>
                                 <p className='mb-2'>
                                     تاریخ ثبت: {convertDateToJalali(o.createdAt)}
