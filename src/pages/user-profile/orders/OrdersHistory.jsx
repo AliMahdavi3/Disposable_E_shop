@@ -29,6 +29,14 @@ const OrdersHistory = ({ handleViewDetails }) => {
         return;
     }
 
+    const statusColors = {
+        'در انتظار پرداخت': 'text-amber-500',
+        'پرداخت شده': 'text-teal-600',
+        'ارسال شده': 'text-sky-500',
+        'تحویل داده شده': 'text-violet-500',
+        'لغو شده': 'text-rose-500',
+    };
+
 
     return (
         <div className='my-5'>
@@ -36,7 +44,8 @@ const OrdersHistory = ({ handleViewDetails }) => {
                 Array.isArray(userOrders) && userOrders.length > 0 ? (
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                         {userOrders.map((o) => (
-                            <div key={o._id} className='font-medium text-xs
+                            <div key={o._id}
+                                className='font-medium text-xs
                                 border-2 rounded-lg p-4 text-gray-500'>
                                 <h2 className='text-mgreen mb-2'>
                                     سفارش شناسه: {o._id}
@@ -63,26 +72,32 @@ const OrdersHistory = ({ handleViewDetails }) => {
                                         </div>
                                     ))}
                                 </div>
+
                                 <hr className='border my-5' />
 
                                 <div className='flex justify-between items-center'>
-                                    <p className=''><span>وضعیت : </span>
-                                        {o.status === 'Paid' ? (
-                                            <span className='text-teal-600'>
-                                                پرداخت شده!
-                                            </span>
-                                        ) : (
-                                            <span className='text-amber-500'>
-                                                در انتظار پرداخت!
-                                            </span>
-                                        )}
+                                    <p className='font-semibold'>
+                                        <span>وضعیت : </span>
+                                        <span className={statusColors[o.status] || 'text-gray-500'}>
+                                            {o.status === 'در انتظار پرداخت'
+                                                ? 'در انتظار پرداخت!'
+                                                : o.status === 'پرداخت شده'
+                                                    ? 'پرداخت شده!'
+                                                    : o.status === 'ارسال شده'
+                                                        ? 'ارسال شده!'
+                                                        : o.status === 'تحویل داده شده'
+                                                            ? 'تحویل داده شده!'
+                                                            : o.status === 'لغو شده'
+                                                                ? 'لغو شده!'
+                                                                : 'وضعیت نامشخص!'}
+                                        </span>
                                     </p>
                                     {
-                                        o.status === 'Pending' ? (
+                                        o.status === 'در انتظار پرداخت' ? (
                                             <button
                                                 className='bg-mgreen text-white rounded-md 
                                                     px-4 py-2 text-xs'
-                                                onClick={()=>handleGoToCheckout(o)}
+                                                onClick={() => handleGoToCheckout(o)}
                                             >
                                                 پرداخت
                                             </button>

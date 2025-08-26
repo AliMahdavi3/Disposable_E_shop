@@ -23,25 +23,41 @@ const OrderDetails = ({ orderId }) => {
         fetchOrderDetails();
     }, [orderId]);
 
+    const statusColors = {
+        'در انتظار پرداخت': 'text-amber-500',
+        'پرداخت شده': 'text-teal-600',
+        'ارسال شده': 'text-sky-500',
+        'تحویل داده شده': 'text-violet-500',
+        'لغو شده': 'text-rose-500',
+    };
+
 
     return (
-         <div className='my-5'>
+        <div className='my-5'>
             {orderDetails ? (
                 <div className='border-2 rounded-lg p-4 text-gray-500 text-xs md:text-sm'>
                     <h2 className='text-mgreen mb-2'>سفارش شناسه: {orderDetails.id}</h2>
-                    <p className='mb-2'>قیمت کل: {orderDetails.totalPrice} تومان</p>
+                    <p className='mb-2'>قیمت کل: {orderDetails.formattedDiscountedPrice || orderDetails.formattedPrice} تومان</p>
                     <p className='mb-2'>تاریخ ثبت: {convertDateToJalali(orderDetails.createdAt)}</p>
                     <p className='mb-2'>آدرس ارسال: {orderDetails.shippingAddress}</p>
                     <p className='mb-2'>
                         توضیحات اضافی: {orderDetails.additionalComment || 'ندارد'}
                     </p>
                     <p className='mb-2'>
-                        وضعیت:{' '}
-                        {orderDetails.status === 'Paid' ? (
-                            <span className='text-teal-600'>پرداخت شده!</span>
-                        ) : (
-                            <span className='text-amber-500'>در انتظار پرداخت!</span>
-                        )}
+                        <span>وضعیت : </span>
+                        <span className={statusColors[orderDetails.status] || 'text-gray-500'}>
+                            {orderDetails.status === 'در انتظار پرداخت'
+                                ? 'در انتظار پرداخت!'
+                                : orderDetails.status === 'پرداخت شده'
+                                    ? 'پرداخت شده!'
+                                    : orderDetails.status === 'ارسال شده'
+                                        ? 'ارسال شده!'
+                                        : orderDetails.status === 'تحویل داده شده'
+                                            ? 'تحویل داده شده!'
+                                            : orderDetails.status === 'لغو شده'
+                                                ? 'لغو شده!'
+                                                : 'وضعیت نامشخص!'}
+                        </span>
                     </p>
 
                     <hr className='border my-5' />
